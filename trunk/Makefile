@@ -9,17 +9,24 @@ CFLAGS += -Wfloat-equal -Wundef -Wshadow -Wcast-qual -Wcast-align -fabi-version=
 CFLAGS += -Wunreachable-code -Winline
 #CFLAGS += -pthread -isystem /usr/local/include/boost/ -isystem /usr/local/include
 #LDFLAGS += -L/usr/local/lib -lboost_filesystem
-#SDL_FLAGS != sdl-config --cflags --libs
-#SDL_FLAGS +=  -lSDL_mixer
-ALLEGRO_FLAGS != allegro-config --cppflags --libs
+#SDL_FLAGS != sdl-config --cflags
+#SDL_LINK_FLAGS != sdl-config --libs
+#SDL_LINK_FLAGS +=  -lSDL_mixer
+ALLEGRO_FLAGS != allegro-config --cppflags
+ALLEGRO_LINK_FLAGS != allegro-config --libs
 INCLUDES = -I/usr/local/include -Iinclude/
 CFLAGS += $(ALLEGRO_FLAGS) $(INCLUDES) #$(SDL_FLAGS)
+LINK_FLAGS = $(ALLEGRO_LINK_FLAGS)
+LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 
 #compiling options
 .PHONY:     clean
 
 all: src/main.cpp
 	$(CC) $(CFLAGS) src/main.cpp -o $(NAME)
+
+kernel.o: src/kernel.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -fv *.o

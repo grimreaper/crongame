@@ -1,5 +1,6 @@
 #include <allegro.h>
 #include "merror.cpp"
+#include "kernel.h"
 
 int main (void)
 {

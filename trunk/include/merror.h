@@ -1,3 +1,4 @@
+#include <allegro.h>
 #include <string>
 #include <iostream>
 

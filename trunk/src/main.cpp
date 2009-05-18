@@ -1,6 +1,6 @@
 #include <allegro.h>
 #include "kernel.h"
-#include "merror.cpp"
+#include "merror.h"
 
 int main (void)
 {
@@ -56,6 +56,18 @@ int main (void)
 
 	set_color_conversion(COLORCONV_TOTAL | COLORCONV_KEEP_TRANS);
 	set_window_title("Kronoide");
+
+	Kernel *kernel;
+	kernel = new Kernel;
+	//initialize and play game here
+	/*
+	kernel->init();
+	kernel->play();
+	*/
+	kernel->shutdown();
+	delete kernel;
+
+
 
 	allegro_exit();
 	return 0;

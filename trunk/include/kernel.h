@@ -3,6 +3,7 @@
 #define KERNEL_H
 
 #include <allegro.h>
+#include <merror.h>
 
 /*#include "paddle.h"
 #include "ball.h"
@@ -38,6 +39,8 @@ class Kernel
 		// Operations
 		Kernel(); // constructor
 		~Kernel(); // destructor
+		Kernel(const Kernel&); // copy
+		Kernel operator=(const Kernel&); // assignment
 
 		void init(); // inits the game
 		void play(); // plays the main game loop

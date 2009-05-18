@@ -23,12 +23,15 @@ LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 .PHONY:     clean
 
 all: src/main.cpp
-	$(CC) $(CFLAGS) src/main.cpp -o $(NAME)
+
+src/main.cpp: kernel.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $@ -o $(NAME)
 
 kernel.o: src/kernel.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -fv *.o
 	rm -fv ./$(NAME)
 
+
+#	$(CC) $(CFLAGS) -c $< -o $@

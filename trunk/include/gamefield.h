@@ -1,0 +1,33 @@
+#ifndef GAMEFIELD_H
+#define GAMEFIELD_H
+
+#include <allegro.h>
+
+#include "brick.h"
+#include <vector>
+// max w & h in bricks
+#define GAMEFIELD_MAX_W 10
+#define GAMEFIELD_MAX_H 10
+
+class GameField
+{
+	public:
+		// Operations
+		GameField();
+		~GameField();
+
+		void do_new_random_level(int w, int h, int max_life); // creates a new level size w*h, with 1..maxlife for bricks
+
+		bool update();
+		void render(BITMAP *bmp);
+
+		bool ball_hit_brick(int x_px , int y_px); // this is used by the ball to hit the bricks, returns true if a brick was hit
+
+		// Attributes
+
+		Brick bricks[GAMEFIELD_MAX_W][GAMEFIELD_MAX_H];
+		int w, h; // current width and height in bricks, must be < GAMEFIELD_MAX_*
+		int bc; // brick count, when bc==0, next level
+};
+
+#endif

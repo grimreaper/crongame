@@ -117,8 +117,8 @@ void Kernel::render()
 	clear_bitmap(double_buffer); // debug - here we should/could blit the background
 	// first, everything gets drawed to the double buffer bitmap
 	game_field.render(double_buffer); // render the game field (the bricks)
-//	 paddle.render(double_buffer); // render the paddle
-//	 ball.render(double_buffer); // render the ball
+	 paddle.render(double_buffer); // render the paddle
+	 ball.render(double_buffer); // render the ball
 
 	// after that, we blit (draw) the double buffer to screen
 	blit(double_buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);    

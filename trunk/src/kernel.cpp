@@ -47,7 +47,7 @@ void Kernel::play()
 
 	clear_keybuf();
 
-	//init_game(); // initialize a game run
+	init_game(); // initialize a game run
 
 	game_field.do_new_random_level(3,2,1); // create a level
 
@@ -58,14 +58,14 @@ void Kernel::play()
 	{
 		if (speed_counter > 0) // while we still have logic frames to do
 		{
-			/*ret = update(); // update game logic and see which state we are
-			*/
+			ret = update(); // update game logic and see which state we are
+
 
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{
 				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 				readkey();
-				//init_game();
+				init_game();
 			}
 
 			if (ret == KERNEL_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
@@ -93,14 +93,14 @@ void Kernel::play()
 				}
 
 				game_field.do_new_random_level(w,h,l); // new level
-				//init_game();
+				init_game();
 			}
 
 			--speed_counter; // decrease logic frames to do
 		}
 		else
 		{
-			//render(); // draw the game
+			render(); // draw the game
 			fps_counter++; // count frames per second (FPS) (check mtimer.cpp, this aren't the real FPS, fps_real has the real FPS
 		}
 	}

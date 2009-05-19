@@ -65,8 +65,6 @@ int main (void)
 	kernel->shutdown();
 	delete kernel;
 
-
-
 	allegro_exit();
 	return 0;
 }

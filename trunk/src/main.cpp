@@ -60,10 +60,8 @@ int main (void)
 	Kernel *kernel;
 	kernel = new Kernel;
 	//initialize and play game here
-	/*
 	kernel->init();
 	kernel->play();
-	*/
 	kernel->shutdown();
 	delete kernel;
 

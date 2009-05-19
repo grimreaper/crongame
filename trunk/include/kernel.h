@@ -4,11 +4,10 @@
 
 #include <allegro.h>
 #include <merror.h>
-
-/*#include "paddle.h"
+#include "paddle.h"
 #include "ball.h"
 #include "gamefield.h"
-#include "mtimer.h"*/
+#include "mtimer.h"
 
 
 // some states of the update of the game (this is NOT bitmask values)
@@ -48,9 +47,10 @@ class Kernel
 
 		// Attributes
   		BITMAP *double_buffer; // the double buffer bitmap
-/*		Paddle paddle; // the player paddle 
+		Paddle paddle; // the player paddle 
 		Ball ball; // the game ball
-		GameField game_field; // the game field */
+
+		GameField game_field; // the game field 
 
 	private:
 		void init_game(); // this inits the game without reseting the kernel or the level, is used for when you start a new level, lose a life, etc

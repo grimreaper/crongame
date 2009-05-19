@@ -13,35 +13,36 @@ void Ball::init()
 	x = SCREEN_W / 2;
 	y = SCREEN_H / 2;
 
+	r = 8;
+
 	dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD,BALL_MAX_SPD ));
 	dy = rand_ex_f(BALL_MIN_SPD ,BALL_MAX_SPD );
 
-	r = 8;
+	sticky_time = 0;
 
 	c.r = 255;
 	c.g = 200;
 	c.b = 0;
-	
-	sticky_time = 0;
-
 }
 
 // updates ball ... returns true if the ball was lost (we lose a life) 
 bool Ball::update(Paddle &paddle, GameField &game_field)
 {
 	static float paddle_last_y = 0; // we use this so the ball can't go trought the paddle, we interpolate
-	
+
 	if (sticky_time > 0)
 	{
-		
-		sticky_time--;
+
+		--sticky_time;
 		// stick our position to paddle position
 		x = paddle.x + paddle.w / 2;
 		y = paddle.y - r;
-		
+
 		if (mouse_b & 1) // mouse button is pressed, release the ball
+		{
 			sticky_time = 0;
-		
+		}
+
 		if (sticky_time <= 0)  // time is up?
 		{
 			// do the up release
@@ -51,8 +52,10 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		return false; // we are stick to the paddle. all OK
 	}
 	else
+	{
 		sticky_time = 0;
-	
+	}
+
 	// upgrade ball position with speed x,y
 	x += dx;
 	y += dy;
@@ -78,7 +81,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	if (y > SCREEN_H - r)  // here we DIE ...
 	{
-		return true; // oops >;^) shit happens
+		return true;
 		/*
 		y = SCREEN_H - r;
 		bounce_y();
@@ -92,20 +95,23 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		(y - r < paddle.y + paddle.h || y - r < paddle_last_y + paddle.h))
 	{
 			y = paddle.y - r; // this is lame safe check
-		
+
 			bounce_y();
 	}
-	
-	
-	
+
+
 	// bounce and hit on bricks
 	if (game_field.ball_hit_brick((int)x-r,(int)y) || game_field.ball_hit_brick((int)x+r,(int)y))
-		bounce_x();	
+	{
+		bounce_x();
+	}
 
 	if (game_field.ball_hit_brick((int)x,(int)y-r) || game_field.ball_hit_brick((int)x,(int)y+r))
-		bounce_y();	
+	{
+		bounce_y();
+	}
 
-	
+
 	// never go faster than paddle size, or we are screwed :P
 	if (dy > paddle.h*0.25) 
 		dy = paddle.h*0.25;

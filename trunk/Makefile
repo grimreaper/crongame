@@ -16,7 +16,7 @@ CFLAGS += $(ALLEGRO_FLAGS) $(INCLUDES) #$(SDL_FLAGS)
 LINK_FLAGS = $(ALLEGRO_LINK_FLAGS)
 LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 
-OBJS= gamefield.o kernel.o brick.o krandom.o merror.o
+OBJS= gamefield.o kernel.o brick.o krandom.o merror.o mtimer.o ball.o paddle.o
 
 #compiling options
 .PHONY:     clean
@@ -27,10 +27,13 @@ src/main.cpp: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $@ -o $(NAME)
 
 gamefield.o: src/gamefield.cpp krandom.o brick.o
-kernel.o: src/kernel.cpp
+kernel.o: src/kernel.cpp mtimer.o gamefield.o ball.o paddle.o
 brick.o: src/brick.cpp
 krandom.o: src/krandom.cpp
 merror.o: src/merror.cpp
+mtimer.o: src/mtimer.cpp
+ball.o: src/ball.cpp paddle.o
+paddle.o: src/paddle.cpp
 
 
 clean:

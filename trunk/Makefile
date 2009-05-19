@@ -24,7 +24,7 @@ OBJS= gamefield.o kernel.o brick.o krandom.o merror.o
 all: src/main.cpp
 
 src/main.cpp: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $@ -o $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $@ -o $(NAME)
 
 gamefield.o: src/gamefield.cpp krandom.o brick.o
 kernel.o: src/kernel.cpp
@@ -34,7 +34,7 @@ merror.o: src/merror.cpp
 
 
 clean:
-	rm -fv *.o
+	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
 
 

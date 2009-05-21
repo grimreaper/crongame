@@ -29,6 +29,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	{
 		for (int x = 0 ; x < w; x++)
 		{
+
 			bricks[x][y].life = arc4random() % max_life + 1;
 
 			bricks[x][y].x = x * SCREEN_W / w;
@@ -52,6 +53,13 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 // returns true if we finished the level (0 bricks left)
 bool GameField::update()
 {
+	for (int y = 0 ; y < h; y++)
+	{
+		for (int x = 0 ; x < w; x++)
+		{
+			bricks[x][y].update();
+		}
+	}
 	return (bool) (bc < 1);
 }
 

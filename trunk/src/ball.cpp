@@ -1,5 +1,6 @@
 #include "ball.h"
 #include "krandom.h"
+#include <iostream>
 
 Ball::Ball()
 {}
@@ -10,28 +11,33 @@ Ball::~Ball()
 
 void Ball::init()
 {
+	std::cout << "ball init" << std::endl;
 	x = SCREEN_W / 2;
 	y = SCREEN_H / 2;
-
-	r = 8;
 
 	dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD,BALL_MAX_SPD ));
 	dy = rand_ex_f(BALL_MIN_SPD ,BALL_MAX_SPD );
 
-	sticky_time = 0;
+	r = 8;
 
 	c.r = 255;
 	c.g = 200;
 	c.b = 0;
+
+	sticky_time = 0;
+
 }
 
 // updates ball ... returns true if the ball was lost (we lose a life) 
 bool Ball::update(Paddle &paddle, GameField &game_field)
 {
+	std::cout << "ball up" << std::endl;
+
 	static float paddle_last_y = 0; // we use this so the ball can't go trought the paddle, we interpolate
 
 	if (sticky_time > 0)
 	{
+		std::cout << "sticky > 0" << std::endl;
 
 		--sticky_time;
 		// stick our position to paddle position
@@ -42,9 +48,9 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		{
 			sticky_time = 0;
 		}
-
 		if (sticky_time <= 0)  // time is up?
 		{
+			std::cout << "sticky <= 0" << std::endl;
 			// do the up release
 			dy = -rand_ex_f(BALL_MIN_SPD ,BALL_MAX_SPD );
 			dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD,BALL_MAX_SPD ));
@@ -53,6 +59,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	}
 	else
 	{
+		std::cout << "sticky ==  0" << std::endl;
 		sticky_time = 0;
 	}
 
@@ -63,24 +70,28 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	// bounce on field bounds
 	if (x < r)
 	{
+		std::cout << "x<r" << std::endl;
 		x = r;
 		bounce_x();
 	}
 
 	if (x > SCREEN_W - r)
 	{
+		std::cout << "x too far" << std::endl;
 		x = SCREEN_W - r;
 		bounce_x();
 	}
 
 	if (y < r)
 	{
+		std::cout << "y<r" << std::endl;
 		y = r;
 		bounce_y();
 	}
 
 	if (y > SCREEN_H - r)  // here we DIE ...
 	{
+		std::cout << "y too far" << std::endl;
 		return true;
 		/*
 		y = SCREEN_H - r;
@@ -88,42 +99,55 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		*/
 	}
 
+	std::cout << "should we bounce" << std::endl;
+
 	// bounce on paddle, only if going down =P
 	if (x + r > paddle.x && 
 		x - r < paddle.x + paddle.w && 
 		(y + r > paddle.y  || y + r > paddle_last_y  ) && 
 		(y - r < paddle.y + paddle.h || y - r < paddle_last_y + paddle.h))
 	{
+			std::cout << "bounce on paddle" << std::endl;
 			y = paddle.y - r; // this is lame safe check
-
 			bounce_y();
 	}
-
+	std::cout  << "no - not on paddle" << std::endl;
 
 	// bounce and hit on bricks
 	if (game_field.ball_hit_brick((int)x-r,(int)y) || game_field.ball_hit_brick((int)x+r,(int)y))
 	{
+		std::cout  << "on X" << std::endl;
 		bounce_x();
 	}
 
 	if (game_field.ball_hit_brick((int)x,(int)y-r) || game_field.ball_hit_brick((int)x,(int)y+r))
 	{
+		std::cout  << "on Y" << std::endl;
 		bounce_y();
 	}
 
 
+	std::cout  << "check the speed limit" << std::endl;
 	// never go faster than paddle size, or we are screwed :P
 	if (dy > paddle.h*0.25) 
+	{
 		dy = paddle.h*0.25;
+	}
 	
 	if (dy < -paddle.h*0.25) 
+	{
 		dy = -paddle.h*0.25;
+	}
 
 	if (dx > paddle.w*0.25) 
+	{
 		dx = paddle.w*0.25;
+	}
 	
 	if (dx < -paddle.w*0.25) 
+	{
 		dx = -paddle.w*0.25;
+	}
 	
 
 	paddle_last_y = paddle.y; // save our last position

@@ -1,3 +1,4 @@
+#define ARC4RANDOM_MAX      0x100000000
 #include <allegro.h>
 #include "kernel.h"
 #include "merror.h"

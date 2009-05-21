@@ -39,7 +39,7 @@ void Kernel::play()
 
 	int ret = KERNEL_UDP_OK; // current game state, all OK
 	int level = 1 ; // current level of the game
-	
+
 
 	_start_global_timer(); // we start a global timer, check mtimer.cpp
 
@@ -63,8 +63,8 @@ void Kernel::play()
 
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{
-				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-				readkey();
+//				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+//				readkey();
 				init_game();
 			}
 
@@ -113,12 +113,12 @@ void Kernel::play()
 
 // render game
 void Kernel::render()
-{     
+{
 	clear_bitmap(double_buffer); // debug - here we should/could blit the background
 	// first, everything gets drawed to the double buffer bitmap
 	game_field.render(double_buffer); // render the game field (the bricks)
-	 paddle.render(double_buffer); // render the paddle
-	 ball.render(double_buffer); // render the ball
+	paddle.render(double_buffer); // render the paddle
+	ball.render(double_buffer); // render the ball
 
 	// after that, we blit (draw) the double buffer to screen
 	blit(double_buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);    
@@ -135,11 +135,14 @@ int Kernel::update()
 	{
 		ret = KERNEL_UDP_LOST_LIFE; // player lost life :(
 	}
+	std::cout << " about to update GF" << std::endl;
 
 	if (game_field.update())
 	{
 		ret = KERNEL_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
 	}
+	std::cout << " done with update GF" << std::endl;
+
 
 	if (key[KEY_ESC]) // exit game -- DEBUG , WE MUST CONFIRM THIS!!
 	{

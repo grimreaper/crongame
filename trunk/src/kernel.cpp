@@ -63,50 +63,68 @@ void Kernel::play()
 
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{
-//				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-//				readkey();
+				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				readkey();
 				init_game();
 			}
 
 			if (ret == KERNEL_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 				// next level
-				// DEBUG -- WE MUST SHOW A MESSAGE
+				textout_ex( screen, font, "You won!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				readkey();
 
 				--level; // next level :)
 
 				// pick new level parameters
 				int l = level;
+				std::cout << "l is " << l << " ";
 				int w = 3 + arc4random() % level + level;
+				std::cout << "w is " << w << " ";
 				int h = 3 + arc4random() % level ;
+				std::cout << "h is " << h << " ";
+
 				if (level > 5)
 				{
+					std::cout << "l > 5 ";
+
 					l = 5; // max life of bricks
 				}
 				if (w > GAMEFIELD_MAX_W-2)
 				{
-					w = GAMEFIELD_MAX_W-2; // oh crap, the guy can play :o
+					std::cout << "w > GAMEFIELD_MAX_W-2 ";
+
+					w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
 				}
 				if (h > GAMEFIELD_MAX_H-2)
 				{
-					h = GAMEFIELD_MAX_H-2; // oh crap, the guy can play :o
+					std::cout << "h > GAMEFIELD_MAX_H-2 ";
+
+					h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
 				}
 
+				std::cout << "about to start new game from the gamefield";
 				game_field.do_new_random_level(w,h,l); // new level
+				std::cout << "about to start init game ";
+				std::cout << std::endl;
 				init_game();
 			}
 
+			std::cout << "speed down" << std::endl;
 			--speed_counter; // decrease logic frames to do
 		}
 		else
 		{
+			std::cout << "render" << std::endl;
 			render(); // draw the game
 			fps_counter++; // count frames per second (FPS) (check mtimer.cpp, this aren't the real FPS, fps_real has the real FPS
 		}
 	}
 
+	std::cout << "clear key buffer" << std::endl;
 	clear_keybuf();
 	_stop_global_timer(); // stop the global timer
+	std::cout << "reset to 0" << std::endl;
 	time_counter = speed_counter = fps_counter = fps_real = 0; // leave everything nice, just to be sure
 
 }
@@ -157,9 +175,13 @@ int Kernel::update()
 // is used for when you start a game , lose a life, etc
 void Kernel::init_game()
 {
+	std::cout << "kernel is initing ";
+
 	paddle.init(); // init the paddle
+	std::cout << "paddle is done ";
 
 	ball.init(); // init the ball 
+	std::cout << "ball is done ";
 
 	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
 

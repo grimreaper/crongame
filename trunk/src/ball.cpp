@@ -15,7 +15,9 @@ void Ball::init()
 	x = SCREEN_W / 2;
 	y = SCREEN_H / 2;
 
+	std::cout << "calling rand dx " << std::endl;
 	dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD,BALL_MAX_SPD ));
+	std::cout << "calling rand dy " << std::endl;
 	dy = rand_ex_f(BALL_MIN_SPD ,BALL_MAX_SPD );
 
 	r = 8;
@@ -52,7 +54,9 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		{
 			std::cout << "sticky <= 0" << std::endl;
 			// do the up release
+			std::cout << "calling rand dy2 " << std::endl;
 			dy = -rand_ex_f(BALL_MIN_SPD ,BALL_MAX_SPD );
+			std::cout << "calling rand dx2 " << std::endl;
 			dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD,BALL_MAX_SPD ));
 		}
 		return false; // we are stick to the paddle. all OK
@@ -165,15 +169,20 @@ void Ball::render(BITMAP * bmp)
 
 void Ball::bounce_x()
 {
+	std::cout << "calling rand bounce dx " << std::endl;
 	dx = -rand_ex_f(dx * 0.9, dx * 1.1);
 
 	if (rand() % 100 < 10)
+	{
+		std::cout << "calling rand bounce dx 2 " << std::endl;
 		dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD , BALL_MAX_SPD ));
+	}
 }
 
 
 void Ball::bounce_y()
 {
+	std::cout << "calling rand bounce dy " << std::endl;
 	dy = -rand_ex_f(dy * 0.9, dy*1.1);
 
 //	if (rand() % 100 < 10)

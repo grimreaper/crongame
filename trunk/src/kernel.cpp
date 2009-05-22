@@ -59,7 +59,7 @@ void Kernel::play()
 		if (speed_counter > 0) // while we still have logic frames to do
 		{
 			ret = update(); // update game logic and see which state we are
-
+			std::cout << "just called kernel update " <<std::endl;
 
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{

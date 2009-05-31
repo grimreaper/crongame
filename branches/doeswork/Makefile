@@ -1,4 +1,4 @@
-'NAME=crontab
+NAME=crontab
 CC = llvm-g++
 CFLAGS = -O0 -g3 -pipe -ansi -Wabi
 CFLAGS += -Weffc++ -fno-gnu-keywords -Wstrict-null-sentinel -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -ffor-scope

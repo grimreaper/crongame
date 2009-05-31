@@ -1,18 +1,8 @@
-// ---------------------------------------------------------------------------
-// kernel.cpp
-// ---------------------------------------------------------------------------
-// Main game loop and kernel system
-// ---------------------------------------------------------------------------
-// Developed By Kronoman - Copyright (c) 2006
-// In loving memory of my father
-// ---------------------------------------------------------------------------
-
 #include "gerror.h"
 #include "kernel.h"
 
-Kernel::Kernel()
+Kernel::Kernel() : double_buffer (NULL)
 {
-	double_buffer = NULL;
 }
 
 Kernel::~Kernel()
@@ -26,7 +16,9 @@ void Kernel::init()
 	
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)
+	{
 		raise_error("Kernel::init() - can't create double buffer!");
+	}
 	clear_bitmap(double_buffer);
 	
 }
@@ -57,6 +49,8 @@ void Kernel::play()
 			
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{
+				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				readkey();
 				init_game(); // DEBUG - we should show a message and take down a life
 			}
 			

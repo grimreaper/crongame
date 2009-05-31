@@ -1,13 +1,3 @@
-/*! \file gerror.cpp
------------------------------------------------
-Generic Allegro Project Template
-By Kronoman - July 2003
-In loving memory of my father
------------------------------------------------
-Error messages
------------------------------------------------ 
-*/
-
 #ifndef GERROR_C
 #define GERROR_C
 
@@ -42,7 +32,7 @@ void raise_error(AL_CONST char *msg, ...)
 		free(buf);
 	}
 
-	exit( -1); /* abort the program */
+	exit(EXIT_FAILURE); /* abort the program */
 }
 
 #endif

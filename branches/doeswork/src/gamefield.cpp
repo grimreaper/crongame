@@ -1,9 +1,8 @@
 #include "gamefield.h"
 #include "krandom.h"
 
-GameField::GameField()
+GameField::GameField() : w(0), h(0), bc(0)
 {
-	w = h = bc = 0;
 }
 
 GameField::~GameField()
@@ -50,6 +49,13 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 // returns true if we finished the level (0 bricks left)
 bool GameField::update()
 {
+	for (int y = 0 ; y < h; y++)
+	{
+		for (int x = 0 ; x < w; x++)
+		{
+			bricks[x][y].update();
+		}
+	}
 	return (bool)(bc < 1);
 }
 

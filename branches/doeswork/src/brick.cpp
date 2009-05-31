@@ -13,6 +13,8 @@ Brick::~Brick()
 
 void Brick::update()
 {
+	c.r = c.b = 0;
+	c.g = 255 - ((life <= 10) ? life * 20 : 254);
 	// not much to be done here yet... common' is a brick, what you expect ? :P
 }
 

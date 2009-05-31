@@ -1,19 +1,3 @@
-/*! \file mtimer.h
- Main timer system.
-
- The purpose of this system is to have a timer
- always running at a constant rate, to be used
- by other parts of the game to time stuff.
-*/
-// Changes:
-// 1 APR 2005 - Modified to fit Doxygen documentation style.
-// 28 OCT 2004 - Added FPS counter support
-// ---------------------------------------------------------------------------
-// Developed By Kronoman - Copyright (c) 2004
-// In loving memory of my father
-// ---------------------------------------------------------------------------
-// Thu Oct 28 00:37:13 ART 2004 @192 /Internet Time/
-
 #ifndef MTIMER_H
 #define MTIMER_H
 

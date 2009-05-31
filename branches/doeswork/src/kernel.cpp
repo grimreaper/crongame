@@ -76,7 +76,7 @@ void Kernel::play()
 				init_game();
 			}
 			
-			speed_counter--; // decrease logic frames to do
+			--speed_counter; // decrease logic frames to do
 		}
 		else
 		{

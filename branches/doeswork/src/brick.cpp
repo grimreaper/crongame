@@ -1,10 +1,8 @@
 #include "brick.h"
 
-Brick::Brick()
+Brick::Brick(): life (0), w (32), h(32)
 {
 	c.r = c.g = c.b = 128;
-	w = h = 32;
-	life = 0;
 }
 
 Brick::~Brick()

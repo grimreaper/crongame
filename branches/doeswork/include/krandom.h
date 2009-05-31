@@ -1,7 +1,3 @@
-// Some random functions for choosing numbers
-// by Kronoman - Copyright (c) 2005 - In loving memory of my father
-
-
 #ifndef KRANDOM_H
 
 int rand_ex_i(int min, int max); // integer version 

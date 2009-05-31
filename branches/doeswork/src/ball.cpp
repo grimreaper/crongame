@@ -21,7 +21,7 @@ void Ball::init()
 	c.r = 255;
 	c.g = 200;
 	c.b = 0;
-	
+
 	sticky_time = 0;
 
 }
@@ -30,18 +30,20 @@ void Ball::init()
 bool Ball::update(Paddle &paddle, GameField &game_field)
 {
 	static float paddle_last_y = 0; // we use this so the ball can't go trought the paddle, we interpolate
-	
+
 	if (sticky_time > 0)
 	{
-		
-		sticky_time--;
+
+		--sticky_time;
 		// stick our position to paddle position
 		x = paddle.x + paddle.w / 2;
 		y = paddle.y - r;
-		
+
 		if (mouse_b & 1) // mouse button is pressed, release the ball
+		{
 			sticky_time = 0;
-		
+		}
+
 		if (sticky_time <= 0)  // time is up?
 		{
 			// do the up release

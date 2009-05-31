@@ -87,7 +87,9 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 		bricks[x_px / w_b][y_px / h_b].life--;
 
 		if (bricks[x_px / w_b][y_px / h_b].life <= 0)
-			bc--; // wasted brick!
+		{
+			--bc; // wasted brick!
+		}
 
 		return true; // hit!
 	}

@@ -1,14 +1,3 @@
-/*
------------------------------------------------
-Generic Allegro Project Template
-By Kronoman - July 2003
-Copyright (c) 2003, Kronoman
-In loving memory of my father
------------------------------------------------
------------------------------------------------
-Error messages
------------------------------------------------ 
-*/
 #ifndef GERROR_H
 #define GERROR_H
 /*! \file gerror.h

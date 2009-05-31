@@ -56,7 +56,6 @@ void Kernel::play()
 			if (ret == KERNEL_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-				readkey();
 
 				++level; // next level :)
 
@@ -102,19 +101,25 @@ void Kernel::shutdown()
 int Kernel::update()
 {
 	int ret = KERNEL_UDP_OK; // by default, everything is OK
-	
-	paddle.update(); // update the paddle logic
-	
-	if (ball.update(paddle, game_field))
-		ret = KERNEL_UDP_LOST_LIFE; // player lost life :(
-	
-	if (game_field.update())
-		ret = KERNEL_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
 
-	
+	paddle.update(); // update the paddle logic
+
+	if (ball.update(paddle, game_field))
+	{
+		ret = KERNEL_UDP_LOST_LIFE; // player lost life :(
+	}
+
+	if (game_field.update())
+	{
+		ret = KERNEL_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
+	}
+
+
 	if (key[KEY_ESC]) // exit game -- DEBUG , WE MUST CONFIRM THIS!!
+	{
 		ret = KERNEL_UDP_EXIT;
-	
+	}
+
 	return ret;
 }
 

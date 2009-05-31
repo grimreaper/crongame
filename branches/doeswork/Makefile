@@ -47,9 +47,4 @@ clean:
 	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
 
-todo:
-#for file in $(ALLFILES); do fgrep -H -e TODO -e FIXME $$file; done;
-#true
-
-
 #	$(CC) $(CFLAGS) -c $< -o $@

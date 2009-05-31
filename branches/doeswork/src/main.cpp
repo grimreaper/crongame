@@ -1,17 +1,3 @@
-// ------------------------------------------------------------------
-// Kronoide
-// ------------------------------------------------------------------
-// A open source mini game by Kronoman
-// "In loving memory of my father"
-// Made in Argentina.
-// ------------------------------------------------------------------
-// Released under the MIT license.
-// ------------------------------------------------------------------
-// Copyright (c) 2005, Kronoman
-// ------------------------------------------------------------------
-// Project started 23/AUG/2005
-// ------------------------------------------------------------------
-
 #include <allegro.h>
 #include <string.h>
 #include <stdio.h>
@@ -29,9 +15,9 @@ int main( int argc, char *argv[])
 	int vid_w = 640;
 
 	int vid_h = 480;
-	
+
 	bool want_sound = true;
-	
+
 	// check command line parameters
 	for (int i = 1; i < argc; ++i)
 	{
@@ -80,21 +66,29 @@ int main( int argc, char *argv[])
 
 
 	if (allegro_init())
+	{
 		raise_error("main() : Allegro failed to start!");
-
-	srand(time(NULL)); // init random numbers
+	}
 
 	if (install_timer())
+	{
 		raise_error("main() : can't install timer driver!");
+	}
 
 	if (install_keyboard())
+	{
 		raise_error("main() : can't install keyboard driver!");
+	}
 
 	if (install_mouse() < 0)
+	{
 		raise_error("main() : can't install mouse driver! a mouse is needed to play this game! sorry...");
+	}
 
 	if (depth < 16)
+	{
 		depth = desktop_color_depth(); // get desktop color depth
+	}
 
 	// safe check
 	if (depth < 16)

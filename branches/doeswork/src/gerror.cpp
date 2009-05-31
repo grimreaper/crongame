@@ -36,3 +36,19 @@ void raise_error(AL_CONST char *msg, ...)
 }
 
 #endif
+
+#ifdef TEST
+	int main (void)
+	{
+		/* test that we actually exit when we call the function - if there is anything else to test - add it here */
+		atexit(exiting);
+		allegro_init();
+		raise_error("testing");
+		return 0;
+	}
+
+	void exiting()
+	{
+		std::cout << "exit ok" << std::endl;
+	}
+#endif

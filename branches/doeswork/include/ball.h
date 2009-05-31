@@ -6,10 +6,10 @@
 #include "gamefield.h"
 
 // maximun speed
-#define BALL_MAX_SPD 12
+const int BALL_MAX_SPD = 12;
 
 // minimun speed
-#define BALL_MIN_SPD 5
+const int BALL_MIN_SPD = 5;
 
 class Ball
 {	

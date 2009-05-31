@@ -12,7 +12,7 @@ class Paddle
 		void init();
 		void update();
 		void render(BITMAP * bmp);
-	
+
 		// Attributes
 		float x;
 		float y;

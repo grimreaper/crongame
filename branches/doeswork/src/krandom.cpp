@@ -1,6 +1,3 @@
-// Some random functions for choosing numbers
-// by Kronoman - Copyright (c) 2005 - In loving memory of my father
-
 #include "krandom.h"
 
 #include <stdlib.h>
@@ -18,7 +15,7 @@ int rand_ex_i(int min, int max)
 		max = tmp;
 	}
 
-	return ( rand() % (max - min) ) + min;
+	return ( arc4rand() % (max - min) ) + min;
 }
 
 
@@ -32,7 +29,7 @@ float rand_ex_f(float min, float max)
 // version for switching the sign (positive, negative)
 float rand_sign_switch(float number)
 {
-	if (rand()%100 < 50)
+	if (arc4rand()%100 < 50)
 		return number;
 	else
 		return -number;
@@ -41,8 +38,14 @@ float rand_sign_switch(float number)
 
 int rand_sign_switch(int number)
 {
-	if (rand()%100 < 50)
+	if (arc4rand()%100 < 50)
+	{
 		return number;
-	else
-		return -number;
+	}
+	return -number;
+}
+
+int arc4rand()
+{
+	return (arc4random() % ((unsigned)RAND_MAX + 1));
 }

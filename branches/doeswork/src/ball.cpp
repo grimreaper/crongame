@@ -54,7 +54,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	}
 	else
 		sticky_time = 0;
-	
+
 	// upgrade ball position with speed x,y
 	x += dx;
 	y += dy;

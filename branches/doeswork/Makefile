@@ -27,7 +27,7 @@ BUILDFILES = Makefile
 ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES)
 
 #compiling options
-.PHONY:     all clean
+.PHONY:     all clean test test-all
 
 all: $(OBJS) $(SRCDIR)/main.cpp
 
@@ -44,7 +44,14 @@ ball.o: $(SRCDIR)/ball.cpp paddle.o
 paddle.o: $(SRCDIR)/paddle.cpp
 
 clean:
+	rm -fv tests/*-test
 	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
+
+test:
+	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(SRCDIR)/$(FILE).cpp -o tests/$(FILE)-test
+
+test-all:
+	for file in $(SRCDIR);do $(MAKE) test FILE=$$file; done;
 
 #	$(CC) $(CFLAGS) -c $< -o $@

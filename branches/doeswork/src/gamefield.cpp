@@ -12,11 +12,15 @@ GameField::~GameField()
 
 void GameField::do_new_random_level(int w, int h, int max_life)
 {
-	if (w < 1 || w > GAMEFIELD_MAX_W) 
+	if (w < 1 || w > GAMEFIELD_MAX_W)
+	{
 		w = GAMEFIELD_MAX_W; // safe check
-	if (h < 1 || h > GAMEFIELD_MAX_H) 
+	}
+	if (h < 1 || h > GAMEFIELD_MAX_H)
+	{
 		h = GAMEFIELD_MAX_H; // safe check
-	
+	}
+
 	this->w = w;
 	this->h = h;
 	bc = 0;
@@ -26,14 +30,14 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	{
 		for (int x = 0 ; x < w; ++x)
 		{
-			bricks[x][y].life = rand() % max_life + 1;
+			bricks[x][y].life = arc4rand() % max_life + 1;
 
 			bricks[x][y].x = x * SCREEN_W / w;
 			bricks[x][y].y = y * SCREEN_H / 3 / h;
 
 			bricks[x][y].w = SCREEN_W / w;
 			bricks[x][y].h = SCREEN_H / 3 / h;
-			
+
 			// pick a random color
 			bricks[x][y].c.r = rand_ex_i(128, 255);
 			bricks[x][y].c.g = rand_ex_i(128, 255);
@@ -76,11 +80,10 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	int w_b = SCREEN_W / w;
 	int h_b = SCREEN_H / 3 / h;
 
-	if (y_px < 0 ||
-	        x_px < 0 ||
-	        y_px / h_b > h ||
-	        x_px / w_b > w)
+	if (y_px < 0 || x_px < 0 || y_px / h_b > h || x_px / w_b > w)
+	{
 		return false; // ball too low or out of bounds
+	}
 
 	if (bricks[x_px / w_b][y_px / h_b].life > 0)
 	{

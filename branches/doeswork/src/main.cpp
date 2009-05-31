@@ -33,31 +33,43 @@ int main( int argc, char *argv[])
 	bool want_sound = true;
 	
 	// check command line parameters
-	for (int i = 1; i < argc; i++)
+	for (int i = 1; i < argc; ++i)
 	{
 		if (!stricmp(argv[i], "-wn") ||
 			!stricmp(argv[i], "-w") ||
 			!stricmp(argv[i], "-win") ||
 			!stricmp(argv[i], "-windowed"))
+		{
 			vid_m = GFX_AUTODETECT_WINDOWED;
+		}
 
 
 		if (!stricmp(argv[i], "-nosound") ||
 			!stricmp(argv[i], "-silent") ||
 			!stricmp(argv[i], "-ns"))
+		{
 			want_sound = false;
+		}
 
 		if (!stricmp(argv[i], "-bpp16"))
+		{
 			depth = 16;
+		}
 
 		if (!stricmp(argv[i], "-bpp15"))
+		{
 			depth = 15;
+		}
 
 		if (!stricmp(argv[i], "-bpp32"))
+		{
 			depth = 32;
+		}
 
 		if (!stricmp(argv[i], "-bpp24"))
+		{
 			depth = 24;
+		}
 
 		if (!stricmp(argv[i], "-bpp8"))
 		{

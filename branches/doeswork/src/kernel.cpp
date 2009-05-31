@@ -59,7 +59,7 @@ void Kernel::play()
 				// next level
 				// DEBUG -- WE MUST SHOW A MESSAGE
 
-				level++; // next level :)
+				++level; // next level :)
 
 				// pick new level parameters
 				int l = level;
@@ -81,7 +81,7 @@ void Kernel::play()
 		else
 		{
 			render(); // draw the game
-			fps_counter++; // count frames per second (FPS) (check mtimer.cpp, this aren't the real FPS, fps_real has the real FPS
+			++fps_counter; // count frames per second (FPS) (check mtimer.cpp, this aren't the real FPS, fps_real has the real FPS
 		}
 	}
 

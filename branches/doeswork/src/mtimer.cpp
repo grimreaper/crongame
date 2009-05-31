@@ -39,9 +39,9 @@ static int timers_installed = 0;
 // --------------------------------------------------------
 static void _timer_handler()
 {
-	time_counter++;
-	big_timer_counter++;
-	speed_counter++;
+	++time_counter;
+	++big_timer_counter;
+	++speed_counter;
 
 	if (time_counter > BPS_OF_TIMER_MANAGER)
 	{
@@ -71,10 +71,12 @@ void _start_global_timer()
 		LOCK_FUNCTION((void *)_timer_handler);
 
 		if (install_int_ex(_timer_handler, BPS_TO_TIMER(BPS_OF_TIMER_MANAGER)))
+		{
 			raise_error("_start_global_timer():\nERROR: Can't install timer at %d bps\n", BPS_OF_TIMER_MANAGER);
+		}
 	}
 
-	timers_installed++;	 // this counts how many calls to this function were made
+	++timers_installed;	 // this counts how many calls to this function were made
 }
 
 
@@ -84,9 +86,11 @@ void _start_global_timer()
 void _stop_global_timer()
 {
 	if (timers_installed == 0)
+	{
 		return ; // no timer installed
+	}
 
-	timers_installed--;
+	--timers_installed;
 
 	if (timers_installed <= 0)
 	{

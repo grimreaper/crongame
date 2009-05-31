@@ -22,9 +22,9 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	bc = 0;
 
 	// fill the matrix with random level
-	for (int y = 0 ; y < h; y++)
+	for (int y = 0 ; y < h; ++y)
 	{
-		for (int x = 0 ; x < w; x++)
+		for (int x = 0 ; x < w; ++x)
 		{
 			bricks[x][y].life = rand() % max_life + 1;
 
@@ -39,7 +39,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 			bricks[x][y].c.g = rand_ex_i(128, 255);
 			bricks[x][y].c.b = rand_ex_i(128, 255);
 
-			bc ++; // count bricks (lame)
+			++bc; // count bricks (lame)
 		}
 	}
 
@@ -49,9 +49,9 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 // returns true if we finished the level (0 bricks left)
 bool GameField::update()
 {
-	for (int y = 0 ; y < h; y++)
+	for (int y = 0 ; y < h; ++y)
 	{
-		for (int x = 0 ; x < w; x++)
+		for (int x = 0 ; x < w; ++x)
 		{
 			bricks[x][y].update();
 		}
@@ -61,9 +61,9 @@ bool GameField::update()
 
 void GameField::render(BITMAP *bmp)
 {
-	for (int y = 0 ; y < h; y++)
+	for (int y = 0 ; y < h; ++y)
 	{
-		for (int x = 0 ; x < w; x++)
+		for (int x = 0 ; x < w; ++x)
 		{
 			bricks[x][y].render(bmp);
 		}

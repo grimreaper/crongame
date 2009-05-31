@@ -5,8 +5,8 @@
 
 #include "brick.h"
 // max w & h in bricks
-#define GAMEFIELD_MAX_W 10
-#define GAMEFIELD_MAX_H 10
+const int  GAMEFIELD_MAX_W = 10;
+const int  GAMEFIELD_MAX_H = 10;
 
 class GameField
 {

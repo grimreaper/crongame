@@ -13,22 +13,22 @@
 // some states of the update of the game (this is NOT bitmask values)
 
 // all fine
-#define KERNEL_UDP_OK 0
+const int KERNEL_UDP_OK = 0;
 
 // go to next level
-#define KERNEL_UDP_NEXT_LEVEL 1
+const int KERNEL_UDP_NEXT_LEVEL = 1;
 
 // lost a life
-#define KERNEL_UDP_LOST_LIFE 2
+const int KERNEL_UDP_LOST_LIFE = 2;
 
 // pause
-#define KERNEL_UDP_PAUSE 100
+const int KERNEL_UDP_PAUSE = 100;
 
 // exit from game (to menu)
-#define KERNEL_UDP_EXIT 101
+const int KERNEL_UDP_EXIT = 101;
 
 // exit to operating system (DOS ? :P)
-#define KERNEL_UDP_QUIT 102
+const int KERNEL_UDP_QUIT = 102;
 
 
 

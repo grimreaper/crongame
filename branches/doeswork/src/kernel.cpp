@@ -56,8 +56,8 @@ void Kernel::play()
 			
 			if (ret == KERNEL_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
-				// next level
-				// DEBUG -- WE MUST SHOW A MESSAGE
+				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				readkey();
 
 				++level; // next level :)
 
@@ -68,14 +68,14 @@ void Kernel::play()
 				if (level > 5)
 					l = 5; // max life of bricks
 				if (w > GAMEFIELD_MAX_W-2)
-					w = GAMEFIELD_MAX_W-2; // oh crap, the guy can play :o
+					w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
 				if (h > GAMEFIELD_MAX_H-2)
-					h = GAMEFIELD_MAX_H-2; // oh crap, the guy can play :o
+					h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
 
 				game_field.do_new_random_level(w,h,l); // new level
 				init_game();
 			}
-			
+
 			--speed_counter; // decrease logic frames to do
 		}
 		else

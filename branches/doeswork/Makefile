@@ -1,4 +1,4 @@
-NAME=crontab
+'NAME=crontab
 CC = llvm-g++
 CFLAGS = -O0 -g3 -pipe -ansi -Wabi
 CFLAGS += -Weffc++ -fno-gnu-keywords -Wstrict-null-sentinel -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -ffor-scope
@@ -16,29 +16,40 @@ CFLAGS += $(ALLEGRO_FLAGS) $(INCLUDES) #$(SDL_FLAGS)
 LINK_FLAGS = $(ALLEGRO_LINK_FLAGS)
 LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 
+SRCDIR = src
+HDRDIR = include
+SRCS != find $(SRCDIR) -name "*.cpp"
+HDRS != find $(HDRDIR) -name "*.h"
 OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o
+TXTFILES = LICENSE
+BUILDFILES = Makefile
+
+ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES)
 
 #compiling options
-.PHONY:     clean
+.PHONY:     all clean
 
-all: src/main.cpp
+all: $(OBJS) $(SRCDIR)/main.cpp
 
-src/main.cpp: $(OBJS)
+$(SRCDIR)/main.cpp: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $@ -o $(NAME)
 
-gamefield.o: src/gamefield.cpp krandom.o brick.o
-kernel.o: src/kernel.cpp mtimer.o gamefield.o ball.o paddle.o
-brick.o: src/brick.cpp
-krandom.o: src/krandom.cpp
-gerror.o: src/gerror.cpp
-mtimer.o: src/mtimer.cpp
-ball.o: src/ball.cpp paddle.o
-paddle.o: src/paddle.cpp
-
+gamefield.o: $(SRCDIR)/gamefield.cpp krandom.o brick.o
+kernel.o: $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o
+brick.o: $(SRCDIR)/brick.cpp
+krandom.o: $(SRCDIR)/krandom.cpp
+gerror.o: $(SRCDIR)/gerror.cpp
+mtimer.o: $(SRCDIR)/mtimer.cpp
+ball.o: $(SRCDIR)/ball.cpp paddle.o
+paddle.o: $(SRCDIR)/paddle.cpp
 
 clean:
 	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
+
+todo:
+#for file in $(ALLFILES); do fgrep -H -e TODO -e FIXME $$file; done;
+#true
 
 
 #	$(CC) $(CFLAGS) -c $< -o $@

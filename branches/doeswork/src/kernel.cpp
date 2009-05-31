@@ -1,6 +1,5 @@
 #include "gerror.h"
 #include "kernel.h"
-
 Kernel::Kernel() : double_buffer (NULL)
 {
 }

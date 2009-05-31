@@ -38,6 +38,8 @@ class Kernel
 		// Operations
 		Kernel(); // constructor
 		~Kernel(); // destructor
+		Kernel(const Kernel&);
+		Kernel operator=(const Kernel&);
 		
 		void init(); // inits the game
 		void play(); // plays the main game loop

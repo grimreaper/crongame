@@ -13,7 +13,7 @@ Brick::~Brick()
 
 void Brick::update()
 {
-	// not much to be done here yet... common' is a fucking brick, what you expect ? :P
+	// not much to be done here yet... common' is a brick, what you expect ? :P
 }
 
 void Brick::render(BITMAP *bmp)

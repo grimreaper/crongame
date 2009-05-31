@@ -49,9 +49,9 @@ clean:
 	rm -fv ./$(NAME)
 
 test:
-	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(SRCDIR)/$(FILE).cpp -o tests/$(FILE)-test
+	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(FILE) -o tests/$(FILE)-test
 
 test-all:
-	for file in $(SRCDIR);do $(MAKE) test FILE=$$file; done;
+	for file in $(SRCS);do $(MAKE) test FILE=$$file; done;
 
 #	$(CC) $(CFLAGS) -c $< -o $@

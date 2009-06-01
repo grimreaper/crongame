@@ -178,18 +178,9 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	paddle_last_y = paddle.y; // save our last position
 
-	if (status != on_fire)
-	{
-		c.b = 255;
-		c.g = 0;
-		c.r = 0;
-	}
-	else
-	{
-		c.b = 0;
-		c.g = 0;
-		c.r = 255;
-	}
+	c.b = 255 - (status * 50);
+	c.r = 0 + status * 50;
+	c.g = 0;
 
 	return false; // all OK for now
 }

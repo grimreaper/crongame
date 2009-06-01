@@ -12,14 +12,14 @@ Kernel::~Kernel()
 
 void Kernel::init()
 {
-	
+
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)
 	{
 		raise_error("Kernel::init() - can't create double buffer!");
 	}
 	clear_bitmap(double_buffer);
-	
+
 }
 
 void Kernel::play()
@@ -28,27 +28,39 @@ void Kernel::play()
 	int level = 1 ; // current level of the game
 
 	_start_global_timer(); // we start a global timer, check mtimer.cpp
-	
+
 	time_counter = speed_counter = fps_counter = fps_real = 0; // we reset the global timer parameters
-	
+
 	clear_keybuf();
-	
+
 	init_game(); // initialize a game run
-	
+
+	lives = 5;
+
 	game_field.do_new_random_level(3,2,1); // create a level
-	
+
 	show_mouse(NULL); // hide mouse
-	
+
 	// This is the main loop of the game, were all the action actually happens
 	while (ret != KERNEL_UDP_EXIT && ret != KERNEL_UDP_QUIT) // DEBUG , ESC key should be enabled ??? maybe... maybe not
 	{
 		if (speed_counter > 0) // while we still have logic frames to do
 		{
 			ret = update(); // update game logic and see which state we are
-			
+
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{
 				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				--lives;
+				if (lives == 0)
+				{
+					textout_ex( screen, font, "For real!", SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+					level = 1;
+					lives = 5;
+					// we need to have a better method of restarting game vs continuing level
+				}
+
+				//textout_ex( screen, font, (char)lives, SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 				readkey();
 				init_game(); // DEBUG - we should show a message and take down a life
 			}
@@ -64,11 +76,17 @@ void Kernel::play()
 				int w = 3 + rand()%level + level;
 				int h = 3 + rand()%level ;
 				if (level > 5)
+				{
 					l = 5; // max life of bricks
+				}
 				if (w > GAMEFIELD_MAX_W-2)
+				{
 					w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
+				}
 				if (h > GAMEFIELD_MAX_H-2)
+				{
 					h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
+				}
 
 				game_field.do_new_random_level(w,h,l); // new level
 				init_game();
@@ -144,12 +162,14 @@ void Kernel::render()
 void Kernel::init_game()
 {
 	paddle.init(); // init the paddle
-	
-	ball.init(); // init the ball 
-	
+
+	ball.init(); // init the ball
+
 	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
-	
+
 	position_mouse((int)paddle.x , (int)paddle.y ); // put the mouse cursor in paddle
 
 	clear_keybuf();	 // clear keyboard buffer
+
+
 }

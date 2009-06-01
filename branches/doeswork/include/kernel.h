@@ -32,7 +32,7 @@ const int KERNEL_UDP_QUIT = 102;
 
 
 
-class Kernel 
+class Kernel
 {
 	public:
 		// Operations
@@ -40,21 +40,24 @@ class Kernel
 		~Kernel(); // destructor
 		Kernel(const Kernel&);
 		Kernel operator=(const Kernel&);
-		
+
 		void init(); // inits the game
 		void play(); // plays the main game loop
 		void shutdown(); // ends the game
-		
+
 		// Attributes
   		BITMAP *double_buffer; // the double buffer bitmap
 		Paddle paddle; // the player paddle 
 		Ball ball; // the game ball
 		GameField game_field; // the game field
-		
+
+		int lives; //number of lives left
+
 	private:
 		void init_game(); // this inits the game without reseting the kernel or the level, is used for when you start a new level, lose a life, etc
 		int update(); // updates game logic
 		void render(); // updates graphics of the game
+
 };
 
 #endif

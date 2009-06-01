@@ -149,6 +149,11 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				std::cout << "hit3!" << std::endl;
 				status = on_fire;
 				break;
+			case Brick::add_live:
+				// I really should make the field call a briuck function - but atm I want to keep everything together
+				// or even better - figure out a better method of dealing with statuses and keeping encapsulation
+				//++lives;
+				break;
 			default:
 				std::cout << "hit4!" << std::endl;
 				break;

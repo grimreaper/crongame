@@ -12,6 +12,9 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 		case 2:
 			status = make_ball_fire;
 			break;
+		case 3:
+			status = add_live;
+			break;
 		default:
 			status = standard;
 	}

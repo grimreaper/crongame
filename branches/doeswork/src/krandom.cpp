@@ -1,7 +1,5 @@
 #include "krandom.h"
 
-#include <stdlib.h>
-
 int rand_ex_i(int min, int max)
 {
 	if (min - max == 0)
@@ -9,10 +7,7 @@ int rand_ex_i(int min, int max)
 
 	if (min > max)
 	{
-		int tmp;
-		tmp = min;
-		min = max;
-		max = tmp;
+		std::swap(min, max);
 	}
 
 	return ( arc4rand() % (max - min) ) + min;
@@ -29,10 +24,11 @@ float rand_ex_f(float min, float max)
 // version for switching the sign (positive, negative)
 float rand_sign_switch(float number)
 {
-	if (arc4rand()%100 < 50)
+	if (arc4rand() % 100 < 50)
+	{
 		return number;
-	else
-		return -number;
+	}
+	return -number;
 }
 
 

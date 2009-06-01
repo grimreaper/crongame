@@ -53,8 +53,9 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		return false; // we are stick to the paddle. all OK
 	}
 	else
+	{
 		sticky_time = 0;
-
+	}
 	// upgrade ball position with speed x,y
 	x += dx;
 	y += dy;
@@ -80,7 +81,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	if (y > SCREEN_H - r)  // here we DIE ...
 	{
-		return true; // oops >;^) shit happens
+		return true; // oops >;^)  happens
 		/*
 		y = SCREEN_H - r;
 		bounce_y();
@@ -88,42 +89,52 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	}
 
 	// bounce on paddle, only if going down =P
-	if (x + r > paddle.x && 
-		x - r < paddle.x + paddle.w && 
-		(y + r > paddle.y  || y + r > paddle_last_y  ) && 
+	if (x + r > paddle.x &&
+		x - r < paddle.x + paddle.w &&
+		(y + r > paddle.y  || y + r > paddle_last_y  ) &&
 		(y - r < paddle.y + paddle.h || y - r < paddle_last_y + paddle.h))
 	{
 			y = paddle.y - r; // this is lame safe check
-		
+
 			bounce_y();
 	}
-	
-	
-	
+
+
+
 	// bounce and hit on bricks
 	if (game_field.ball_hit_brick((int)x-r,(int)y) || game_field.ball_hit_brick((int)x+r,(int)y))
-		bounce_x();	
-
+	{
+		bounce_x();
+	}
 	if (game_field.ball_hit_brick((int)x,(int)y-r) || game_field.ball_hit_brick((int)x,(int)y+r))
-		bounce_y();	
+	{
+		bounce_y();
+	}
 
-	
+
 	// never go faster than paddle size, or we are screwed :P
-	if (dy > paddle.h*0.25) 
+	if (dy > paddle.h*0.25)
+	{
 		dy = paddle.h*0.25;
-	
-	if (dy < -paddle.h*0.25) 
-		dy = -paddle.h*0.25;
+	}
 
-	if (dx > paddle.w*0.25) 
+	if (dy < -paddle.h*0.25)
+	{
+		dy = -paddle.h*0.25;
+	}
+
+	if (dx > paddle.w*0.25)
+	{
 		dx = paddle.w*0.25;
-	
-	if (dx < -paddle.w*0.25) 
+	}
+
+	if (dx < -paddle.w*0.25)
+	{
 		dx = -paddle.w*0.25;
-	
+	}
 
 	paddle_last_y = paddle.y; // save our last position
-	
+
 	return false; // all OK for now
 }
 
@@ -140,7 +151,9 @@ void Ball::bounce_x()
 	dx = -rand_ex_f(dx * 0.9, dx * 1.1);
 
 	if (rand() % 100 < 10)
+	{
 		dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD , BALL_MAX_SPD ));
+	}
 }
 
 

@@ -50,4 +50,3 @@ void Brick::render(BITMAP *bmp)
 	}
 
 }
-

@@ -1,5 +1,5 @@
 #include "ball.h"
-#include "krandom.h"
+#include <iostream>
 
 Ball::Ball()
 {}
@@ -102,7 +102,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	bool hitX = false;
 	bool hitY = false;
-	Brick::brickStatus whatBrickStatus = Brick::standard;
+	Brick::brickStatus whatBrickStatus;
 
 	// bounce and hit on bricks
 	if (game_field.ball_hit_brick((int)x-r,(int)y))
@@ -126,21 +126,31 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		hitY = true;
 		whatBrickStatus = game_field.getBrickStatus((int)x,(int)y+r);
 	}
-	if (hitX)
+	if(hitX && status != on_fire)
 	{
 		bounce_x();
 	}
-	if (hitY)
+	if (hitY && status != on_fire)
 	{
 		bounce_y();
 	}
-	if (hitX||hitY)
+	if (hitX || hitY)
 	{
 		switch (whatBrickStatus)
 		{
 			case Brick::standard:
+				std::cout << "hit!" << std::endl;
+				break;
+			case Brick::make_ball_normal:
+				std::cout << "hit2!" << std::endl;
 				status = normal;
+				break;
+			case Brick::make_ball_fire:
+				std::cout << "hit3!" << std::endl;
+				status = on_fire;
+				break;
 			default:
+				std::cout << "hit4!" << std::endl;
 				break;
 		}
 	}
@@ -168,9 +178,18 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	paddle_last_y = paddle.y; // save our last position
 
-	c.b = 255 - (status * 100);
-	c.g = 0;
-	c.r = status * 50;
+	if (status != on_fire)
+	{
+		c.b = 255;
+		c.g = 0;
+		c.r = 0;
+	}
+	else
+	{
+		c.b = 0;
+		c.g = 0;
+		c.r = 255;
+	}
 
 	return false; // all OK for now
 }

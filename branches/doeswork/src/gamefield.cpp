@@ -1,4 +1,5 @@
 #include "gamefield.h"
+#include <iostream>
 
 GameField::GameField() : w(0), h(0), bc(0)
 {
@@ -118,5 +119,9 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 
 Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 {
-	return bricks[x_px][y_px].status;
+	int w_b = SCREEN_W / w;
+	int h_b = SCREEN_H / 3 / h;
+	int which_x = x_px / w_b;
+	int which_y = y_px / h_b;
+	return bricks[which_x][which_y].status;
 }

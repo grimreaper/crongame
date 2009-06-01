@@ -1,0 +1,1 @@
+differentiate between game and life lost in kernel so we could init_game() and continue_level()

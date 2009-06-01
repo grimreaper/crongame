@@ -95,20 +95,6 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 		if (bricks[which_x][which_y].life <= 0)
 		{
 			--bc; // wasted brick!
-			/*
-			if (bricks[which_x][which_y].status != normal)
-			{
-				switch (bricks[which_x][which_y].status)
-				{
-					case 1:
-						status = on_fire;
-						break;
-					default:
-						status = normal;
-						break;
-				}
-			}
-			*/
 		}
 
 		return true; // hit!
@@ -123,5 +109,10 @@ Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 	int h_b = SCREEN_H / 3 / h;
 	int which_x = x_px / w_b;
 	int which_y = y_px / h_b;
-	return bricks[which_x][which_y].status;
+	if (bricks[which_x][which_y].life <= 0)
+	{
+		//only give power when dead
+		return bricks[which_x][which_y].status;
+	}
+	return Brick::standard;
 }

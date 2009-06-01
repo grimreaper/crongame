@@ -19,6 +19,7 @@ LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 SRCDIR = src
 HDRDIR = include
 SRCS != find $(SRCDIR) -name "*.cpp"
+TSTSRCS = gerror.cpp
 HDRS != find $(HDRDIR) -name "*.h"
 OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o
 TXTFILES = LICENSE
@@ -52,6 +53,6 @@ test:
 	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(FILE) -o tests/$(FILE)-test
 
 test-all:
-	for file in $(SRCS);do $(MAKE) test FILE=$$file; done;
+	for file in $(TSTSRCS);do $(MAKE) test FILE=$$file; done;
 
 #	$(CC) $(CFLAGS) -c $< -o $@

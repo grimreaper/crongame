@@ -18,9 +18,9 @@ void Ball::init()
 
 	r = 8;
 
-	c.r = 255;
-	c.g = 200;
-	c.b = 0;
+	c.r = 0;
+	c.g = 0;
+	c.b = 255;
 
 	sticky_time = 0;
 
@@ -100,18 +100,50 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 			bounce_y();
 	}
 
-
+	bool hitX = false;
+	bool hitY = false;
+	Brick::brickStatus whatBrickStatus = Brick::standard;
 
 	// bounce and hit on bricks
-	if (game_field.ball_hit_brick((int)x-r,(int)y) || game_field.ball_hit_brick((int)x+r,(int)y))
+	if (game_field.ball_hit_brick((int)x-r,(int)y))
+	{
+		hitX = true;
+		whatBrickStatus = game_field.getBrickStatus((int)x-r,(int)y);
+	}
+	if (game_field.ball_hit_brick((int)x+r,(int)y))
+	{
+		hitX = true;
+		whatBrickStatus = game_field.getBrickStatus((int)x+r,(int)y);
+
+	}
+	if (game_field.ball_hit_brick((int)x,(int)y-r))
+	{
+		hitY = true;
+		whatBrickStatus = game_field.getBrickStatus((int)x,(int)y-r);
+	}
+	if (game_field.ball_hit_brick((int)x,(int)y+r))
+	{
+		hitY = true;
+		whatBrickStatus = game_field.getBrickStatus((int)x,(int)y+r);
+	}
+	if (hitX)
 	{
 		bounce_x();
 	}
-	if (game_field.ball_hit_brick((int)x,(int)y-r) || game_field.ball_hit_brick((int)x,(int)y+r))
+	if (hitY)
 	{
 		bounce_y();
 	}
-
+	if (hitX||hitY)
+	{
+		switch (whatBrickStatus)
+		{
+			case Brick::standard:
+				status = normal;
+			default:
+				break;
+		}
+	}
 
 	// never go faster than paddle size, or we are screwed :P
 	if (dy > paddle.h*0.25)
@@ -135,6 +167,10 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	}
 
 	paddle_last_y = paddle.y; // save our last position
+
+	c.b = 255 - (status * 100);
+	c.g = 0;
+	c.r = status * 50;
 
 	return false; // all OK for now
 }

@@ -27,7 +27,7 @@ class Brick
 
 		enum brickStatus
 		{
-			normal,
+			standard,
 			make_ball_normal,
 			make_ball_fire
 		};

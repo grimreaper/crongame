@@ -1,6 +1,6 @@
 #include "brick.h"
 
-Brick::Brick(): life (0), w (32), h(32), status (normal)
+Brick::Brick(): life (0), w (32), h(32), status (standard)
 {
 	c.r = c.g = c.b = 128;
 	int tmpRand = arc4rand() % 10;
@@ -13,7 +13,7 @@ Brick::Brick(): life (0), w (32), h(32), status (normal)
 			status = make_ball_fire;
 			break;
 		default:
-			status = normal;
+			status = standard;
 	}
 }
 

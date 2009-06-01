@@ -1,5 +1,4 @@
 #include "gamefield.h"
-#include "krandom.h"
 
 GameField::GameField() : w(0), h(0), bc(0)
 {
@@ -85,17 +84,39 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 		return false; // ball too low or out of bounds
 	}
 
-	if (bricks[x_px / w_b][y_px / h_b].life > 0)
-	{
-		bricks[x_px / w_b][y_px / h_b].life--;
+	int which_x = x_px / w_b;
+	int which_y = y_px / h_b;
 
-		if (bricks[x_px / w_b][y_px / h_b].life <= 0)
+	if (bricks[which_x][which_y].life > 0)
+	{
+		bricks[which_x][which_y].life--;
+
+		if (bricks[which_x][which_y].life <= 0)
 		{
 			--bc; // wasted brick!
+			/*
+			if (bricks[which_x][which_y].status != normal)
+			{
+				switch (bricks[which_x][which_y].status)
+				{
+					case 1:
+						status = on_fire;
+						break;
+					default:
+						status = normal;
+						break;
+				}
+			}
+			*/
 		}
 
 		return true; // hit!
 	}
 
 	return false;
+}
+
+Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
+{
+	return bricks[x_px][y_px].status;
 }

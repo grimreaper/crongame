@@ -55,4 +55,9 @@ test:
 test-all:
 	for file in $(TSTSRCS);do $(MAKE) test FILE=$$file; done;
 
+check:
+	cppcheck -v -a -s --unused-functions .
+	rats -rw3 *
+#splint -strict-lib -showcolumn -showfunc -strict *.c
+
 #	$(CC) $(CFLAGS) -c $< -o $@

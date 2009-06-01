@@ -1,1 +1,2 @@
-differentiate between game and life lost in kernel so we could init_game() and continue_level()
+1) differentiate between game and life lost in kernel so we could init_game() and continue_level()
+2) make a pause button

@@ -132,7 +132,6 @@ int Kernel::update()
 		ret = KERNEL_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
 	}
 
-
 	if (key[KEY_ESC]) // exit game -- DEBUG , WE MUST CONFIRM THIS!!
 	{
 		ret = KERNEL_UDP_EXIT;

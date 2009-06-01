@@ -1,5 +1,4 @@
 #include "ball.h"
-#include <iostream>
 
 Ball::Ball()
 {}
@@ -139,14 +138,12 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		switch (whatBrickStatus)
 		{
 			case Brick::standard:
-				std::cout << "hit!" << std::endl;
 				break;
 			case Brick::make_ball_normal:
-				std::cout << "hit2!" << std::endl;
 				status = normal;
+				r = 8;
 				break;
 			case Brick::make_ball_fire:
-				std::cout << "hit3!" << std::endl;
 				status = on_fire;
 				break;
 			case Brick::add_live:
@@ -154,8 +151,13 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				// or even better - figure out a better method of dealing with statuses and keeping encapsulation
 				//++lives;
 				break;
+			case Brick::make_ball_big:
+				r = 12;
+				break;
+			case Brick::make_ball_small:
+				r = 4;
+				break;
 			default:
-				std::cout << "hit4!" << std::endl;
 				break;
 		}
 	}
@@ -183,8 +185,8 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	paddle_last_y = paddle.y; // save our last position
 
-	c.b = 255 - (status * 50);
-	c.r = 0 + status * 50;
+	c.b = 255 - (status * 30);
+	c.r = 0 + status * 30;
 	c.g = 0;
 
 	return false; // all OK for now

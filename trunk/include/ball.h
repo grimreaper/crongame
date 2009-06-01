@@ -44,7 +44,9 @@ class Ball
 		enum ballStatus
 		{
 			normal,
-			on_fire
+			on_fire,
+			big,
+			small
 		};
 		ballStatus status;
 

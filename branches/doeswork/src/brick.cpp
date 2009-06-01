@@ -1,8 +1,20 @@
 #include "brick.h"
 
-Brick::Brick(): life (0), w (32), h(32)
+Brick::Brick(): life (0), w (32), h(32), status (normal)
 {
 	c.r = c.g = c.b = 128;
+	int tmpRand = arc4rand() % 10;
+	switch (tmpRand)
+	{
+		case 1:
+			status = make_ball_normal;
+			break;
+		case 2:
+			status = make_ball_fire;
+			break;
+		default:
+			status = normal;
+	}
 }
 
 Brick::~Brick()
@@ -11,16 +23,19 @@ Brick::~Brick()
 
 void Brick::update()
 {
-	c.r = c.b = 0;
+	c.b = 0;
 	c.g = 255 - ((life <= 10) ? life * 20 : 254);
+	c.r = status * 100;
 	// not much to be done here yet... common' is a brick, what you expect ? :P
 }
 
 void Brick::render(BITMAP *bmp)
 {
 	if (life < 1)
+	{
 		return; // we don't draw broken bricks
-	
+	}
+
 	if (w > 12 && h > 12) // check if the brick is big enough to shadow it
 	{
 		// render with shadow

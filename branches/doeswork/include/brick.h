@@ -2,6 +2,7 @@
 #define BRICK_H
 
 #include <allegro.h>
+#include "krandom.h"
 
 class Brick
 {
@@ -9,20 +10,29 @@ class Brick
 		// Operations
 		Brick();
 		~Brick();
-	
+
 		void update();
 		void render(BITMAP * bmp);
-	
+
 		// Attributes
 		int life; // life, in ball hits
-	
+
 		int x; // position, in pixels
 		int y;
-	
+
 		int w; // size, in pixels
 		int h;
-	
+
 		RGB c; // color, in R,G,B
+
+		enum brickStatus
+		{
+			normal,
+			make_ball_normal,
+			make_ball_fire
+		};
+
+		brickStatus status;
 };
 
 #endif

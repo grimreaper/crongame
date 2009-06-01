@@ -50,7 +50,7 @@ clean:
 	rm -fv ./$(NAME)
 
 test:
-	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(FILE) -o tests/$(FILE)-test
+	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(SRCDIR)/$(FILE) -o tests/$(FILE)-test
 
 test-all:
 	for file in $(TSTSRCS);do $(MAKE) test FILE=$$file; done;

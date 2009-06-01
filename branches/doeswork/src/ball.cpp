@@ -24,6 +24,7 @@ void Ball::init()
 
 	sticky_time = 0;
 
+	status = normal;
 }
 
 // updates ball ... returns true if the ball was lost (we lose a life) 

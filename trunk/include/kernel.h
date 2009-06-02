@@ -8,6 +8,8 @@
 #include "ball.h"
 #include "gamefield.h"
 #include "mtimer.h"
+#include "game.h"
+#include "gerror.h"
 
 
 // some states of the update of the game (this is NOT bitmask values)
@@ -31,7 +33,6 @@ const int KERNEL_UDP_EXIT = 101;
 const int KERNEL_UDP_QUIT = 102;
 
 
-
 class Kernel
 {
 	public:
@@ -52,6 +53,8 @@ class Kernel
 		GameField game_field; // the game field
 
 		int lives; //number of lives left
+
+		Game mygame;
 
 	private:
 		void init_game(); // this inits the game without reseting the kernel or the level, is used for when you start a new level, lose a life, etc

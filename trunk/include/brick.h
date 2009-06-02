@@ -9,6 +9,7 @@ class Brick
 	public:
 		// Operations
 		Brick();
+		Brick(int level);
 		~Brick();
 
 		void update();
@@ -37,6 +38,9 @@ class Brick
 		};
 
 		brickStatus status;
+
+	private:
+		void make_brick(int level);
 };
 
 #endif

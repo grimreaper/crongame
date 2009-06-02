@@ -48,6 +48,12 @@ void Paddle::render( BITMAP * bmp )
 	rectfill(bmp, (int)x + 8, (int)y + 8, (int)x + w - 8, (int)y + h - 8, makecol(c.r, c.g, c.b));
 }
 
+void Paddle::reset_color()
+{
+	c.b = 255;
+	c.g = c.r =0;
+}
+
 Paddle::Paddle()
 {
 	init();

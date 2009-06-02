@@ -1,5 +1,5 @@
-#include "gerror.h"
 #include "kernel.h"
+
 Kernel::Kernel() : double_buffer (NULL)
 {
 }
@@ -12,7 +12,7 @@ Kernel::~Kernel()
 
 void Kernel::init()
 {
-
+	mygame = Game();
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)
 	{
@@ -25,7 +25,7 @@ void Kernel::init()
 void Kernel::play()
 {
 	int ret = KERNEL_UDP_OK; // current game state, all OK
-	int level = 1 ; // current level of the game
+	mygame.level = 1;
 
 	_start_global_timer(); // we start a global timer, check mtimer.cpp
 
@@ -35,7 +35,7 @@ void Kernel::play()
 
 	init_game(); // initialize a game run
 
-	lives = 5;
+	mygame.lives = 5;
 
 	game_field.do_new_random_level(3,2,1); // create a level
 
@@ -55,8 +55,7 @@ void Kernel::play()
 				if (lives == 0)
 				{
 					textout_ex( screen, font, "For real!", SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-					level = 1;
-					lives = 5;
+					mygame.init_game();
 					// we need to have a better method of restarting game vs continuing level
 				}
 
@@ -64,21 +63,18 @@ void Kernel::play()
 				readkey();
 				init_game(); // DEBUG - we should show a message and take down a life
 			}
-			
+
 			if (ret == KERNEL_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 
-				++level; // next level :)
+				++mygame.level; // next level :)
 
 				// pick new level parameters
-				int l = level;
-				int w = 3 + rand()%level + level;
-				int h = 3 + rand()%level ;
-				if (level > 5)
-				{
-					l = 5; // max life of bricks
-				}
+				//don't let lives of bricks go greater than 5
+				int l = (mygame.level > 5) ? 5 : mygame.level;
+				int w = 3 + rand() % mygame.level + mygame.level;
+				int h = 3 + rand() % mygame.level ;
 				if (w > GAMEFIELD_MAX_W-2)
 				{
 					w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
@@ -101,7 +97,7 @@ void Kernel::play()
 		}
 	}
 
-	clear_keybuf();	
+	clear_keybuf();
 	_stop_global_timer(); // stop the global timer
 	time_counter = speed_counter = fps_counter = fps_real = 0; // leave everything nice, just to be sure
 }
@@ -142,16 +138,16 @@ int Kernel::update()
 
 // render game
 void Kernel::render()
-{	
+{
 	clear_bitmap(double_buffer); // debug - here we should/could blit the background
-	
+
 	// first, everything gets drawed to the double buffer bitmap
 	game_field.render(double_buffer); // render the game field (the bricks)
 	paddle.render(double_buffer); // render the paddle
 	ball.render(double_buffer); // render the ball
-	
+
 	// after that, we blit (draw) the double buffer to screen
-	blit(double_buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);	
+	blit(double_buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
 }
 
 

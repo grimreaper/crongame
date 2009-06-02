@@ -143,6 +143,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 			case Brick::make_all_normal:
 				status = normal;
 				r = 8;
+				paddle.reset_color();
 				break;
 			case Brick::make_ball_fire:
 				status = on_fire;

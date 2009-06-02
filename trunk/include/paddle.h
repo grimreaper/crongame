@@ -12,6 +12,7 @@ class Paddle
 		void init();
 		void update();
 		void render(BITMAP * bmp);
+		void reset_color();
 
 		// Attributes
 		float x;

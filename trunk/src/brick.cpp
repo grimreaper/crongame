@@ -1,6 +1,16 @@
 #include "brick.h"
 
+Brick::Brick(int level)
+{
+	make_brick(level);
+}
+
 Brick::Brick(): life (0), w (32), h(32), status (standard)
+{
+	make_brick(1);
+}
+
+void Brick::make_brick(int level)
 {
 	c.r = c.g = c.b = 128;
 	int tmpRand = arc4rand() % 12;
@@ -30,6 +40,7 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 		default:
 			status = standard;
 	}
+
 }
 
 Brick::~Brick()

@@ -28,11 +28,12 @@ class Brick
 		enum brickStatus
 		{
 			standard,
-			make_ball_normal,
+			make_all_normal,
 			make_ball_fire,
 			add_live, //yes I am aware that this is not proper English - I am using lives and lifes differently
 			make_ball_big,
-			make_ball_small
+			make_ball_small,
+			no_see_paddle
 		};
 
 		brickStatus status;

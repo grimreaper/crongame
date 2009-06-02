@@ -7,7 +7,7 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 	switch (tmpRand)
 	{
 		case 1:
-			status = make_ball_normal;
+			status = make_all_normal;
 			break;
 		case 2:
 			status = make_ball_fire;
@@ -20,6 +20,9 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 			break;
 		case 5:
 			status = make_ball_small;
+			break;
+		case 6:
+			status = no_see_paddle;
 			break;
 		default:
 			status = standard;

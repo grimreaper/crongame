@@ -11,8 +11,8 @@ void Paddle::init()
 
 	// paddle color
 	c.r = 0;
-	c.g = 128;
-	c.b = 200;
+	c.g = 0;
+	c.b = 255;
 
 }
 

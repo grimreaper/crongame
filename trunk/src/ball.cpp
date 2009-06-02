@@ -135,11 +135,12 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	}
 	if (hitX || hitY)
 	{
+		int minusAmount = (r >= 8) ? 4 : 2;
 		switch (whatBrickStatus)
 		{
 			case Brick::standard:
 				break;
-			case Brick::make_ball_normal:
+			case Brick::make_all_normal:
 				status = normal;
 				r = 8;
 				break;
@@ -152,11 +153,21 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				//++lives;
 				break;
 			case Brick::make_ball_big:
-				r = 12;
+				if (r <= 20)
+				{
+					r += 4;
+				}
 				break;
 			case Brick::make_ball_small:
-				r = 4;
+				if (r > 2)
+				{
+					r -= minusAmount;
+				}
 				break;
+			case Brick::no_see_paddle:
+				paddle.c.r = 10;
+				paddle.c.g = 10;
+				paddle.c.b = 10;
 			default:
 				break;
 		}

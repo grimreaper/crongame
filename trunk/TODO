@@ -1,2 +1,4 @@
 1) differentiate between game and life lost in kernel so we could init_game() and continue_level()
 2) make a pause button
+3) make things more encapsulated - move things from gamefield to better classes
+4) make some method of testing specific power bricks and other game features

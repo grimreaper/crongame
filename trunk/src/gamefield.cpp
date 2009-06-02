@@ -30,6 +30,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	{
 		for (int x = 0 ; x < w; ++x)
 		{
+			//this should be done as part of the brick class - no the game_field class */
 			bricks[x][y].life = arc4rand() % max_life + 1;
 
 			bricks[x][y].x = x * SCREEN_W / w;

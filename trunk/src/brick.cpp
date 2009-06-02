@@ -4,6 +4,9 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 {
 	c.r = c.g = c.b = 128;
 	int tmpRand = arc4rand() % 12;
+	#ifdef BRICK_NUM
+		tmpRand = BRICK_NUM;
+	#endif
 	switch (tmpRand)
 	{
 		case 1:

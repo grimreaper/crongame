@@ -18,6 +18,7 @@ LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 
 SRCDIR = src
 HDRDIR = include
+TESTDIR = tests
 SRCS != find $(SRCDIR) -name "*.cpp"
 TSTSRCS = gerror.cpp
 HDRS != find $(HDRDIR) -name "*.h"
@@ -27,14 +28,22 @@ BUILDFILES = Makefile
 
 ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES)
 
+BINNAME = $(NAME)
+
+.if defined(BRICK_NUM)
+CFLAGS += -DBRICK_NUM=$(BRICK_NUM)
+BINNAME = $(TESTDIR)/$(NAME)-bricktest-$(BRICK_NUM)
+.endif
+
+
+
 #compiling options
 .PHONY:     all clean test test-all
 
-all: $(OBJS) $(SRCDIR)/main.cpp
-
+all: $(SRCDIR)/main.cpp
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
+	
 $(SRCDIR)/main.cpp: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $@ -o $(NAME)
-
 gamefield.o: $(SRCDIR)/gamefield.cpp krandom.o brick.o
 kernel.o: $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o
 brick.o: $(SRCDIR)/brick.cpp
@@ -45,12 +54,12 @@ ball.o: $(SRCDIR)/ball.cpp paddle.o
 paddle.o: $(SRCDIR)/paddle.cpp
 
 clean:
-	rm -fv tests/*-test
+	rm -fv $(TESTDIR)/*-test*
 	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
 
 test:
-	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(SRCDIR)/$(FILE) -o tests/$(FILE)-test
+	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(SRCDIR)/$(FILE) -o $(TESTDIR)/$(FILE)-test
 
 test-all:
 	for file in $(TSTSRCS);do $(MAKE) test FILE=$$file; done;

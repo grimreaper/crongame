@@ -109,10 +109,19 @@ Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 	int h_b = SCREEN_H / 3 / h;
 	int which_x = x_px / w_b;
 	int which_y = y_px / h_b;
-	if (bricks[which_x][which_y].life <= 0)
+	Brick *which_brick = px_to_brick(x_px, y_px);
+	if (which_brick->life <= 0)
 	{
 		//only give power when dead
-		return bricks[which_x][which_y].status;
+		return which_brick->status;
 	}
 	return Brick::standard;
+}
+Brick* GameField::px_to_brick(int x_px , int y_px)
+{
+	int w_b = SCREEN_W / w;
+	int h_b = SCREEN_H / 3 / h;
+	int which_x = x_px / w_b;
+	int which_y = y_px / h_b;
+	return &bricks[which_x][which_y];
 }

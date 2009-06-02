@@ -29,6 +29,9 @@ class GameField
 		Brick bricks[GAMEFIELD_MAX_W][GAMEFIELD_MAX_H];
 		int w, h; // current width and height in bricks, must be < GAMEFIELD_MAX_*
 		int bc; // brick count, when bc==0, next level
+
+	private:
+		Brick* px_to_brick(int x_px , int y_px); //return a reference to a brick
 };
 
 #endif

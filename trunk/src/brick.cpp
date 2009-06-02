@@ -10,7 +10,7 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 	make_brick(1);
 }
 
-void Brick::make_brick(int level)
+void Brick::make_brick(int lvl)
 {
 	c.r = c.g = c.b = 128;
 	int tmpRand = arc4rand() % 12;
@@ -75,4 +75,23 @@ void Brick::render(BITMAP *bmp)
 		rectfill(bmp, x, y, x + w, y + h, makecol(c.r, c.g, c.b));
 	}
 
+}
+
+/*
+	most of these functions are not really needed - I'm only using it until I move over all relevent functionality to the brick class itself
+*/
+
+void Brick::set_life(int toWhat)
+{
+	life = toWhat;
+}
+
+int Brick::get_life()
+{
+	return life;
+}
+
+void Brick::rem_life()
+{
+	--life;
 }

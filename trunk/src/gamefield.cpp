@@ -31,7 +31,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 		for (int x = 0 ; x < w; ++x)
 		{
 			//this should be done as part of the brick class - no the game_field class */
-			bricks[x][y].life = arc4rand() % max_life + 1;
+			bricks[x][y].set_life (arc4rand() % max_life + 1);
 
 			bricks[x][y].x = x * SCREEN_W / w;
 			bricks[x][y].y = y * SCREEN_H / 3 / h;
@@ -89,11 +89,11 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	int which_x = x_px / w_b;
 	int which_y = y_px / h_b;
 
-	if (bricks[which_x][which_y].life > 0)
+	if (bricks[which_x][which_y].get_life() > 0)
 	{
-		bricks[which_x][which_y].life--;
+		bricks[which_x][which_y].rem_life();
 
-		if (bricks[which_x][which_y].life <= 0)
+		if (bricks[which_x][which_y].get_life() <= 0)
 		{
 			--bc; // wasted brick!
 		}
@@ -111,7 +111,7 @@ Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 	int which_x = x_px / w_b;
 	int which_y = y_px / h_b;
 	Brick *which_brick = px_to_brick(x_px, y_px);
-	if (which_brick->life <= 0)
+	if (which_brick->get_life() <= 0)
 	{
 		//only give power when dead
 		return which_brick->status;

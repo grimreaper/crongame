@@ -9,15 +9,13 @@ class Brick
 	public:
 		// Operations
 		Brick();
-		Brick(int level);
+		Brick(int lvl);
 		~Brick();
 
 		void update();
 		void render(BITMAP * bmp);
 
 		// Attributes
-		int life; // life, in ball hits
-
 		int x; // position, in pixels
 		int y;
 
@@ -39,8 +37,15 @@ class Brick
 
 		brickStatus status;
 
+		void add_life(); //add one life to brick
+		void rem_life(); //rem 1 life from brick
+		void kill_brick(); //set life to 0
+		void set_life(int toWhat); //set life equal to some number
+		int get_life();
+
 	private:
 		void make_brick(int level);
+		int life; // life, in ball hits
 };
 
 #endif

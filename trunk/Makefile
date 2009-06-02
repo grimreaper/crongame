@@ -44,15 +44,15 @@ all: $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
 	
 $(SRCDIR)/main.cpp: $(OBJS)
-gamefield.o: $(SRCDIR)/gamefield.cpp krandom.o brick.o
-kernel.o: $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o game.o
-brick.o: $(SRCDIR)/brick.cpp
-krandom.o: $(SRCDIR)/krandom.cpp
-gerror.o: $(SRCDIR)/gerror.cpp
-mtimer.o: $(SRCDIR)/mtimer.cpp
-ball.o: $(SRCDIR)/ball.cpp paddle.o
-paddle.o: $(SRCDIR)/paddle.cpp
-game.o: $(SRCDIR)/game.cpp
+gamefield.o: $(HDRDIR)/gamefield.h $(SRCDIR)/gamefield.cpp krandom.o brick.o
+kernel.o: $(HDRDIR)/kernel.h $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o game.o
+brick.o: $(HDRDIR)/brick.h $(SRCDIR)/brick.cpp
+krandom.o: $(HDRDIR)/krandom.h $(SRCDIR)/krandom.cpp
+gerror.o: $(HDRDIR)/gerror.h $(SRCDIR)/gerror.cpp
+mtimer.o: $(HDRDIR)/mtimer.h $(SRCDIR)/mtimer.cpp
+ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o
+paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
+game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
 
 clean:
 	rm -fv $(TESTDIR)/*-test*

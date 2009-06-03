@@ -15,7 +15,7 @@ class GameField
 		GameField();
 		~GameField();
 
-		void do_new_random_level(int w, int h, int level); // creates a new level size w*h, with 1..maxlife for bricks
+		void do_new_random_level(int w, int h, int max_life); // creates a new level size w*h, with 1..maxlife for bricks
 
 		bool update();
 		void render(BITMAP *bmp);

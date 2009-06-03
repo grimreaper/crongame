@@ -19,6 +19,11 @@ GameField::~GameField()
 void GameField::do_new_random_level(int w, int h, int level)
 {
 	int i;
+	for (i = 0; i < bricks.size(); ++i)
+	{
+		 bricks[i].clear();
+	}
+
 /*	bricks.resize(h);
 	for (i = 0; i < bricks.size(); ++i)
 	{

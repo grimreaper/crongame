@@ -3,6 +3,7 @@
 
 #include <allegro.h>
 #include "brick.h"
+#include <vector>
 
 // max w & h in bricks
 const int  GAMEFIELD_MAX_W = 10;
@@ -26,7 +27,7 @@ class GameField
 
 		// Attributes
 
-		Brick bricks[GAMEFIELD_MAX_W][GAMEFIELD_MAX_H];
+		std::vector<Brick> bricks[GAMEFIELD_MAX_W];
 		int w, h; // current width and height in bricks, must be < GAMEFIELD_MAX_*
 		int bc; // brick count, when bc==0, next level
 

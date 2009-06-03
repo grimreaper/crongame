@@ -3,6 +3,11 @@
 
 GameField::GameField() : w(0), h(0), bc(0)
 {
+	int i;
+	for (i = 0; i < GAMEFIELD_MAX_W; ++i)
+	{
+		bricks[i].resize(GAMEFIELD_MAX_H);
+	}
 }
 
 GameField::~GameField()
@@ -10,8 +15,14 @@ GameField::~GameField()
 
 // creates a new level
 
-void GameField::do_new_random_level(int w, int h, int max_life)
+void GameField::do_new_random_level(int w, int h, int level)
 {
+	int i;
+/*	bricks.resize(h);
+	for (i = 0; i < bricks.size(); ++i)
+	{
+		bricks[i].resize(w);
+	}*/
 	if (w < 1 || w > GAMEFIELD_MAX_W)
 	{
 		w = GAMEFIELD_MAX_W; // safe check
@@ -31,7 +42,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 		for (int x = 0 ; x < w; ++x)
 		{
 			//this should be done as part of the brick class - no the game_field class */
-			bricks[x][y].set_life (arc4rand() % max_life + 1);
+			bricks[x][y] = Brick(level);
 
 			bricks[x][y].x = x * SCREEN_W / w;
 			bricks[x][y].y = y * SCREEN_H / 3 / h;

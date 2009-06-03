@@ -12,6 +12,7 @@ Brick::Brick(): life (0), w (32), h(32), status (standard)
 
 void Brick::make_brick(int lvl)
 {
+	life = arc4rand() % lvl + 1;
 	c.r = c.g = c.b = 128;
 	int tmpRand = arc4rand() % 12;
 	#ifdef BRICK_NUM
@@ -49,7 +50,7 @@ Brick::~Brick()
 
 void Brick::update()
 {
-	c.b = 0;
+	c.b = 10;
 	c.g = 255 - ((life <= 10) ? life * 20 : 254);
 	c.r = status * 100;
 	// not much to be done here yet... common' is a brick, what you expect ? :P
@@ -57,10 +58,10 @@ void Brick::update()
 
 void Brick::render(BITMAP *bmp)
 {
-	if (life < 1)
+/*	if (life < 1)
 	{
 		return; // we don't draw broken bricks
-	}
+	}*/
 
 	if (w > 12 && h > 12) // check if the brick is big enough to shadow it
 	{
@@ -75,6 +76,12 @@ void Brick::render(BITMAP *bmp)
 		rectfill(bmp, x, y, x + w, y + h, makecol(c.r, c.g, c.b));
 	}
 
+}
+
+bool Brick::is_dead()
+{
+	//for now we only return if our life <= 0 but we may have other things going on....
+	return (life <= 0);
 }
 
 /*

@@ -37,6 +37,8 @@ class Brick
 
 		brickStatus status;
 
+		bool is_dead(); //return if the brick is dead or not; don't just check for zero - maybe we will do something more interesting here later?
+
 		void add_life(); //add one life to brick
 		void rem_life(); //rem 1 life from brick
 		void kill_brick(); //set life to 0

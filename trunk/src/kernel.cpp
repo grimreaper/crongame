@@ -37,7 +37,7 @@ void Kernel::play()
 
 	mygame.lives = 5;
 
-	game_field.do_new_random_level(3,2,1); // create a level
+	game_field.do_new_random_level(3,2,mygame.level); // create a level
 
 	show_mouse(NULL); // hide mouse
 
@@ -71,8 +71,6 @@ void Kernel::play()
 				++mygame.level; // next level :)
 
 				// pick new level parameters
-				//don't let lives of bricks go greater than 5
-				int l = (mygame.level > 5) ? 5 : mygame.level;
 				int w = 3 + rand() % mygame.level + mygame.level;
 				int h = 3 + rand() % mygame.level ;
 				if (w > GAMEFIELD_MAX_W-2)
@@ -84,7 +82,7 @@ void Kernel::play()
 					h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
 				}
 
-				game_field.do_new_random_level(w,h,l); // new level
+				game_field.do_new_random_level(w,h,mygame.level); // new level
 				init_game();
 			}
 

@@ -4,7 +4,8 @@
 GameField::GameField() : w(0), h(0), bc(0)
 {
 	int i;
-	for (i = 0; i < GAMEFIELD_MAX_W; ++i)
+	bricks.resize(GAMEFIELD_MAX_W);
+	for (i = 0; i < bricks.size(); ++i)
 	{
 		bricks[i].resize(GAMEFIELD_MAX_H);
 	}

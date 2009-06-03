@@ -27,7 +27,7 @@ class GameField
 
 		// Attributes
 
-		std::vector<Brick> bricks[GAMEFIELD_MAX_W];
+		std::vector< std::vector<Brick> > bricks;
 		int w, h; // current width and height in bricks, must be < GAMEFIELD_MAX_*
 		int bc; // brick count, when bc==0, next level
 

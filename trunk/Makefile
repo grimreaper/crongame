@@ -22,7 +22,7 @@ TESTDIR = tests
 SRCS != find $(SRCDIR) -name "*.cpp"
 TSTSRCS = gerror.cpp
 HDRS != find $(HDRDIR) -name "*.h"
-OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o
+OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o log.o
 TXTFILES = LICENSE
 BUILDFILES = Makefile
 
@@ -53,6 +53,7 @@ mtimer.o: $(HDRDIR)/mtimer.h $(SRCDIR)/mtimer.cpp
 ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o
 paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
 game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
+log.o: $(HDRDIR)/log.h $(SRCDIR)/log.cpp
 
 clean:
 	rm -fv $(TESTDIR)/*-test*

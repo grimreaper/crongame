@@ -4,10 +4,10 @@
 GameField::GameField() : w(0), h(0), bc(0)
 {
 	int i;
-	bricks.resize(GAMEFIELD_MAX_W);
+	bricks.resize(GAMEFIELD_MAX_H);
 	for (i = 0; i < bricks.size(); ++i)
 	{
-		bricks[i].resize(GAMEFIELD_MAX_H);
+		bricks[i].resize(GAMEFIELD_MAX_W);
 	}
 }
 
@@ -33,9 +33,9 @@ void GameField::do_new_random_level(int w, int h, int level)
 	{
 		w = GAMEFIELD_MAX_W; // safe check
 	}
-	if (h < 1 || h > GAMEFIELD_MAX_H)
+	if (h < 1 || h > bricks.size())
 	{
-		h = GAMEFIELD_MAX_H; // safe check
+		h = bricks.size(); // safe check
 	}
 
 	this->w = w;
@@ -43,7 +43,7 @@ void GameField::do_new_random_level(int w, int h, int level)
 	bc = 0;
 
 	// fill the matrix with random level
-	for (int y = 0 ; y < h; ++y)
+	for (int y = 0 ; y <  h; ++y)
 	{
 		for (int x = 0 ; x < w; ++x)
 		{
@@ -103,14 +103,13 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 		return false; // ball too low or out of bounds
 	}
 
-	int which_x = x_px / w_b;
-	int which_y = y_px / h_b;
+	Brick *which_brick = px_to_brick(x_px, y_px);
 
-	if (bricks[which_x][which_y].get_life() > 0)
+	if (which_brick->get_life() > 0)
 	{
-		bricks[which_x][which_y].rem_life();
+		which_brick->rem_life();
 
-		if (bricks[which_x][which_y].get_life() <= 0)
+		if (which_brick->get_life() <= 0)
 		{
 			--bc; // wasted brick!
 		}
@@ -123,10 +122,6 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 
 Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 {
-	int w_b = SCREEN_W / w;
-	int h_b = SCREEN_H / 3 / h;
-	int which_x = x_px / w_b;
-	int which_y = y_px / h_b;
 	Brick *which_brick = px_to_brick(x_px, y_px);
 	if (which_brick->get_life() <= 0)
 	{

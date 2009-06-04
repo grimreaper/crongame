@@ -3,16 +3,19 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <stdarg.h>
 
 class log
 {
 	public:
+		log();
 		enum colors
 		{
 			NORMAL = 0
 		};
-		int msg(colors color, int lvl, char *msg, ...);
-	private:
-		
+		void msg(int lvl, std::string str, ...);
+
+		int level;
 };
 #endif

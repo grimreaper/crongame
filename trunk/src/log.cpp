@@ -1,37 +1,30 @@
 #include <log.h>
 
-int msg(colors color, int lvl, char *msg, ...)
+log::log(): level (10)
+{}
+
+void log::msg(int lvl, std::string str, ...)
 {
+	if (lvl < level)
+	{
+		va_list ap;
+		va_start (ap, str);
+		vfprintf (stdout, str.c_str(), ap);
+		printf("\n");
+		va_end (ap);
+	}
 }
-/*
-      char *buf;
 
-      /* creates the buffer */
-/*
-      buf = (char *)malloc(4096);
-
-      if (buf == NULL)
-      {
-            std::cout << "log: There is a error, and I'm out of virtual memory to show the error message. :^(\n" << std::endl;
-      }
-      else
-      {
-            // parse the variable parameters
-            va_list ap;
-            va_start(ap, msg);
-            uvszprintf(buf, 4096, msg, ap);
-            va_end(ap);
-
-            std::cout << buf << std::endl;
-            free(buf);
-      }
-}
-*/
 
 #ifdef TEST
 int main (void)
 {
 	log logger = log();
+	logger.msg(0,"Test");
+	logger.msg(0,"Test 2\n");
+	logger.msg(0,"Test %s", "3");
+	logger.msg(0,"Test %d", 4);
+	logger.msg(logger.level + 1,"you should never see this");
 	return 0;
 }
 #endif

@@ -4,9 +4,11 @@
 
 #include "gerror.h"
 #include "kernel.h"
+#include "log.h"
 
 int main( int argc, char *argv[])
 {
+	log logger = log();
 	// parameters config
 	int depth = -1;
 
@@ -138,6 +140,7 @@ int main( int argc, char *argv[])
 	// run game
 	Kernel *kernel;
 	kernel = new(Kernel);
+	kernel->logger = &logger;
 	kernel->init();
 	kernel->play();
 	kernel->shutdown();

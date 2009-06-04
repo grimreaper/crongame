@@ -10,7 +10,7 @@
 #include "mtimer.h"
 #include "game.h"
 #include "gerror.h"
-
+#include "log.h"
 
 // some states of the update of the game (this is NOT bitmask values)
 
@@ -55,6 +55,8 @@ class Kernel
 		int lives; //number of lives left
 
 		Game mygame;
+
+		log *logger;
 
 	private:
 		void init_game(); // this inits the game without reseting the kernel or the level, is used for when you start a new level, lose a life, etc

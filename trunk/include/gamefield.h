@@ -6,8 +6,8 @@
 #include <vector>
 
 // max w & h in bricks
-const int  GAMEFIELD_MAX_W = 3;
-const int  GAMEFIELD_MAX_H = 1;
+const int  GAMEFIELD_MAX_W = 10;
+const int  GAMEFIELD_MAX_H = 10;
 
 class GameField
 {

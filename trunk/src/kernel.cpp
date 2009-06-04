@@ -12,6 +12,7 @@ Kernel::~Kernel()
 
 void Kernel::init()
 {
+
 	mygame = Game();
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)

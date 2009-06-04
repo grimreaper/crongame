@@ -15,6 +15,7 @@ class log
 			NORMAL = 0
 		};
 		void msg(int lvl, std::string str, ...);
+		void msg(std::string str, ...);
 
 		int level;
 };

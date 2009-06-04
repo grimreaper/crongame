@@ -1,7 +1,7 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
-#include <allegro.h>
+#include "common.h"
 
 class Paddle
 {
@@ -20,6 +20,9 @@ class Paddle
 		int w;
 		int h;
 		RGB c;
+
+		// logger
+		log *logger;
 };
 
 #endif

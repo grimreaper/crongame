@@ -1,6 +1,6 @@
 #include <log.h>
 
-log::log(): level (10)
+log::log(): level (COMPILE_LOG_LEVEL)
 {}
 
 void log::msg(int lvl, std::string str, ...)

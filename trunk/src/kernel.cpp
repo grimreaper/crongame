@@ -14,6 +14,7 @@ void Kernel::init()
 {
 
 	mygame = Game();
+	mygame.logger = logger;
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)
 	{

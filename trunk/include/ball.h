@@ -1,7 +1,7 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include <allegro.h>
+#include "common.h"
 #include "paddle.h"
 #include "gamefield.h"
 
@@ -49,6 +49,8 @@ class Ball
 			small
 		};
 		ballStatus status;
+
+		log *logger;
 
 	private:
 		void bounce_x();

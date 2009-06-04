@@ -16,7 +16,9 @@ void Brick::make_brick(int lvl)
 	int tmpRand = arc4rand() % 12;
 	#ifdef BRICK_NUM
 		tmpRand = BRICK_NUM;
+		logger->msg("Just to remind you we always get:");
 	#endif
+	logger->msg("Making brick with tmpRand of %d",tmpRand);
 	switch (tmpRand)
 	{
 		case 1:
@@ -49,6 +51,7 @@ Brick::~Brick()
 
 void Brick::update()
 {
+	//logger->msg(25,"We appear to be updating a brick");
 	c.b = 0;
 	c.g = 255 - ((life <= 10) ? life * 20 : 254);
 	c.r = status * 100;
@@ -57,6 +60,7 @@ void Brick::update()
 
 void Brick::render(BITMAP *bmp)
 {
+	//logger->msg(5,"We appear to be rendering a brick with life %d and a w/h of %d/%d", life, w, h);
 	if (life < 1)
 	{
 		return; // we don't draw broken bricks

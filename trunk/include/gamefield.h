@@ -1,7 +1,7 @@
 #ifndef GAMEFIELD_H
 #define GAMEFIELD_H
 
-#include <allegro.h>
+#include "common.h"
 #include "brick.h"
 #include <vector>
 
@@ -30,6 +30,8 @@ class GameField
 		std::vector< std::vector<Brick> > bricks;
 		int w, h; // current width and height in bricks, must be < GAMEFIELD_MAX_*
 		int bc; // brick count, when bc==0, next level
+
+		log *logger;
 
 	private:
 		Brick* px_to_brick(int x_px , int y_px); //return a reference to a brick

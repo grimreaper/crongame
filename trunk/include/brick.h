@@ -1,7 +1,7 @@
 #ifndef BRICK_H
 #define BRICK_H
 
-#include <allegro.h>
+#include "common.h"
 #include "krandom.h"
 
 class Brick
@@ -42,6 +42,8 @@ class Brick
 		void kill_brick(); //set life to 0
 		void set_life(int toWhat); //set life equal to some number
 		int get_life();
+
+		log *logger;
 
 	private:
 		void make_brick(int level);

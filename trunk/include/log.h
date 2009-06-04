@@ -6,14 +6,14 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+#ifndef COMPILE_LOG_LEVEL
+	#define COMPILE_LOG_LEVEL 10
+#endif
+
 class log
 {
 	public:
 		log();
-		enum colors
-		{
-			NORMAL = 0
-		};
 		void msg(int lvl, std::string str, ...);
 		void msg(std::string str, ...);
 

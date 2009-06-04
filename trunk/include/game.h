@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+#include "common.h"
 class Game
 {
 	public:
@@ -10,6 +11,8 @@ class Game
 
 		int lives;
 		int level;
+
+		log *logger;
 	private:
 
 };

@@ -71,3 +71,5 @@ check:
 #splint -strict-lib -showcolumn -showfunc -strict *.c
 
 #	$(CC) $(CFLAGS) -c $< -o $@
+
+.include "Depends.Makefile"

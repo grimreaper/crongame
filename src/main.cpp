@@ -19,7 +19,7 @@ int main( int argc, char *argv[])
 
 	int vid_h = 480;
 
-	bool want_sound = true;
+	int want_sound = TRUE;
 
 	if (allegro_init())
 	{
@@ -29,16 +29,20 @@ int main( int argc, char *argv[])
 
 	int c = 0;
 	int option_index = 0;
+	static struct option long_options[] =
+	{
+		{"windowed", no_argument, &flag_windowed, TRUE},
+		{"wn", no_argument, &flag_windowed, TRUE},
+		{"win", no_argument, &flag_windowed, TRUE},
+		{"bpp", required_argument, &depth, 'b'},
+		{"silent", no_argument, &want_sound, FALSE},
+		{"nosound", no_argument, &want_sound, FALSE},
+		{"ns", no_argument, &want_sound, FALSE},
+		{0, 0, 0, 0}
+	};
+
 	while (c != -1)
 	{
-		static struct option long_options[] =
-		{
-			{"windowed", no_argument, &flag_windowed, TRUE},
-			{"wn", no_argument, &flag_windowed, TRUE},
-			{"win", no_argument, &flag_windowed, TRUE},
-			{"bpp", required_argument, &depth, 'b'},
-			{0, 0, 0, 0}
-		};
 		while ((c = getopt_long (argc, argv, "bw", long_options, &option_index)) != -1)
 		{
 			switch (c)
@@ -53,6 +57,10 @@ int main( int argc, char *argv[])
 			}
 		}
 	}
+	while (optind < argc)
+	{
+		std::cout << "non-option argument" << argv[optind++] << std::endl;
+	}
 
 
 	int vid_m = GFX_AUTODETECT;
@@ -60,21 +68,6 @@ int main( int argc, char *argv[])
 	{
 		vid_m = GFX_AUTODETECT_WINDOWED;
 	}
-
-	// -w == windowed
-
-
-	// check command line parameters
-	for (int i = 1; i < argc; ++i)
-	{
-		if (!stricmp(argv[i], "-nosound") ||
-			!stricmp(argv[i], "-silent") ||
-			!stricmp(argv[i], "-ns"))
-		{
-			want_sound = false;
-		}
-	}
-
 
 	if (install_timer())
 	{

@@ -14,7 +14,6 @@ int main( int argc, char *argv[])
 	// parameters config
 	int depth = -1;
 
-
 	int vid_w = 640;
 
 	int vid_h = 480;
@@ -41,22 +40,20 @@ int main( int argc, char *argv[])
 		{0, 0, 0, 0}
 	};
 
-	while (c != -1)
+	while ((c = getopt_long (argc, argv, "bw", long_options, &option_index)) != -1)
 	{
-		while ((c = getopt_long (argc, argv, "bw", long_options, &option_index)) != -1)
+		switch (c)
 		{
-			switch (c)
-			{
-				case 'b':
-					depth = (int)optarg;
-				case 'w':
-					flag_windowed = TRUE;
-					break;
-				default:
-					break;
-			}
+			case 'b':
+				depth = (int)optarg;
+			case 'w':
+				flag_windowed = TRUE;
+				break;
+			default:
+				break;
 		}
 	}
+
 	while (optind < argc)
 	{
 		std::cout << "non-option argument" << argv[optind++] << std::endl;

@@ -48,15 +48,15 @@ void Kernel::play()
 			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
 			{
 				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-				--lives;
-				if (lives == 0)
+				--mygame.lives;
+				if (mygame.lives == 0)
 				{
 					textout_ex( screen, font, "For real!", SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 					mygame.init_game();
 					// we need to have a better method of restarting game vs continuing level
 				}
 
-				//textout_ex( screen, font, (char)lives, SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				//textout_ex( screen, font, (char)mygame.lives, SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 				clear_keybuf();
 				readkey();
 				init_game(); // DEBUG - we should show a message and take down a life
@@ -69,7 +69,7 @@ void Kernel::play()
 				mygame.next_level();
 
 				// pick new level parameters
-				//don't let lives of bricks go greater than 5
+				//don't let mygame.lives of bricks go greater than 5
 				int l = std::min(mygame.level, 5);
 				int w = 3 + rand() % mygame.level + mygame.level;
 				int h = 3 + rand() % mygame.level;

@@ -60,6 +60,7 @@ void Kernel::play()
 				}
 
 				//textout_ex( screen, font, (char)lives, SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+				clear_keybuf();
 				readkey();
 				init_game(); // DEBUG - we should show a message and take down a life
 			}
@@ -132,6 +133,20 @@ int Kernel::update()
 	{
 		ret = KERNEL_UDP_EXIT;
 	}
+
+	/*
+	I think we have an issue with the FPS counter or some other threads.
+	pausing stops the screen - but not the game.
+	// pause the game.
+	if (key[KEY_P])
+	{
+		clear_keybuf();
+		while (!key[KEY_Q])
+		{
+			readkey();
+		}
+	}
+	*/
 
 	return ret;
 }

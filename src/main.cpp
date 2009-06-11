@@ -1,16 +1,19 @@
 #include <allegro.h>
 #include <string.h>
 #include <stdio.h>
+#include <iostream>
+#include <getopt.h>
 
 #include "gerror.h"
 #include "kernel.h"
+
+static int flag_windowed = FALSE;
 
 int main( int argc, char *argv[])
 {
 	// parameters config
 	int depth = -1;
 
-	int vid_m = GFX_AUTODETECT;
 
 	int vid_w = 640;
 
@@ -18,18 +21,49 @@ int main( int argc, char *argv[])
 
 	bool want_sound = true;
 
+	if (allegro_init())
+	{
+		std::cout << "main() : Allegro failed to start!" << std::endl;
+		exit(1);
+	}
+
+	int c = 0;
+	int option_index = 0;
+	while (c != -1)
+	{
+		static struct option long_options[] =
+		{
+			{"windowed", no_argument, &flag_windowed, TRUE},
+			{"wn", no_argument, &flag_windowed, TRUE},
+			{"win", no_argument, &flag_windowed, TRUE},
+			{0, 0, 0, 0}
+		};
+		while ((c = getopt_long (argc, argv, "w", long_options, &option_index)) != -1)
+		{
+			switch (c)
+			{
+				case 'w':
+					flag_windowed = TRUE;
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
+
+	int vid_m = GFX_AUTODETECT;
+	if (flag_windowed)
+	{
+		vid_m = GFX_AUTODETECT_WINDOWED;
+	}
+
+	// -w == windowed
+
+
 	// check command line parameters
 	for (int i = 1; i < argc; ++i)
 	{
-		if (!stricmp(argv[i], "-wn") ||
-			!stricmp(argv[i], "-w") ||
-			!stricmp(argv[i], "-win") ||
-			!stricmp(argv[i], "-windowed"))
-		{
-			vid_m = GFX_AUTODETECT_WINDOWED;
-		}
-
-
 		if (!stricmp(argv[i], "-nosound") ||
 			!stricmp(argv[i], "-silent") ||
 			!stricmp(argv[i], "-ns"))
@@ -64,11 +98,6 @@ int main( int argc, char *argv[])
 
 	}
 
-
-	if (allegro_init())
-	{
-		raise_error("main() : Allegro failed to start!");
-	}
 
 	if (install_timer())
 	{

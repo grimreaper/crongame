@@ -36,12 +36,15 @@ int main( int argc, char *argv[])
 			{"windowed", no_argument, &flag_windowed, TRUE},
 			{"wn", no_argument, &flag_windowed, TRUE},
 			{"win", no_argument, &flag_windowed, TRUE},
+			{"bpp", required_argument, &depth, 'b'},
 			{0, 0, 0, 0}
 		};
-		while ((c = getopt_long (argc, argv, "w", long_options, &option_index)) != -1)
+		while ((c = getopt_long (argc, argv, "bw", long_options, &option_index)) != -1)
 		{
 			switch (c)
 			{
+				case 'b':
+					depth = (int)optarg;
 				case 'w':
 					flag_windowed = TRUE;
 					break;
@@ -70,32 +73,6 @@ int main( int argc, char *argv[])
 		{
 			want_sound = false;
 		}
-
-		if (!stricmp(argv[i], "-bpp16"))
-		{
-			depth = 16;
-		}
-
-		if (!stricmp(argv[i], "-bpp15"))
-		{
-			depth = 15;
-		}
-
-		if (!stricmp(argv[i], "-bpp32"))
-		{
-			depth = 32;
-		}
-
-		if (!stricmp(argv[i], "-bpp24"))
-		{
-			depth = 24;
-		}
-
-		if (!stricmp(argv[i], "-bpp8"))
-		{
-			raise_error("main() : Sorry, this program don't support 8 bpp displays.\nThis program needs a true color display at %3d x %3d resolution.\nTip: Try removing the -bpp8 switch from the command line invocation.", vid_w, vid_h);
-		}
-
 	}
 
 

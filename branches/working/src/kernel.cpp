@@ -66,13 +66,13 @@ void Kernel::play()
 			{
 				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 
-				++mygame.level; // next level :)
+				mygame.next_level();
 
 				// pick new level parameters
 				//don't let lives of bricks go greater than 5
-				int l = (mygame.level > 5) ? 5 : mygame.level;
+				int l = std::min(mygame.level, 5);
 				int w = 3 + rand() % mygame.level + mygame.level;
-				int h = 3 + rand() % mygame.level ;
+				int h = 3 + rand() % mygame.level;
 				if (w > GAMEFIELD_MAX_W-2)
 				{
 					w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
@@ -103,7 +103,9 @@ void Kernel::play()
 void Kernel::shutdown()
 {
 	if (double_buffer)
+	{
 		destroy_bitmap(double_buffer);
+	}
 	double_buffer = NULL;
 }
 

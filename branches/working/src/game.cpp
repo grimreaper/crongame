@@ -14,7 +14,7 @@ void Game::init_game()
 	lives = 5;
 }
 
-void Game::restart_level()
-{}
-void Game::continue_level()
-{}
+void Game::next_level()
+{
+	++level;
+}

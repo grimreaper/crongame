@@ -132,10 +132,10 @@ int main( int argc, char *argv[])
 		set_volume(255, -1);
 	}
 
-	set_window_title("Kronoide");
+	set_window_title("Crontab!");
 
 	// run game
-	Kernel *kernel;
+	Kernel *kernel	;
 	kernel = new(Kernel);
 	kernel->init();
 	kernel->play();

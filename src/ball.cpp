@@ -26,7 +26,7 @@ void Ball::init()
 	status = normal;
 }
 
-// updates ball ... returns true if the ball was lost (we lose a life) 
+// updates ball ... returns true if the ball was lost (we lose a life)
 bool Ball::update(Paddle &paddle, GameField &game_field)
 {
 	static float paddle_last_y = 0; // we use this so the ball can't go trought the paddle, we interpolate
@@ -144,6 +144,8 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				status = normal;
 				r = 8;
 				paddle.reset_color();
+				c.r = c.g = 0;
+				c.b = 255;
 				break;
 			case Brick::make_ball_fire:
 				status = on_fire;
@@ -173,6 +175,9 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				break;
 		}
 	}
+	c.r = status * 10;
+	c.b = (status == normal) ? 255 : 100;
+	c.r = (status == on_fire) ? 255 : status;
 
 	// never go faster than paddle size, or we are screwed :P
 	if (dy > paddle.h*0.25)

@@ -1,6 +1,6 @@
 #include <allegro.h>
 #include <string.h>
-#include <stdio.h>
+//#include <stdio.h>
 #include <iostream>
 #include <getopt.h>
 
@@ -142,4 +142,4 @@ int main( int argc, char *argv[])
 
 	return 0;
 }
-END_OF_MAIN();
+END_OF_MAIN()

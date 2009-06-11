@@ -1,6 +1,9 @@
 NAME=crontab
 CC = llvm-g++
 CFLAGS = -O0 -g3 -pipe -ansi -Wabi
+.if defined(BE_PEDANTIC)
+CFLAGS += -pedantic
+.endif
 CFLAGS += -Weffc++ -fno-gnu-keywords -Wstrict-null-sentinel -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -ffor-scope
 CFLAGS += -Wall -Wextra
 CFLAGS += -Wformat=2 -Wformat-y2k -Wformat-nonliteral -Wformat-security

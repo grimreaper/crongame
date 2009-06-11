@@ -25,7 +25,6 @@ void Kernel::init()
 void Kernel::play()
 {
 	int ret = KERNEL_UDP_OK; // current game state, all OK
-	mygame.level = 1;
 
 	_start_global_timer(); // we start a global timer, check mtimer.cpp
 
@@ -34,8 +33,6 @@ void Kernel::play()
 	clear_keybuf();
 
 	init_game(); // initialize a game run
-
-	mygame.lives = 5;
 
 	game_field.do_new_random_level(3,2,1); // create a level
 
@@ -171,6 +168,8 @@ void Kernel::render()
 // is used for when you start a game , lose a life, etc
 void Kernel::init_game()
 {
+	mygame.init_game();
+
 	paddle.init(); // init the paddle
 
 	ball.init(); // init the ball

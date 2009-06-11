@@ -91,11 +91,10 @@ int main( int argc, char *argv[])
 	}
 
 	// safe check
-	if (depth < 16)
-		depth = 16;
+	depth = std::max(16, depth);
 
 	set_color_depth(depth);
-	
+
 	// init video mode, trying many configurations to see if we can use anyone
 	if ( set_gfx_mode(vid_m, vid_w, vid_h, 0, 0) )
 	{
@@ -142,9 +141,9 @@ int main( int argc, char *argv[])
 	kernel->play();
 	kernel->shutdown();
 	delete(kernel);
-	
+
 	allegro_exit();
-	
+
 	return 0;
 }
 END_OF_MAIN();

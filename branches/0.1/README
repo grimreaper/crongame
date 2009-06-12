@@ -1,0 +1,10 @@
+=== Compile ===
+To install you need to run "make <operating system>".
+This will get the pmake (BSD make version) package from your OS's package
+manager (apt, emerge, etc).
+If you used the above instructions to get pmake the following will occur
+automatically.
+Run "[p]make <operating system>" to fetch and install the allegro 
+library.
+If you already have either of the above the Makefile will detect it.
+Finally run "[p]make install" to compile and install crongame.

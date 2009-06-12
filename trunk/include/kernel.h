@@ -48,7 +48,7 @@ class Kernel
 
 		// Attributes
   		BITMAP *double_buffer; // the double buffer bitmap
-		Paddle paddle; // the player paddle 
+		Paddle paddle; // the player paddle
 		Ball ball; // the game ball
 		GameField game_field; // the game field
 

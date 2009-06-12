@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "paddle.h"
 #include "ball.h"
+#include "paddle.h"
 
 class Game
 {

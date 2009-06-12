@@ -1,6 +1,4 @@
 #include <allegro.h>
-#include <string.h>
-//#include <stdio.h>
 #include <iostream>
 #include <getopt.h>
 
@@ -58,7 +56,6 @@ int main( int argc, char *argv[])
 	{
 		std::cout << "non-option argument" << argv[optind++] << std::endl;
 	}
-
 
 	int vid_m = GFX_AUTODETECT;
 	if (flag_windowed)

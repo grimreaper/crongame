@@ -1,0 +1,4 @@
+1) game does not restart on lost lives
+2) when ball is on fire - bounces when hitting brick of > 1 life (feature/bug? - I'm inclined to say feature)
+3) ball on fire is too powerfull
+4) automated install fails on all OSes

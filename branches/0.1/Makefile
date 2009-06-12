@@ -1,4 +1,4 @@
-NAME=crontab
+NAME=crongame
 CC = llvm-g++
 CFLAGS = -O0 -g3 -pipe -ansi -Wabi
 .if defined(BE_PEDANTIC)

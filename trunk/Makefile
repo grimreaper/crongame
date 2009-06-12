@@ -56,6 +56,8 @@ mtimer.o: $(HDRDIR)/mtimer.h $(SRCDIR)/mtimer.cpp
 ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o
 paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
 game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
+logger.o: $(HDRDIR)/logger.h $(SRCDIR)/logger.cpp
+
 
 clean:
 	rm -fv $(TESTDIR)/*-test*

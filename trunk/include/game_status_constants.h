@@ -12,6 +12,9 @@ const int GAME_UDP_NEXT_LEVEL = 1;
 // lost a life
 const int GAME_UDP_LOST_LIFE = 2;
 
+//lost the game
+const int GAME_UDP_LOST_GAME = 3;
+
 // pause
 const int KERNEL_UDP_PAUSE = 100;
 

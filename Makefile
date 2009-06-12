@@ -1,4 +1,5 @@
 NAME=crongame
+VERSION=0.1
 CC = llvm-g++
 CFLAGS = -O0 -g3 -pipe -ansi -Wabi
 .if defined(BE_PEDANTIC)

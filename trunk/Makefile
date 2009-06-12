@@ -41,7 +41,7 @@ BINNAME = $(TESTDIR)/$(NAME)-bricktest-$(BRICK_NUM)
 
 
 #compiling options
-.PHONY:     all clean test test-all
+.PHONY:     all clean cleantests test test-all check
 
 all: $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
@@ -57,10 +57,12 @@ ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o
 paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
 game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
 
-clean:
-	rm -fv $(TESTDIR)/*-test*
+clean: cleantests
 	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
+
+cleantests:
+	rm -fv $(TESTDIR)/*-test*
 
 test:
 	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) $(SRCDIR)/$(FILE) -o $(TESTDIR)/$(FILE)-test

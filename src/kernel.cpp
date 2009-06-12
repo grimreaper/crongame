@@ -48,13 +48,8 @@ void Kernel::play()
 
 			if (ret == GAME_UDP_LOST_LIFE) // lost a life!
 			{
-				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 				ret = mygame.lost_life();
-
-				//textout_ex( screen, font, (char)mygame.lives, SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-				clear_keybuf();
-				readkey();
-				init_game(); // DEBUG - we should show a message and take down a life
+				init_game();
 			}
 
 			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!

@@ -13,6 +13,7 @@ Kernel::~Kernel()
 void Kernel::init()
 {
 	mygame = Game();
+	mygame.init_game();
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)
 	{
@@ -56,11 +57,14 @@ void Kernel::play()
 				init_game(); // DEBUG - we should show a message and take down a life
 			}
 
-			if (ret == GAME_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
+			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 
-				mygame.next_level();
+				if (ret != GAME_UDP_LOST_GAME)
+				{
+					mygame.next_level();
+				}
 
 				// pick new level parameters
 				//don't let mygame.lives of bricks go greater than 5

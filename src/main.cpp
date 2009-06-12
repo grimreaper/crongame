@@ -44,6 +44,7 @@ int main( int argc, char *argv[])
 		{
 			case 'b':
 				depth = (int)optarg;
+				break;
 			case 'w':
 				flag_windowed = TRUE;
 				break;

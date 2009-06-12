@@ -11,27 +11,7 @@
 #include "game.h"
 #include "gerror.h"
 
-
-// some states of the update of the game (this is NOT bitmask values)
-
-// all fine
-const int KERNEL_UDP_OK = 0;
-
-// go to next level
-const int KERNEL_UDP_NEXT_LEVEL = 1;
-
-// lost a life
-const int KERNEL_UDP_LOST_LIFE = 2;
-
-// pause
-const int KERNEL_UDP_PAUSE = 100;
-
-// exit from game (to menu)
-const int KERNEL_UDP_EXIT = 101;
-
-// exit to operating system (DOS ? :P)
-const int KERNEL_UDP_QUIT = 102;
-
+#include "game_status_constants.h"
 
 class Kernel
 {

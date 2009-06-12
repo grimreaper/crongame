@@ -45,16 +45,10 @@ void Kernel::play()
 		{
 			ret = update(); // update game logic and see which state we are
 
-			if (ret == KERNEL_UDP_LOST_LIFE) // lost a life!
+			if (ret == GAME_UDP_LOST_LIFE) // lost a life!
 			{
 				textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-				--mygame.lives;
-				if (mygame.lives == 0)
-				{
-					textout_ex( screen, font, "For real!", SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
-					mygame.init_game();
-					// we need to have a better method of restarting game vs continuing level
-				}
+				ret = mygame.lost_life();
 
 				//textout_ex( screen, font, (char)mygame.lives, SCREEN_H / 2 + 30, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 				clear_keybuf();
@@ -62,7 +56,7 @@ void Kernel::play()
 				init_game(); // DEBUG - we should show a message and take down a life
 			}
 
-			if (ret == KERNEL_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
+			if (ret == GAME_UDP_NEXT_LEVEL || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 
@@ -120,12 +114,12 @@ int Kernel::update()
 
 	if (ball.update(paddle, game_field))
 	{
-		ret = KERNEL_UDP_LOST_LIFE; // player lost life :(
+		ret = GAME_UDP_LOST_LIFE; // player lost life :(
 	}
 
 	if (game_field.update())
 	{
-		ret = KERNEL_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
+		ret = GAME_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
 	}
 
 	if (key[KEY_ESC]) // exit game -- DEBUG , WE MUST CONFIRM THIS!!
@@ -170,7 +164,7 @@ void Kernel::render()
 // is used for when you start a game , lose a life, etc
 void Kernel::init_game()
 {
-	mygame.init_game();
+	//mygame.init_game();
 
 	paddle.init(); // init the paddle
 

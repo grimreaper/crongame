@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "game_status_constants.h"
 #include "ball.h"
 #include "paddle.h"
 
@@ -20,9 +21,8 @@ class Game
 
 		//we move on to the next level
 		void next_level();
-
-		Paddle paddle; // the player paddle
-		Ball ball; // the game ball
+		//we just lost a life
+		int lost_life();
 
 		int lives;
 		int level;

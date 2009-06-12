@@ -1,7 +1,7 @@
 .PHONY: first ubuntu debian gentoo use-apt use-emerge
 first:
 	@echo "Run 'make <operating system>' to fetch pmake and then install missing deps"
-ubuntu: use-apt .
+ubuntu: use-apt
 	pmake deps-ubuntu
 debian: ubuntu #we treat them the same for now
 gentoo: use-emerge

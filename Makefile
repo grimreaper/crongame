@@ -1,4 +1,5 @@
-NAME=crontab
+NAME=crongame
+VERSION=trunk
 CC = llvm-g++
 CFLAGS = -O0 -g3 -pipe -ansi -Wabi
 .if defined(BE_PEDANTIC)
@@ -24,12 +25,14 @@ HDRDIR = include
 TESTDIR = tests
 SRCS != find $(SRCDIR) -name "*.cpp"
 TSTSRCS = gerror.cpp
+SCRIPTDIR = scripts
+SCRIPTS != find $(SCRIPTDIR) -name "*.sh"
 HDRS != find $(HDRDIR) -name "*.h"
 OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o
 TXTFILES = LICENSE
 BUILDFILES = Makefile
 
-ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES)
+ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES) $(SCRIPTS)
 
 BINNAME = $(NAME)
 
@@ -38,12 +41,10 @@ CFLAGS += -DBRICK_NUM=$(BRICK_NUM)
 BINNAME = $(TESTDIR)/$(NAME)-bricktest-$(BRICK_NUM)
 .endif
 
-
-
 #compiling options
-.PHONY:     all clean cleantests test test-all check
+.PHONY:     all clean cleantests test test-all check version
 
-all: $(SRCDIR)/main.cpp
+all: version $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
 	
 $(SRCDIR)/main.cpp: $(OBJS)
@@ -73,6 +74,9 @@ test-all:
 check:
 	cppcheck -v -a -s --unused-functions .
 	rats -rw3 *
+
+version:
+	@echo $(NAME) version $(VERSION)
 #splint -strict-lib -showcolumn -showfunc -strict *.c
 
 #	$(CC) $(CFLAGS) -c $< -o $@

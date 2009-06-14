@@ -1,0 +1,15 @@
+1) differentiate between game and life lost in kernel so we could init_game() and continue_level()
+2) make a pause button
+3) make things more encapsulated - move things from gamefield to better classes
+*4) make some method of testing specific power bricks and other game features
+*5) add some kind of build dependancy check
+6) Multiple balls
+7) Precreated (non-random) levels
+8) Easy/Med/Hard
+9) User config (choose ball speed, paddle size, etc)
+10) Scores - includes high scores
+*11) Change paddle size - power brick
+12) floating powers (instead of it happening right away have it float down for the paddle to catch)
+13) allow powers to come with differing probabilities.
+14) Make the ball fly different directions depending on which part of the brick it hit.
+15) unbreakable bricks

@@ -25,13 +25,20 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	this->h = h;
 	bc = 0;
 
+	// I want to see if we could deal with having a 0-life brick.
+	// if we can then making special arragments shouldn't be that hard.
+	// TODO - allow for width to be dynamically chosen
+	// if we could do that then pre-building levels should be even easier.
+
+	int blank_spots = max_life;
+
 	// fill the matrix with random level
 	for (int y = 0 ; y < h; ++y)
 	{
 		for (int x = 0 ; x < w; ++x)
 		{
 			//this should be done as part of the brick class - no the game_field class */
-			bricks[x][y].set_life (arc4rand() % max_life + 1);
+			bricks[x][y].set_life (arc4rand() % max_life);
 
 			bricks[x][y].x = x * SCREEN_W / w;
 			bricks[x][y].y = y * SCREEN_H / 3 / h;
@@ -43,8 +50,22 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 			bricks[x][y].c.r = rand_ex_i(128, 255);
 			bricks[x][y].c.g = rand_ex_i(128, 255);
 			bricks[x][y].c.b = rand_ex_i(128, 255);
-
-			++bc; // count bricks (lame)
+			if (bricks[x][y].get_life() == 0)
+			{
+				if (blank_spots > 0)
+				{
+					--blank_spots;
+				}
+				else
+				{
+					bricks[x][y].set_life(1);
+					++bc;
+				}
+			}
+			else
+			{
+				++bc; // count bricks (lame)
+			}
 		}
 	}
 

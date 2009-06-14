@@ -25,12 +25,14 @@ HDRDIR = include
 TESTDIR = tests
 SRCS != find $(SRCDIR) -name "*.cpp"
 TSTSRCS = gerror.cpp
+SCRIPTDIR = scripts
+SCRIPTS != find $(SCRIPTDIR) -name "*.sh"
 HDRS != find $(HDRDIR) -name "*.h"
 OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o
 TXTFILES = LICENSE
 BUILDFILES = Makefile
 
-ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES)
+ALLFILES = $(HDRS) $(SRCS) $(TXTFILES) $(BUILDFILES) $(SCRIPTS)
 
 BINNAME = $(NAME)
 

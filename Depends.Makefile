@@ -13,4 +13,4 @@ use-ports: root-check
 install: all
 	cp $(NAME) $(PREFIX)/bin
 root-check:
-	@./rootcheck.sh
+	@$(SCRIPTDIR)/rootcheck.sh

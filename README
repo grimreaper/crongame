@@ -13,3 +13,6 @@ Finally run "[p]make install" to compile and install crongame.
 
 The installation proccess checks to make sure you are root. If you wish
 to override this behavior add a file .noroot to the build directory.
+
+For some reason pmake doesn't work on ubuntu. Instead of pmake run 
+./scripts/run-install-ubuntu.sh

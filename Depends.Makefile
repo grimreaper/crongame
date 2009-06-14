@@ -6,7 +6,7 @@ deps-freebsd: use-ports
 deps-ubuntu: use-apt
 deps-gentoo: use-emerge
 use-apt: root-check
-	apt-get install liballegro4.2-dev
+	apt-get install build-essential liballegro4.2-dev
 use-emerge: root-check
 	emerge -av media-libs/allegro
 use-ports:

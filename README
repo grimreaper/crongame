@@ -8,3 +8,6 @@ Run "[p]make <operating system>" to fetch and install the allegro
 library.
 If you already have either of the above the Makefile will detect it.
 Finally run "[p]make install" to compile and install crongame.
+
+The installation proccess checks to make sure you are root. If you wish
+to override this behavior add a file .noroot to the build directory.

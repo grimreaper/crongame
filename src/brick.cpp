@@ -27,6 +27,12 @@ void Brick::update()
 	c.b = 0;
 	c.g = 255 - ((life <= 10) ? life * 20 : 254);
 	c.r = status * 100;
+	if (status == power::unbreakable)
+	{
+		//brick should be white (or really inverse of background).
+		c.b = c.g = c.r = 255;
+	}
+
 	// not much to be done here yet... common' is a brick, what you expect ? :P
 }
 
@@ -68,5 +74,12 @@ int Brick::get_life()
 
 void Brick::rem_life()
 {
-	--life;
+	if (status != power::unbreakable)
+	{
+		--life;
+	}
+	else
+	{
+		std::cout << "We just hit an unbrekable" << std::endl;
+	}
 }

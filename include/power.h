@@ -19,7 +19,8 @@ class power
 			make_paddle_small,
 			make_paddle_big,
 			make_paddle_zero,
-			make_paddle_giant
+			make_paddle_giant,
+			unbreakable
 		};
 
 		static brickStatus generateStatus();

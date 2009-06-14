@@ -70,8 +70,14 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 			{
 				++bc; // count bricks (lame)
 			}
+			if (which_brick->status == power::unbreakable)
+			{
+				--bc;
+				std::cout << "I'm unbreakable - remove a bc!" << std::endl;
+			}
 		}
 	}
+	std::cout << "And our final bc is " << bc << std::endl;
 }
 
 // returns true if we finished the level (0 bricks left)

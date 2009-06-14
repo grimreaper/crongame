@@ -32,7 +32,11 @@ class Brick
 			add_live, //yes I am aware that this is not proper English - I am using lives and lifes differently
 			make_ball_big,
 			make_ball_small,
-			no_see_paddle
+			no_see_paddle,
+			make_paddle_small,
+			make_paddle_big,
+			make_paddle_zero,
+			make_paddle_giant
 		};
 
 		brickStatus status;

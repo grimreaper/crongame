@@ -104,7 +104,7 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	return false;
 }
 
-Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
+power::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 {
 	int w_b = SCREEN_W / w;
 	int h_b = SCREEN_H / 3 / h;
@@ -116,7 +116,7 @@ Brick::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 		//only give power when dead
 		return which_brick->status;
 	}
-	return Brick::standard;
+	return power::standard;
 }
 Brick* GameField::px_to_brick(int x_px , int y_px)
 {

@@ -3,6 +3,7 @@
 
 #include <allegro.h>
 #include "brick.h"
+#include "power.h"
 
 // max w & h in bricks
 const int  GAMEFIELD_MAX_W = 10;
@@ -22,7 +23,7 @@ class GameField
 
 		bool ball_hit_brick(int x_px , int y_px); // this is used by the ball to hit the bricks, returns true if a brick was hit
 
-		Brick::brickStatus getBrickStatus(int x_px , int y_px);
+		power::brickStatus getBrickStatus(int x_px , int y_px);
 
 		// Attributes
 

@@ -2,6 +2,7 @@
 #define PADDLE_H
 
 #include <allegro.h>
+#include <algorithm>
 
 class Paddle
 {

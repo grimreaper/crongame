@@ -4,3 +4,4 @@ then
 	echo "This action could only be taken as root";
 	exit $EX_NOPERM;
 fi
+exit 0;

@@ -9,8 +9,8 @@ use-apt: root-check
 	apt-get install liballegro4.2-dev
 use-emerge: root-check
 	emerge -av media-libs/allegro
-use-ports: root-check
-	make -C /usr/ports/devel/allegro install distclean
+use-ports:
+	$(SCRIPTDIR)/install-freebsd.sh
 install: all
 	cp $(NAME) $(PREFIX)/bin
 root-check:

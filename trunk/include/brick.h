@@ -3,6 +3,7 @@
 
 #include <allegro.h>
 #include "krandom.h"
+#include "power.h"
 
 class Brick
 {
@@ -23,7 +24,7 @@ class Brick
 		int h;
 
 		RGB c; // color, in R,G,B
-
+		/*
 		enum brickStatus
 		{
 			standard,
@@ -38,8 +39,9 @@ class Brick
 			make_paddle_zero,
 			make_paddle_giant
 		};
+		*/
 
-		brickStatus status;
+		power::brickStatus status;
 
 		void add_life(); //add one life to brick
 		void rem_life(); //rem 1 life from brick
@@ -51,5 +53,4 @@ class Brick
 		void make_brick(int level);
 		int life; // life, in ball hits
 };
-
 #endif

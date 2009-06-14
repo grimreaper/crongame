@@ -5,7 +5,7 @@ Brick::Brick(int level)
 	make_brick(level);
 }
 
-Brick::Brick(): life (0), w (32), h(32), status (standard)
+Brick::Brick(): life (0), w (32), h(32), status (power::standard)
 {
 	make_brick(1);
 }
@@ -22,37 +22,37 @@ void Brick::make_brick(int lvl)
 	switch (tmpRand)
 	{
 		case 1:
-			status = make_all_normal;
+			status = power::make_all_normal;
 			break;
 		case 2:
-			status = make_ball_fire;
+			status = power::make_ball_fire;
 			break;
 		case 3:
-			status = add_live;
+			status = power::add_live;
 			break;
 		case 4:
-			status = make_ball_big;
+			status = power::make_ball_big;
 			break;
 		case 5:
-			status = make_ball_small;
+			status = power::make_ball_small;
 			break;
 		case 6:
-			status = no_see_paddle;
+			status = power::no_see_paddle;
 			break;
 		case 7:
-			status = make_paddle_small;
+			status = power::make_paddle_small;
 			break;
 		case 8:
-			status = make_paddle_big;
+			status = power::make_paddle_big;
 			break;
 		case 9:
-			status = make_paddle_zero;
+			status = power::make_paddle_zero;
 			break;
 		case 10:
-                  status = make_paddle_giant;
+                  status = power::make_paddle_giant;
 			break;
 		default:
-			status = standard;
+			status = power::standard;
 	}
 }
 

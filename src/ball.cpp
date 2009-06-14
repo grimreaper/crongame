@@ -101,7 +101,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	bool hitX = false;
 	bool hitY = false;
-	Brick::brickStatus whatBrickStatus;
+	power::brickStatus whatBrickStatus;
 
 	// bounce and hit on bricks
 	if (game_field.ball_hit_brick((int)x-r,(int)y))
@@ -138,53 +138,53 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		int minusAmount = (r >= 8) ? 4 : 2;
 		switch (whatBrickStatus)
 		{
-			case Brick::standard:
+			case power::standard:
 				break;
-			case Brick::make_all_normal:
+			case power::make_all_normal:
 				status = normal;
 				r = 8;
 				paddle.reset_color();
 				c.r = c.g = 0;
 				c.b = 255;
 				break;
-			case Brick::make_ball_fire:
+			case power::make_ball_fire:
 				status = on_fire;
 				break;
-			case Brick::add_live:
+			case power::add_live:
 				// I really should make the field call a briuck function - but atm I want to keep everything together
 				// or even better - figure out a better method of dealing with statuses and keeping encapsulation
 				//++lives;
 				break;
-			case Brick::make_ball_big:
+			case power::make_ball_big:
 				if (r <= 20)
 				{
 					r += 4;
 				}
 				break;
-			case Brick::make_ball_small:
+			case power::make_ball_small:
 				if (r > 2)
 				{
 					r -= minusAmount;
 				}
 				break;
-			case Brick::no_see_paddle:
+			case power::no_see_paddle:
 				paddle.c.r = 10;
 				paddle.c.g = 10;
 				paddle.c.b = 10;
 				break;
-			case Brick::make_paddle_small:
+			case power::make_paddle_small:
 				// We don't want to go to small.
 				paddle.w = std::max( paddle.w - 5, 5);
 				break;
-			case Brick::make_paddle_big:
+			case power::make_paddle_big:
 				// Don't get too big on me.
 				paddle.w = std::min( 50, paddle.w + 5);
 				break;
-			case Brick::make_paddle_zero:
+			case power::make_paddle_zero:
 				// Lets get a 1 pixel paddle.
 				paddle.w = 1;
 				break;
-			case Brick::make_paddle_giant:
+			case power::make_paddle_giant:
 				// Lets get a giant paddle.
 				paddle.w = 100;
 				break;

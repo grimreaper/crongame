@@ -48,15 +48,16 @@ all: version $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
 	
 $(SRCDIR)/main.cpp: $(OBJS)
-gamefield.o: $(HDRDIR)/gamefield.h $(SRCDIR)/gamefield.cpp krandom.o brick.o
+gamefield.o: $(HDRDIR)/gamefield.h $(SRCDIR)/gamefield.cpp krandom.o brick.o $(HDRDIR)/power.h
 kernel.o: $(HDRDIR)/kernel.h $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o game.o
-brick.o: $(HDRDIR)/brick.h $(SRCDIR)/brick.cpp
+brick.o: $(HDRDIR)/brick.h $(SRCDIR)/brick.cpp $(HDRDIR)/power.h
 krandom.o: $(HDRDIR)/krandom.h $(SRCDIR)/krandom.cpp
 gerror.o: $(HDRDIR)/gerror.h $(SRCDIR)/gerror.cpp
 mtimer.o: $(HDRDIR)/mtimer.h $(SRCDIR)/mtimer.cpp
-ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o
+ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o $(HDRDIR)/power.h
 paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
 game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
+#power.o: $(HDRDIR)/paddle.h
 
 clean: cleantests
 	rm -fv $(OBJS)

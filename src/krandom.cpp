@@ -3,7 +3,9 @@
 int rand_ex_i(int min, int max)
 {
 	if (min - max == 0)
+	{
 		return 0 + min; // avoid zero division
+	}
 
 	if (min > max)
 	{

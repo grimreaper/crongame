@@ -15,45 +15,7 @@ void Brick::make_brick(int lvl)
 	c.r = c.g = c.b = 128;
 	// we want the % value to be slightly higher than the number of power
 	// bricks - I want to find an automatic way to do this... TODO
-	int tmpRand = arc4rand() % 20;
-	#ifdef BRICK_NUM
-		tmpRand = BRICK_NUM;
-	#endif
-	switch (tmpRand)
-	{
-		case 1:
-			status = power::make_all_normal;
-			break;
-		case 2:
-			status = power::make_ball_fire;
-			break;
-		case 3:
-			status = power::add_live;
-			break;
-		case 4:
-			status = power::make_ball_big;
-			break;
-		case 5:
-			status = power::make_ball_small;
-			break;
-		case 6:
-			status = power::no_see_paddle;
-			break;
-		case 7:
-			status = power::make_paddle_small;
-			break;
-		case 8:
-			status = power::make_paddle_big;
-			break;
-		case 9:
-			status = power::make_paddle_zero;
-			break;
-		case 10:
-                  status = power::make_paddle_giant;
-			break;
-		default:
-			status = power::standard;
-	}
+	status = power::generateStatus();
 }
 
 Brick::~Brick()

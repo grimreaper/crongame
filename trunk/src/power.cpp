@@ -1,6 +1,47 @@
 #include "power.h"
 
-brickStatus power::generateStatus()
+power::brickStatus power::generateStatus()
 {
-	return standard;
+	// we want the % value to be slightly higher than the number of power
+	// bricks - I want to find an automatic way to do this... TODO
+
+	int tmpRand = arc4rand() % 20;
+	#ifdef BRICK_NUM
+		tmpRand = BRICK_NUM;
+	#endif
+	switch (tmpRand)
+	{
+		case 1:
+			return make_all_normal;
+
+		case 2:
+			return make_ball_fire;
+
+		case 3:
+			return add_live;
+
+		case 4:
+			return make_ball_big;
+
+		case 5:
+			return make_ball_small;
+
+		case 6:
+			return no_see_paddle;
+
+		case 7:
+			return make_paddle_small;
+
+		case 8:
+			return make_paddle_big;
+
+		case 9:
+			return make_paddle_zero;
+
+		case 10:
+			return make_paddle_giant;
+
+		default:
+			return standard;
+	}
 }

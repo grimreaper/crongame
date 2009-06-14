@@ -28,7 +28,7 @@ TSTSRCS = gerror.cpp
 SCRIPTDIR = scripts
 SCRIPTS != find $(SCRIPTDIR) -name "*.sh"
 HDRS != find $(HDRDIR) -name "*.h"
-OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o
+OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o power.o
 TXTFILES = LICENSE
 BUILDFILES = Makefile
 
@@ -48,7 +48,7 @@ all: version $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
 	
 $(SRCDIR)/main.cpp: $(OBJS)
-gamefield.o: $(HDRDIR)/gamefield.h $(SRCDIR)/gamefield.cpp krandom.o brick.o $(HDRDIR)/power.h
+gamefield.o: $(HDRDIR)/gamefield.h $(SRCDIR)/gamefield.cpp krandom.o brick.o power.o
 kernel.o: $(HDRDIR)/kernel.h $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o game.o
 brick.o: $(HDRDIR)/brick.h $(SRCDIR)/brick.cpp $(HDRDIR)/power.h
 krandom.o: $(HDRDIR)/krandom.h $(SRCDIR)/krandom.cpp

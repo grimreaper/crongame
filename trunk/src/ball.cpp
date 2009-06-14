@@ -171,6 +171,23 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				paddle.c.r = 10;
 				paddle.c.g = 10;
 				paddle.c.b = 10;
+				break;
+			case Brick::make_paddle_small:
+				// We don't want to go to small.
+				paddle.w = std::max( paddle.w - 5, 5);
+				break;
+			case Brick::make_paddle_big:
+				// Don't get too big on me.
+				paddle.w = std::min( 50, paddle.w + 5);
+				break;
+			case Brick::make_paddle_zero:
+				// Lets get a 1 pixel paddle.
+				paddle.w = 1;
+				break;
+			case Brick::make_paddle_giant:
+				// Lets get a giant paddle.
+				paddle.w = 100;
+				break;
 			default:
 				break;
 		}

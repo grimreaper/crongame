@@ -8,6 +8,7 @@
 8) Easy/Med/Hard
 9) User config (choose ball speed, paddle size, etc)
 10) Scores - includes high scores
-11) Change paddle size - power brick
+*11) Change paddle size - power brick
 12) floating powers (instead of it happening right away have it float down for the paddle to catch)
 13) allow powers to come with differing probabilities.
+14) Make the ball fly different directions depending on which part of the brick it hit.

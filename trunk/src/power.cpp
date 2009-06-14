@@ -8,7 +8,9 @@ power::brickStatus power::generateStatus()
 	int tmpRand = arc4rand() % 20;
 	#ifdef BRICK_NUM
 		tmpRand = BRICK_NUM;
+		std::cout << " We just cheated ";
 	#endif
+	std::cout << "We just created a brick with power # " << tmpRand << std::endl;
 	switch (tmpRand)
 	{
 		case 1:

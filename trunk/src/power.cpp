@@ -5,7 +5,7 @@ power::brickStatus power::generateStatus()
 	// we want the % value to be slightly higher than the number of power
 	// bricks - I want to find an automatic way to do this... TODO
 
-	int tmpRand = arc4rand() % 20;
+	int tmpRand = arc4rand() % 20 + 1;
 	#ifdef BRICK_NUM
 		tmpRand = BRICK_NUM;
 		std::cout << " We just cheated ";

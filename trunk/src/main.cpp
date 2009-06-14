@@ -7,16 +7,27 @@
 
 static int flag_windowed = FALSE;
 
+int want_sound = TRUE;
+int depth = -1;
+
+static struct option long_options[] =
+{
+	{"windowed", no_argument, &flag_windowed, TRUE},
+	{"wn", no_argument, &flag_windowed, TRUE},
+	{"win", no_argument, &flag_windowed, TRUE},
+	{"bpp", required_argument, &depth, 'b'},
+	{"silent", no_argument, &want_sound, FALSE},
+	{"nosound", no_argument, &want_sound, FALSE},
+	{"ns", no_argument, &want_sound, FALSE},
+	{0, 0, 0, 0}
+};
+
 int main( int argc, char *argv[])
 {
 	// parameters config
-	int depth = -1;
-
 	int vid_w = 640;
 
 	int vid_h = 480;
-
-	int want_sound = TRUE;
 
 	if (allegro_init())
 	{
@@ -26,17 +37,6 @@ int main( int argc, char *argv[])
 
 	int c = 0;
 	int option_index = 0;
-	static struct option long_options[] =
-	{
-		{"windowed", no_argument, &flag_windowed, TRUE},
-		{"wn", no_argument, &flag_windowed, TRUE},
-		{"win", no_argument, &flag_windowed, TRUE},
-		{"bpp", required_argument, &depth, 'b'},
-		{"silent", no_argument, &want_sound, FALSE},
-		{"nosound", no_argument, &want_sound, FALSE},
-		{"ns", no_argument, &want_sound, FALSE},
-		{0, 0, 0, 0}
-	};
 
 	while ((c = getopt_long (argc, argv, "bw", long_options, &option_index)) != -1)
 	{

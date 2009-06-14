@@ -31,26 +31,29 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	// if we could do that then pre-building levels should be even easier.
 
 	int blank_spots = max_life;
+	Brick *which_brick = NULL;
 
 	// fill the matrix with random level
 	for (int y = 0 ; y < h; ++y)
 	{
 		for (int x = 0 ; x < w; ++x)
 		{
+			which_brick = &bricks[x][y];
+
 			//this should be done as part of the brick class - no the game_field class */
-			bricks[x][y].set_life (arc4rand() % max_life);
+			which_brick->set_life (arc4rand() % max_life);
 
-			bricks[x][y].x = x * SCREEN_W / w;
-			bricks[x][y].y = y * SCREEN_H / 3 / h;
+			which_brick->x = x * SCREEN_W / w;
+			which_brick->y = y * SCREEN_H / 3 / h;
 
-			bricks[x][y].w = SCREEN_W / w;
-			bricks[x][y].h = SCREEN_H / 3 / h;
+			which_brick->w = SCREEN_W / w;
+			which_brick->h = SCREEN_H / 3 / h;
 
 			// pick a random color
-			bricks[x][y].c.r = rand_ex_i(128, 255);
-			bricks[x][y].c.g = rand_ex_i(128, 255);
-			bricks[x][y].c.b = rand_ex_i(128, 255);
-			if (bricks[x][y].get_life() == 0)
+			which_brick->c.r = rand_ex_i(128, 255);
+			which_brick->c.g = rand_ex_i(128, 255);
+			which_brick->c.b = rand_ex_i(128, 255);
+			if (which_brick->get_life() == 0)
 			{
 				if (blank_spots > 0)
 				{
@@ -58,7 +61,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 				}
 				else
 				{
-					bricks[x][y].set_life(1);
+					which_brick->set_life(1);
 					++bc;
 				}
 			}

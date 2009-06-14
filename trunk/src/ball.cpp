@@ -188,6 +188,10 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 				// Lets get a giant paddle.
 				paddle.w = 100;
 				break;
+			case power::unbreakable:
+				// This brick can't be broken. One thing that should be pointed out is that this break can prvent the game from winning.
+				// This is really only here for pre-made levels (as will be happening soon).
+				break;
 			default:
 				break;
 		}

@@ -42,7 +42,8 @@ power::brickStatus power::generateStatus()
 
 		case 10:
 			return make_paddle_giant;
-
+		case 11:
+			return unbreakable;
 		default:
 			return standard;
 	}

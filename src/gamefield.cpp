@@ -127,10 +127,6 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 
 power::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 {
-	int w_b = SCREEN_W / w;
-	int h_b = SCREEN_H / 3 / h;
-	int which_x = x_px / w_b;
-	int which_y = y_px / h_b;
 	Brick *which_brick = px_to_brick(x_px, y_px);
 	if (which_brick->get_life() <= 0)
 	{

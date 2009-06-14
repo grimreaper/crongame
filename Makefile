@@ -57,7 +57,7 @@ mtimer.o: $(HDRDIR)/mtimer.h $(SRCDIR)/mtimer.cpp
 ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o $(HDRDIR)/power.h
 paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
 game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
-#power.o: $(HDRDIR)/paddle.h
+power.o: $(HDRDIR)/paddle.h $(SRCDIR)/power.cpp
 
 clean: cleantests
 	rm -fv $(OBJS)

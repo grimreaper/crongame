@@ -50,9 +50,10 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 			which_brick->h = SCREEN_H / 3 / h;
 
 			// pick a random color
-			which_brick->c.r = rand_ex_i(128, 255);
+/*			which_brick->c.r = rand_ex_i(128, 255);
 			which_brick->c.g = rand_ex_i(128, 255);
 			which_brick->c.b = rand_ex_i(128, 255);
+*/
 			if (which_brick->get_life() == 0)
 			{
 				if (blank_spots > 0)
@@ -71,8 +72,6 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 			}
 		}
 	}
-
-
 }
 
 // returns true if we finished the level (0 bricks left)
@@ -109,7 +108,6 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	{
 		return false; // ball too low or out of bounds
 	}
-
 	int which_x = x_px / w_b;
 	int which_y = y_px / h_b;
 

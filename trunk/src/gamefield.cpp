@@ -61,7 +61,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 				}
 				else
 				{
-					which_brick->set_life(1);
+					which_brick->set_life ( arc4rand() % max_life + 1 );
 					++bc;
 				}
 			}

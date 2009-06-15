@@ -8,10 +8,17 @@ GameField::GameField() : w(0), h(0), bc(0)
 GameField::~GameField()
 {}
 
-// creates a new level
+// creates a new max_life
 
-void GameField::do_new_random_level(int w, int h, int max_life)
+void GameField::do_new_random_level(int w, int h, int level)
 {
+	int max_life = std::min(level, 5);
+
+	if (level <= 0)
+	{
+		//return bricks;
+	}
+
 	if (w < 1 || w > GAMEFIELD_MAX_W)
 	{
 		w = GAMEFIELD_MAX_W; // safe check
@@ -28,12 +35,12 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	// I want to see if we could deal with having a 0-life brick.
 	// if we can then making special arragments shouldn't be that hard.
 	// TODO - allow for width to be dynamically chosen
-	// if we could do that then pre-building levels should be even easier.
+	// if we could do that then pre-building max_lifes should be even easier.
 
 	int blank_spots = max_life;
 	Brick *which_brick = NULL;
 
-	// fill the matrix with random level
+	// fill the matrix with random max_life
 	for (int y = 0 ; y < h; ++y)
 	{
 		for (int x = 0 ; x < w; ++x)
@@ -80,7 +87,7 @@ void GameField::do_new_random_level(int w, int h, int max_life)
 	std::cout << "And our final bc is " << bc << std::endl;
 }
 
-// returns true if we finished the level (0 bricks left)
+// returns true if we finished the max_life (0 bricks left)
 bool GameField::update()
 {
 	for (int y = 0 ; y < h; ++y)
@@ -142,6 +149,7 @@ power::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 	}
 	return power::standard;
 }
+
 Brick* GameField::px_to_brick(int x_px , int y_px)
 {
 	int w_b = SCREEN_W / w;

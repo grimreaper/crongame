@@ -16,7 +16,7 @@ class GameField
 		GameField();
 		~GameField();
 
-		void do_new_random_level(int w, int h, int max_life); // creates a new level size w*h, with 1..maxlife for bricks
+		void do_new_random_level(int w, int h, int level); // creates a new level size w*h, with 1..maxlife for bricks
 
 		bool update();
 		void render(BITMAP *bmp);
@@ -33,6 +33,8 @@ class GameField
 
 	private:
 		Brick* px_to_brick(int x_px , int y_px); //return a reference to a brick
+
+		//Until I work on a file loader - I'm going to keep all the pre-built levels in code. These functions build those levels
 };
 
 #endif

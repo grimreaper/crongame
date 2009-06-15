@@ -201,25 +201,11 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	c.r = (status == on_fire) ? 255 : status;
 
 	// never go faster than paddle size, or we are screwed :P
-	if (dy > paddle.h*0.25)
-	{
-		dy = paddle.h*0.25;
-	}
+	dy = std::min (dy,  paddle.h*0.25);
+	dy = std::max (dy, -paddle.h*0.25);
 
-	if (dy < -paddle.h*0.25)
-	{
-		dy = -paddle.h*0.25;
-	}
-
-	if (dx > paddle.w*0.25)
-	{
-		dx = paddle.w*0.25;
-	}
-
-	if (dx < -paddle.w*0.25)
-	{
-		dx = -paddle.w*0.25;
-	}
+	dx = std::min (dx,  paddle.w*0.25);
+	dx = std::max (dx, -paddle.w*0.25);
 
 	paddle_last_y = paddle.y; // save our last position
 

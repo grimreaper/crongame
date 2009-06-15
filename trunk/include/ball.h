@@ -28,8 +28,8 @@ class Ball
 		float y;
 
 		// direction (speed in x,y)
-		float dx;
-		float dy;
+		double dx;
+		double dy;
 
 		// radius
 		int r;

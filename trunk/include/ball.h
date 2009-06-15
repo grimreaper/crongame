@@ -52,7 +52,7 @@ class Ball
 
 	private:
 		void bounce_x();
-		void bounce_y();
+		void bounce_y(int angle = -1);
 };
 
 #endif

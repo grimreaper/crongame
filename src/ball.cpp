@@ -235,9 +235,13 @@ void Ball::bounce_x()
 }
 
 
-void Ball::bounce_y()
+//angle defaults to -1
+void Ball::bounce_y(int angle)
 {
-	dy = -rand_ex_f(dy * 0.9, dy*1.1);
+	if (angle == -1)
+	{
+		dy = -rand_ex_f(dy * 0.9, dy*1.1);
+	}
 
 //	if (rand() % 100 < 10)
 //		dy = rand_sign_switch(rand_ex_f(BALL_MIN_SPD , BALL_MAX_SPD ));

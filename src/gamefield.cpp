@@ -13,6 +13,18 @@ GameField::~GameField()
 void GameField::do_new_random_level(int w, int h, int level)
 {
 	int max_life = std::min(level, 5);
+	w = 3 + rand() % level + level;
+	h = 3 + rand() % level;
+	// pick new level parameters
+	//don't let mygame.lives of bricks go greater than 5
+	if (w > GAMEFIELD_MAX_W-2)
+	{
+		w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
+	}
+	if (h > GAMEFIELD_MAX_H-2)
+	{
+		h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
+	}
 
 	if (level <= 0)
 	{

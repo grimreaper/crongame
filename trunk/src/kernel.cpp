@@ -75,7 +75,7 @@ void Kernel::play()
 					h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
 				}
 
-				game_field.do_new_random_level(w,h,l); // new level
+				game_field.do_new_random_level(w,h,mygame.level); // new level
 				init_game();
 			}
 

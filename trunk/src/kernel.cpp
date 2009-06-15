@@ -61,21 +61,7 @@ void Kernel::play()
 					mygame.next_level();
 				}
 
-				// pick new level parameters
-				//don't let mygame.lives of bricks go greater than 5
-				int l = std::min(mygame.level, 5);
-				int w = 3 + rand() % mygame.level + mygame.level;
-				int h = 3 + rand() % mygame.level;
-				if (w > GAMEFIELD_MAX_W-2)
-				{
-					w = GAMEFIELD_MAX_W-2; // oh the guy can play :o
-				}
-				if (h > GAMEFIELD_MAX_H-2)
-				{
-					h = GAMEFIELD_MAX_H-2; // oh the guy can play :o
-				}
-
-				game_field.do_new_random_level(w,h,mygame.level); // new level
+				game_field.do_new_random_level(0,0,mygame.level); // new level
 				init_game();
 			}
 

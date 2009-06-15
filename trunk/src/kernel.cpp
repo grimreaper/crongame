@@ -35,7 +35,7 @@ void Kernel::play()
 
 	init_game(); // initialize a game run
 
-	game_field.do_new_random_level(3,2,1); // create a level
+	game_field.do_new_random_level(0,0,1); // create a level
 
 	show_mouse(NULL); // hide mouse
 
@@ -54,10 +54,10 @@ void Kernel::play()
 
 			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
-				textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 
 				if (ret != GAME_UDP_LOST_GAME)
 				{
+					textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 					mygame.next_level();
 				}
 

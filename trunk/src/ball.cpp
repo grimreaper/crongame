@@ -125,11 +125,11 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		hitY = true;
 		whatBrickStatus = game_field.getBrickStatus((int)x,(int)y+r);
 	}
-	if(hitX && status != on_fire)
+	if(hitX && status != on_fire && whatBrickStatus != power::unbreakable)
 	{
 		bounce_x();
 	}
-	if (hitY && status != on_fire)
+	if (hitY && status != on_fire  && whatBrickStatus != power::unbreakable)
 	{
 		bounce_y();
 	}

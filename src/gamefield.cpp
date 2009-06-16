@@ -131,7 +131,11 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 
 		if (bricks[which_x][which_y].get_life() <= 0)
 		{
+			std::cout << "I just hit a brick at px (x,y) (" << x_px << "," << y_px << ") starting at (x,y) with a (w,h) of (" << bricks[which_x][which_y].x \
+				<< ","<< bricks[which_x][which_y].y << ")/("<<bricks[which_x][which_y].w << "," <<bricks[which_x][which_y].h << ")";
 			--bc; // wasted brick!
+			std::cout << " The new bc is " << bc;
+			std::cout << std::endl;
 		}
 
 		return true; // hit!

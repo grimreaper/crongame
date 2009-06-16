@@ -96,6 +96,24 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		(y + r > paddle.y  || y + r > paddle_last_y  ) &&
 		(y - r < paddle.y + paddle.h || y - r < paddle_last_y + paddle.h))
 	{
+		std::cout << "I just hit paddle at (" << x << "," << y << ") r=" << r <<" where paddle is (" << paddle.x << ","<< paddle.y << ") with dimensions of " << paddle.w << "x" << paddle.h <<std::endl;
+		std::cout << paddle.x << "|" <<paddle.x + (paddle.w/3) << "|" << paddle.x + (paddle.w/3)*2  << "|" << paddle.x + paddle.w << std::endl;
+		if (x - r < paddle.x + (paddle.w / 3))
+		{
+			std::cout << "In the first third";
+		}
+		if (x - r > paddle.x + (paddle.w / 3) && x -r < paddle.x + (paddle.w/3)*2 )
+		{
+			std::cout << "In the mid third";
+		}
+		if (x - r > paddle.x + (paddle.w/3)*2)
+		{
+			std::cout << "In the final third";
+		}
+
+		std::cout << std::endl;
+
+
 			y = paddle.y - r; // this is lame safe check
 
 			bounce_y();

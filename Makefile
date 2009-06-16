@@ -73,12 +73,13 @@ test-all:
 	for file in $(TSTSRCS);do $(MAKE) test FILE=$$file; done;
 
 check:
-	cppcheck -v -a -s --unused-functions .
-	rats -rw3 *
+	cppcheck -v -a -s --unused-functions src/
+	rats -rw3 src/*
+	splint -strict-lib -showcolumn -showfunc -strict src/*.c
+	flawfinder src/*.cpp
 
 version:
 	@echo $(NAME) version $(VERSION)
-#splint -strict-lib -showcolumn -showfunc -strict *.c
 
 #	$(CC) $(CFLAGS) -c $< -o $@
 

@@ -27,10 +27,6 @@ class Ball
 		float x;
 		float y;
 
-		// direction (speed in x,y)
-		double dx;
-		double dy;
-
 		// radius
 		int r;
 
@@ -53,6 +49,11 @@ class Ball
 	private:
 		void bounce_x();
 		void bounce_y(int angle = -1);
+
+		// direction (speed in x,y)
+		double dx;
+		double dy;
+
 };
 
 #endif

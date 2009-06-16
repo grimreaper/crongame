@@ -23,10 +23,6 @@ class Ball
 
 		// Attributes
 
-		// position
-		float x;
-		float y;
-
 		// radius
 		int r;
 
@@ -54,6 +50,9 @@ class Ball
 		double dx;
 		double dy;
 
+		// position
+		float x;
+		float y;
 };
 
 #endif

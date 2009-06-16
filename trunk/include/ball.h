@@ -37,8 +37,6 @@ class Ball
 		{
 			normal,
 			on_fire,
-			big,
-			small
 		};
 		ballStatus status;
 

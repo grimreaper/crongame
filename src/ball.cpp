@@ -24,6 +24,8 @@ void Ball::init()
 	sticky_time = 0;
 
 	status = normal;
+
+	ball_speed_mult = 1.0;
 }
 
 // updates ball ... returns true if the ball was lost (we lose a life)
@@ -57,8 +59,8 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		sticky_time = 0;
 	}
 	// upgrade ball position with speed x,y
-	x += dx;
-	y += dy;
+	x += dx * ball_speed_mult;
+	y += dy * ball_speed_mult;
 
 	// bounce on field bounds
 	if (x < r)
@@ -191,6 +193,13 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 			case power::unbreakable:
 				// This brick can't be broken. One thing that should be pointed out is that this break can prvent the game from winning.
 				// This is really only here for pre-made levels (as will be happening soon).
+				break;
+			//For speed up and slow down - don't make too much of change.
+			case power::make_ball_fast:
+				ball_speed_mult += 0.02;
+				break;
+			case power::make_ball_slow:
+				ball_speed_mult -= 0.02;
 				break;
 			default:
 				break;

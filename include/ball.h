@@ -40,6 +40,9 @@ class Ball
 		};
 		ballStatus status;
 
+		// This gets multiplied by the ball speed change just before the change happens.
+		float ball_speed_mult;
+
 	private:
 		void bounce_x();
 		void bounce_y(int angle = -1);

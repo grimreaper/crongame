@@ -45,6 +45,10 @@ power::brickStatus power::generateStatus()
 			return make_paddle_giant;
 		case 11:
 			return unbreakable;
+		case 12:
+			return make_ball_fast;
+		case 13:
+			return make_ball_slow;
 		default:
 			return standard;
 	}

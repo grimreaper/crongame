@@ -1,0 +1,3 @@
+#summary This project changed names.
+
+The source code of this game is now available at http://code.google.com/p/crongame/source

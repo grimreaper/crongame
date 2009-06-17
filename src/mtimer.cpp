@@ -1,20 +1,3 @@
-// ---------------------------------------------------------------------------
-// mtimer.cpp
-// ---------------------------------------------------------------------------
-// Main timer system
-//
-// The purpose of this system is to have a timer
-// always running at a constant rate, to be used
-// by other parts of the game to time stuff.
-//
-// Changes:
-// 28 OCT - Added FPS counter support
-// ---------------------------------------------------------------------------
-// Developed By Kronoman - Copyright (c) 2004-2006
-// In loving memory of my father
-// ---------------------------------------------------------------------------
-// Thu Oct 28 00:37:13 ART 2004 @192 /Internet Time/
-
 #include <allegro.h>
 #include <limits.h> // need this to know the max size of the counter...
 
@@ -51,7 +34,9 @@ static void _timer_handler()
 	}
 
 	if (big_timer_counter > ULONG_MAX - 2 )
+	{
 		big_timer_counter = 0;
+	}
 }
 END_OF_FUNCTION(_timer_handler);
 

@@ -3,7 +3,6 @@
 
 #include <allegro.h>
 
-
 #include "paddle.h"
 #include "ball.h"
 #include "gamefield.h"

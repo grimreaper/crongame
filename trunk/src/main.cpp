@@ -19,7 +19,7 @@ static struct option long_options[] =
 	{"silent", no_argument, &want_sound, FALSE},
 	{"nosound", no_argument, &want_sound, FALSE},
 	{"ns", no_argument, &want_sound, FALSE},
-	{0, 0, 0, 0}
+	{NULL, 0, NULL, 0}
 };
 
 int main( int argc, char *argv[])

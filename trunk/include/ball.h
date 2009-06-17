@@ -4,6 +4,7 @@
 #include <allegro.h>
 #include "paddle.h"
 #include "gamefield.h"
+#include <cmath>
 
 // maximun speed
 const int BALL_MAX_SPD = 12;

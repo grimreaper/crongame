@@ -1,4 +1,5 @@
 #include "ball.h"
+double deg2rad (double rads);
 
 Ball::Ball()
 {}
@@ -101,14 +102,18 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		if (x - r < paddle.x + (paddle.w / 3))
 		{
 			std::cout << "In the first third";
+			bounce_y(45);
+
 		}
 		if (x - r > paddle.x + (paddle.w / 3) && x -r < paddle.x + (paddle.w/3)*2 )
 		{
 			std::cout << "In the mid third";
+			bounce_y(90);
 		}
 		if (x - r > paddle.x + (paddle.w/3)*2)
 		{
 			std::cout << "In the final third";
+			bounce_y(270);
 		}
 
 		std::cout << std::endl;
@@ -116,7 +121,6 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 			y = paddle.y - r; // this is lame safe check
 
-			bounce_y();
 	}
 
 	bool hitX = false;
@@ -269,7 +273,16 @@ void Ball::bounce_y(int angle)
 	{
 		dy = -rand_ex_f(dy * 0.9, dy*1.1);
 	}
+	std::cout << -std::sin(deg2rad(angle)) << std::endl;
+	dy = -std::sin(deg2rad(angle));
 
 //	if (rand() % 100 < 10)
 //		dy = rand_sign_switch(rand_ex_f(BALL_MIN_SPD , BALL_MAX_SPD ));
+}
+
+//move this to a math file
+double deg2rad (double rads)
+{
+	static double pi = 3.141592653589793238;
+	return ((pi * rads) / 180);
 }

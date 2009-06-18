@@ -1,0 +1,7 @@
+*1) game does not restart on lost lives
+*2) when ball is on fire - bounces when hitting brick of > 1 life (feature/bug? - I'm inclined to say feature) --> its a feature
+3) ball on fire is too powerfull
+*4) automated install fails on all OSes
+5) Make does not seem to catch all deps. When I modify some files other files don't get rebuilt when they should
+6) unbreakable bricks can break levels (in random mode)
+7) ball goes through unbreakable bricks for some reason

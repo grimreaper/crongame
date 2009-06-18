@@ -102,18 +102,18 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		if (x - r < paddle.x + (paddle.w / 3))
 		{
 			std::cout << "In the first third";
-			bounce_y(45);
+			bounce_y();
 
 		}
 		if (x - r > paddle.x + (paddle.w / 3) && x -r < paddle.x + (paddle.w/3)*2 )
 		{
 			std::cout << "In the mid third";
-			bounce_y(90);
+			bounce_y();
 		}
 		if (x - r > paddle.x + (paddle.w/3)*2)
 		{
 			std::cout << "In the final third";
-			bounce_y(270);
+			bounce_y();
 		}
 
 		std::cout << std::endl;
@@ -149,17 +149,18 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		hitY = true;
 		whatBrickStatus = game_field.getBrickStatus((int)x,(int)y+r);
 	}
-	if(hitX && status != on_fire && whatBrickStatus != power::unbreakable)
+	if(hitX && status != on_fire)
 	{
 		bounce_x();
 	}
-	if (hitY && status != on_fire  && whatBrickStatus != power::unbreakable)
+	if (hitY && status != on_fire)
 	{
 		bounce_y();
 	}
 	if (hitX || hitY)
 	{
 		int minusAmount = (r >= 8) ? 4 : 2;
+		std::cout << "we know that the brick is status # " << whatBrickStatus << " and that ball is " << status;
 		switch (whatBrickStatus)
 		{
 			case power::standard:
@@ -259,7 +260,7 @@ void Ball::bounce_x()
 {
 	dx = -rand_ex_f(dx * 0.9, dx * 1.1);
 
-	if (rand() % 100 < 10)
+	if (arc4rand() % 100 < 10)
 	{
 		dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD , BALL_MAX_SPD ));
 	}

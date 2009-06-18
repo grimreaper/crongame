@@ -12,6 +12,15 @@ GameField::~GameField()
 
 void GameField::do_new_random_level(int w, int h, int level)
 {
+/*	for (int y = 0 ; y < GAMEFIELD_MAX_H; ++y)
+	{
+		for (int x = 0 ; x < GAMEFIELD_MAX_W; ++x)
+		{
+			bricks[x][y] = NULL;
+		}
+	}
+*/
+
 	int max_life = std::min(level, 5);
 	w = 3 + rand() % level + level;
 	h = 3 + rand() % level;
@@ -128,11 +137,11 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	if (bricks[which_x][which_y].get_life() > 0)
 	{
 		bricks[which_x][which_y].rem_life();
-
+		std::cout << "I just hit a brick at px (x,y) (" << x_px << "," << y_px << ") starting at (x,y) with a (w,h) of (" << bricks[which_x][which_y].x \
+			<< ","<< bricks[which_x][which_y].y << ")/("<<bricks[which_x][which_y].w << "," <<bricks[which_x][which_y].h << ")";
 		if (bricks[which_x][which_y].get_life() <= 0)
 		{
-			std::cout << "I just hit a brick at px (x,y) (" << x_px << "," << y_px << ") starting at (x,y) with a (w,h) of (" << bricks[which_x][which_y].x \
-				<< ","<< bricks[which_x][which_y].y << ")/("<<bricks[which_x][which_y].w << "," <<bricks[which_x][which_y].h << ")";
+			std::cout << " and its now dead!" << std::endl;
 			--bc; // wasted brick!
 			std::cout << " The new bc is " << bc;
 			std::cout << std::endl;

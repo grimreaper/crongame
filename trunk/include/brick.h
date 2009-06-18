@@ -24,22 +24,6 @@ class Brick
 		int h;
 
 		RGB c; // color, in R,G,B
-		/*
-		enum brickStatus
-		{
-			standard,
-			make_all_normal,
-			make_ball_fire,
-			add_live, //yes I am aware that this is not proper English - I am using lives and lifes differently
-			make_ball_big,
-			make_ball_small,
-			no_see_paddle,
-			make_paddle_small,
-			make_paddle_big,
-			make_paddle_zero,
-			make_paddle_giant
-		};
-		*/
 
 		power::brickStatus status;
 
@@ -48,8 +32,9 @@ class Brick
 		void kill_brick(); //set life to 0
 		void set_life(int toWhat); //set life equal to some number
 		int get_life();
-		// While we could always find out what the current status is 
-		// of the brick - the question is do we want the status to 
+
+		// While we could always find out what the current status is
+		// of the brick - the question is do we want the status to
 		// cause any change. This function should only return a status
 		// when its ready to let the user activate it.
 		// (As of now when life <=1)

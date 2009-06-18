@@ -5,7 +5,8 @@
 #include "gerror.h"
 #include "kernel.h"
 
-static int flag_windowed = FALSE;
+int flag_windowed = FALSE;
+int flag_cheat = FALSE;
 
 int want_sound = TRUE;
 int depth = -1;
@@ -19,6 +20,7 @@ static struct option long_options[] =
 	{"silent", no_argument, &want_sound, FALSE},
 	{"nosound", no_argument, &want_sound, FALSE},
 	{"ns", no_argument, &want_sound, FALSE},
+	{"cheat", no_argument, &flag_cheat, TRUE},
 	{NULL, 0, NULL, 0}
 };
 

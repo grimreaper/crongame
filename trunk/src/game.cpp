@@ -21,7 +21,14 @@ void Game::next_level()
 
 int Game::lost_life()
 {
-	--lives;
+	if (! flag_cheat )
+	{
+		--lives;
+	}
+	else
+	{
+		std::cout << "We are cheating..." << std::endl;
+	}
 	std::cout << "we have " << lives << " at level " << level <<std::endl;
 	if (lives <= 0)
 	{

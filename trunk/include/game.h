@@ -6,6 +6,8 @@
 #include <iostream>
 #include "paddle.h"
 
+extern int flag_cheat;
+
 class Game
 {
 	public:

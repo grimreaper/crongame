@@ -83,3 +83,14 @@ void Brick::rem_life()
 		std::cout << "We just hit an unbrekable" << std::endl;
 	}
 }
+
+// See header file for what this function does
+power::brickStatus Brick::getUsableStatus()
+{
+	if (life <= 0)
+	{
+		//only give power when dead
+		return status;
+	}
+	return power::standard;
+}

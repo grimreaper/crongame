@@ -147,12 +147,7 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 power::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 {
 	Brick *which_brick = px_to_brick(x_px, y_px);
-	if (which_brick->get_life() <= 0)
-	{
-		//only give power when dead
-		return which_brick->status;
-	}
-	return power::standard;
+	return which_brick->getUsableStatus();
 }
 
 Brick* GameField::px_to_brick(int x_px , int y_px)

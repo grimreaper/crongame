@@ -17,8 +17,8 @@ power::brickStatus power::generateStatus()
 			return make_all_normal;
 
 		case 2:
-			return make_ball_fire;
-			//return standard;
+//			return make_ball_fire;
+			return standard;
 
 		case 3:
 			return add_live;

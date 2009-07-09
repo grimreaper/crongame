@@ -115,16 +115,18 @@ int Kernel::update()
 	/*
 	I think we have an issue with the FPS counter or some other threads.
 	pausing stops the screen - but not the game.
+	*/
 	// pause the game.
 	if (key[KEY_P])
 	{
 		clear_keybuf();
 		while (!key[KEY_Q])
 		{
+			_stop_global_timer(); // stop the global timer
 			readkey();
+			_start_global_timer(); // we start a global timer, check mtimer.cpp
 		}
 	}
-	*/
 
 	return ret;
 }

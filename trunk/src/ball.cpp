@@ -42,16 +42,13 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		x = paddle.x + paddle.w / 2;
 		y = paddle.y - r;
 
-		if (controls::release_ball_from_paddle()) // mouse button is pressed, release the ball
-		{
-			sticky_time = 0;
-		}
-
-		if (sticky_time <= 0)  // time is up?
+		if (sticky_time <= 0 || controls::release_ball_from_paddle())  // time is up?
 		{
 			// do the up release
 			dy = -rand_ex_f(BALL_MIN_SPD ,BALL_MAX_SPD );
 			dx = rand_sign_switch(rand_ex_f(BALL_MIN_SPD,BALL_MAX_SPD ));
+			// In case we released early (for example from mouse button click) lets set time to zero.
+			sticky_time = 0;
 		}
 		return false; // we are stick to the paddle. all OK
 	}

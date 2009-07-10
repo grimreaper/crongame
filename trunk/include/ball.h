@@ -4,6 +4,7 @@
 #include <allegro.h>
 #include "paddle.h"
 #include "gamefield.h"
+#include "controls.h"
 #include <cmath>
 
 // maximun speed

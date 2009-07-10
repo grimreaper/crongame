@@ -42,7 +42,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		x = paddle.x + paddle.w / 2;
 		y = paddle.y - r;
 
-		if (mouse_b & 1) // mouse button is pressed, release the ball
+		if (controls::release_ball_from_paddle()) // mouse button is pressed, release the ball
 		{
 			sticky_time = 0;
 		}

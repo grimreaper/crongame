@@ -6,10 +6,13 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include <allegro.h>
+
+
 class controls
 {
 	public:
-		bool release_ball_from_paddle();
+		static bool release_ball_from_paddle();
 };
 
 #endif

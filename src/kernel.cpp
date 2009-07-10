@@ -52,7 +52,7 @@ void Kernel::play()
 				init_game();
 			}
 
-			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || key[KEY_SPACE]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
+			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || key[KEY_PLUS_PAD]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 
 				if (ret != GAME_UDP_LOST_GAME)

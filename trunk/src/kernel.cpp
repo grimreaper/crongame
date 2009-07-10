@@ -107,7 +107,7 @@ int Kernel::update()
 		ret = GAME_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
 	}
 
-	if (key[KEY_ESC]) // exit game -- DEBUG , WE MUST CONFIRM THIS!!
+	if (controls::quit_game()) // exit game -- DEBUG , WE MUST CONFIRM THIS!!
 	{
 		ret = KERNEL_UDP_EXIT;
 	}
@@ -117,10 +117,10 @@ int Kernel::update()
 	pausing stops the screen - but not the game.
 	*/
 	// pause the game.
-	if (key[KEY_P])
+	if (controls::pause_game())
 	{
 		clear_keybuf();
-		while (!key[KEY_Q])
+		while (!controls::release_ball_from_paddle())
 		{
 			_stop_global_timer(); // stop the global timer
 			readkey();

@@ -9,6 +9,7 @@
 #include "mtimer.h"
 #include "game.h"
 #include "gerror.h"
+#include "controls.h"
 
 #include "game_status_constants.h"
 

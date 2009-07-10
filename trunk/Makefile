@@ -49,12 +49,12 @@ all: version $(SRCDIR)/main.cpp
 	
 $(SRCDIR)/main.cpp: $(OBJS)
 gamefield.o: $(HDRDIR)/gamefield.h $(SRCDIR)/gamefield.cpp krandom.o brick.o power.o
-kernel.o: $(HDRDIR)/kernel.h $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o game.o
+kernel.o: $(HDRDIR)/kernel.h $(SRCDIR)/kernel.cpp mtimer.o gamefield.o ball.o paddle.o game.o controls.o
 brick.o: $(HDRDIR)/brick.h $(SRCDIR)/brick.cpp $(HDRDIR)/power.h
 krandom.o: $(HDRDIR)/krandom.h $(SRCDIR)/krandom.cpp
 gerror.o: $(HDRDIR)/gerror.h $(SRCDIR)/gerror.cpp
 mtimer.o: $(HDRDIR)/mtimer.h $(SRCDIR)/mtimer.cpp
-ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o $(HDRDIR)/power.h
+ball.o: $(HDRDIR)/ball.h $(SRCDIR)/ball.cpp paddle.o $(HDRDIR)/power.h controls.o
 paddle.o: $(HDRDIR)/paddle.h $(SRCDIR)/paddle.cpp
 game.o: $(HDRDIR)/game.h $(SRCDIR)/game.cpp
 power.o: $(HDRDIR)/paddle.h $(SRCDIR)/power.cpp

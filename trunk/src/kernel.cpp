@@ -35,7 +35,7 @@ void Kernel::play()
 
 	init_game(); // initialize a game run
 
-	game_field.do_new_random_level(0,0,1); // create a level
+	game_field.do_new_random_level(1); // create a level
 
 	show_mouse(NULL); // hide mouse
 
@@ -61,7 +61,7 @@ void Kernel::play()
 					mygame.next_level();
 				}
 
-				game_field.do_new_random_level(0,0,mygame.level); // new level
+				game_field.do_new_random_level(mygame.level); // new level
 				init_game();
 			}
 

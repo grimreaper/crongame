@@ -13,6 +13,8 @@ class controls
 {
 	public:
 		static bool release_ball_from_paddle();
+		static bool pause_game();
+		static bool quit_game();
 };
 
 #endif

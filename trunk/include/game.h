@@ -24,6 +24,9 @@ class Game
 
 		//we move on to the next level
 		void next_level();
+		// or we just move back
+		void prev_level();
+
 		//we just lost a life
 		int lost_life();
 

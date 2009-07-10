@@ -19,6 +19,11 @@ void Game::next_level()
 	++level;
 }
 
+void Game::prev_level()
+{
+	level = std::max(level - 1, 1);
+}
+
 int Game::lost_life()
 {
 	if (! flag_cheat )

@@ -52,7 +52,14 @@ void Kernel::play()
 				init_game();
 			}
 
-			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || key[KEY_PLUS_PAD]) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
+			if (controls::cheat_rm_level())
+			{
+				mygame.prev_level();
+				game_field.do_new_random_level(mygame.level); // new level
+				init_game();
+			}
+
+			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || controls::cheat_add_level() ) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
 			{
 
 				if (ret != GAME_UDP_LOST_GAME)

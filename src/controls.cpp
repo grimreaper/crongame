@@ -15,3 +15,13 @@ bool controls::quit_game()
 {
 	return key[KEY_ESC];
 }
+
+bool controls::cheat_add_level()
+{
+	return key[KEY_PLUS_PAD];
+}
+
+bool controls::cheat_rm_level()
+{
+	return key[KEY_MINUS_PAD];
+}

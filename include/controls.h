@@ -15,6 +15,9 @@ class controls
 		static bool release_ball_from_paddle();
 		static bool pause_game();
 		static bool quit_game();
+		static bool cheat_add_level();
+		static bool cheat_rm_level();
+
 };
 
 #endif

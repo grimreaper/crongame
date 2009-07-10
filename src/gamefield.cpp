@@ -10,7 +10,7 @@ GameField::~GameField()
 
 // creates a new max_life
 
-void GameField::do_new_random_level(int w, int h, int level)
+void GameField::do_new_random_level(int level)
 {
 /*	for (int y = 0 ; y < GAMEFIELD_MAX_H; ++y)
 	{

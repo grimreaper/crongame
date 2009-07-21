@@ -1,4 +1,5 @@
 #include <allegro.h>
+#include <adime.h>
 #include <iostream>
 #include <getopt.h>
 
@@ -34,6 +35,11 @@ int main( int argc, char *argv[])
 	if (allegro_init())
 	{
 		std::cout << "main() : Allegro failed to start!" << std::endl;
+		exit(1);
+	}
+	if (adime_init() != 0)
+	{
+		std::cout << "main() : Adime failed to start!" << std::endl;
 		exit(1);
 	}
 

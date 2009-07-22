@@ -5,12 +5,16 @@
 
 #include "gerror.h"
 #include "kernel.h"
+#include "dialog.h"
 
 int flag_windowed = FALSE;
 int flag_cheat = FALSE;
 
 int want_sound = TRUE;
 int depth = -1;
+
+char player_name[256] ="";
+int update_hs = 0;
 
 static struct option long_options[] =
 {
@@ -35,11 +39,6 @@ int main( int argc, char *argv[])
 	if (allegro_init())
 	{
 		std::cout << "main() : Allegro failed to start!" << std::endl;
-		exit(1);
-	}
-	if (adime_init() != 0)
-	{
-		std::cout << "main() : Adime failed to start!" << std::endl;
 		exit(1);
 	}
 
@@ -136,6 +135,13 @@ int main( int argc, char *argv[])
 
 	set_window_title("Crontab!");
 
+	if (adime_init() != 0)
+	{
+		std::cout << "main() : Adime failed to start!" << std::endl;
+		exit(1);
+	}
+	clear(screen);
+	ask_player_name();
 	// run game
 	Kernel *kernel	;
 	kernel = new(Kernel);

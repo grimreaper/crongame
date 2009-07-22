@@ -1,6 +1,5 @@
 #ifndef KRANDOM_H
-#include <stdlib.h>
-#include <algorithm>
+#include "common.h"
 
 
 int rand_ex_i(int min, int max); // integer version

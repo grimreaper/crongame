@@ -1,7 +1,7 @@
 #ifndef GAMEFIELD_H
 #define GAMEFIELD_H
 
-#include <allegro.h>
+#include "common.h"
 #include "brick.h"
 #include "power.h"
 

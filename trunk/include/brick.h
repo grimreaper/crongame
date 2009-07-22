@@ -1,7 +1,7 @@
 #ifndef BRICK_H
 #define BRICK_H
 
-#include <allegro.h>
+#include "common.h"
 #include "krandom.h"
 #include "power.h"
 

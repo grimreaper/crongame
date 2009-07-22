@@ -1,7 +1,7 @@
 #ifndef KERNEL_H
 #define KERNEL_H
 
-#include <allegro.h>
+#include "common.h"
 
 #include "paddle.h"
 #include "ball.h"

@@ -6,8 +6,7 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#include <allegro.h>
-
+#include "common.h"
 
 class controls
 {

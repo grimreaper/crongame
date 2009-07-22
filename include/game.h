@@ -1,10 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "common.h"
 #include "game_status_constants.h"
 #include "ball.h"
-#include <iostream>
 #include "paddle.h"
+#include "dialog.h"
 
 extern int flag_cheat;
 

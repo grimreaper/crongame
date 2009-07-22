@@ -1,8 +1,7 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
-#include <allegro.h>
-#include <algorithm>
+#include "common.h"
 
 class Paddle
 {

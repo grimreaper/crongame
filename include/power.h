@@ -1,8 +1,7 @@
 #ifndef POWER_H
 #define POWER_H
-
+#include "common.h"
 #include "krandom.h"
-#include <iostream>
 
 class power
 {

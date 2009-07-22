@@ -1,11 +1,10 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include <allegro.h>
+#include "common.h"
 #include "paddle.h"
 #include "gamefield.h"
 #include "controls.h"
-#include <cmath>
 
 // maximun speed
 const int BALL_MAX_SPD = 12;

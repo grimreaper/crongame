@@ -34,7 +34,7 @@ int Game::lost_life()
 	{
 		std::cout << "We are cheating..." << std::endl;
 	}
-	std::cout << player_name << " has " << lives << " at level " << level <<std::endl;
+	std::cout << " " << lives << " at level " << level <<std::endl;
 	if (lives <= 0)
 	{
 		textout_ex( screen, font, "Are you for real?", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));

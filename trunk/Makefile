@@ -28,7 +28,7 @@ TSTSRCS = gerror.cpp
 SCRIPTDIR = scripts
 SCRIPTS != find $(SCRIPTDIR) -name "*.sh"
 HDRS != find $(HDRDIR) -name "*.h"
-OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o power.o controls.o dialog.o
+OBJS= gamefield.o kernel.o brick.o krandom.o gerror.o mtimer.o ball.o paddle.o game.o power.o controls.o
 TXTFILES = LICENSE
 BUILDFILES = Makefile
 

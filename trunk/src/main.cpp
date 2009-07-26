@@ -5,17 +5,17 @@
 
 #include "gerror.h"
 #include "kernel.h"
-#include "dialog.h"
+//#include "dialog.h"
 
 int flag_windowed = FALSE;
 int flag_cheat = FALSE;
 
 int want_sound = TRUE;
 int depth = -1;
-
+/*
 char player_name[256] ="";
 int update_hs = 0;
-
+*/
 static struct option long_options[] =
 {
 	{"windowed", no_argument, &flag_windowed, TRUE},
@@ -141,7 +141,9 @@ int main( int argc, char *argv[])
 		exit(1);
 	}
 	clear(screen);
+	/*
 	ask_player_name();
+	*/
 	// run game
 	Kernel *kernel	;
 	kernel = new(Kernel);

@@ -135,13 +135,13 @@ int main( int argc, char *argv[])
 
 	set_window_title("Crontab!");
 
+	/*
 	if (adime_init() != 0)
 	{
 		std::cout << "main() : Adime failed to start!" << std::endl;
 		exit(1);
 	}
 	clear(screen);
-	/*
 	ask_player_name();
 	*/
 	// run game

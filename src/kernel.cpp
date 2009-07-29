@@ -159,8 +159,7 @@ void Kernel::init_game()
 	mygame.restart_level();
 
 	paddle.init(); // init the paddle
-
-	position_mouse((int)paddle.x , (int)paddle.y ); // put the mouse cursor in paddle
+	paddle.getMouse();
 
 	clear_keybuf();	 // clear keyboard buffer
 

@@ -5,6 +5,7 @@
 #include "paddle.h"
 #include "gamefield.h"
 #include "controls.h"
+#include "power.h"
 
 // maximun speed
 const int BALL_MAX_SPD = 12;
@@ -43,6 +44,8 @@ class Ball
 
 		// This gets multiplied by the ball speed change just before the change happens.
 		float ball_speed_mult;
+
+		void doPowerUp(power::brickStatus toDo);
 
 	private:
 		void bounce_x();

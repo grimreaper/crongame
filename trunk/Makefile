@@ -16,8 +16,8 @@ CFLAGS += -Wunreachable-code -Winline
 ALLEGRO_FLAGS != allegro-config --cppflags
 ALLEGRO_LINK_FLAGS != allegro-config --libs
 INCLUDES = -I/usr/local/include -Iinclude/
-CFLAGS += -ladime $(ALLEGRO_FLAGS) $(INCLUDES) #$(SDL_FLAGS)
-LINK_FLAGS = $(ALLEGRO_LINK_FLAGS)
+CFLAGS += $(ALLEGRO_FLAGS) $(INCLUDES) #$(SDL_FLAGS)
+LINK_FLAGS = -ladime $(ALLEGRO_LINK_FLAGS)
 LDFLAGS += $(ALLEGRO_LINK_FLAGS)
 
 SRCDIR = src

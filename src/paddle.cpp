@@ -23,11 +23,11 @@ void Paddle::update()
 	x = mouse_x - (w / 2);
 	//y = mouse_y - (h / 2); // I disabled the Y movement for now -- DEBUG
 
-	y = std::max((float)(SCREEN_H - (SCREEN_H / 3)), y);
-	y = std::min ((float)(SCREEN_H - h), y);
+	y = std::max(static_cast<float> (SCREEN_H - (SCREEN_H / 3)), y);
+	y = std::min (static_cast<float> (SCREEN_H - h), y);
 
-	x = std::max((float)(0), x);
-	x = std::min((float)(SCREEN_W - w), x);
+	x = std::max(static_cast<float> (0), x);
+	x = std::min(static_cast<float> (SCREEN_W - w), x);
 
 }
 

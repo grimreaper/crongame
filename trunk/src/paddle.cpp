@@ -83,6 +83,11 @@ void Paddle::doPowerUp(power::brickStatus toDo)
 	}
 }
 
+void Paddle::getMouse()
+{
+	position_mouse((int)x + (w/2), (int)y + (h/2)); // put the mouse cursor in paddle
+}
+
 Paddle::Paddle()
 {
 	init();

@@ -18,6 +18,8 @@ class Paddle
 
 		void doPowerUp(power::brickStatus toDo);
 
+		void getMouse(); // moves the cursor to the center of the paddle.
+
 		// Attributes
 		float x;
 		float y;

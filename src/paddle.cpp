@@ -3,8 +3,8 @@
 void Paddle::init()
 {
 	// lame default values... DEBUG - this should be better done
-	w = (int)(SCREEN_W * 0.20);
-	h = (int)(SCREEN_H * 0.05);
+	w = static_cast<int> (SCREEN_W * 0.20);
+	h = static_cast<int> (SCREEN_H * 0.05);
 
 	x = SCREEN_W / 2;
 	y = SCREEN_H - h - 10;

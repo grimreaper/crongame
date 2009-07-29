@@ -29,7 +29,6 @@ class Kernel
 		// Attributes
   		BITMAP *double_buffer; // the double buffer bitmap
 		Paddle paddle; // the player paddle
-		GameField game_field; // the game field
 
 		int lives; //number of lives left
 
@@ -37,6 +36,7 @@ class Kernel
 
 	private:
 		void init_game(); // this inits the game without reseting the kernel or the level, is used for when you start a new level, lose a life, etc
+		void restart_game(); // restart the game - not just continue.
 		int update(); // updates game logic
 		void render(); // updates graphics of the game
 

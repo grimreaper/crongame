@@ -35,8 +35,6 @@ void Kernel::play()
 
 	init_game(); // initialize a game run
 
-	game_field.do_new_random_level(1); // create a level
-
 	show_mouse(NULL); // hide mouse
 
 	// This is the main loop of the game, were all the action actually happens
@@ -55,7 +53,7 @@ void Kernel::play()
 			if (controls::cheat_rm_level())
 			{
 				mygame.prev_level();
-				game_field.do_new_random_level(mygame.level); // new level
+				mygame.game_field.do_new_random_level(mygame.level); // new level
 				init_game();
 			}
 
@@ -68,7 +66,7 @@ void Kernel::play()
 					mygame.next_level();
 				}
 
-				game_field.do_new_random_level(mygame.level); // new level
+				mygame.game_field.do_new_random_level(mygame.level); // new level
 				init_game();
 			}
 
@@ -104,12 +102,12 @@ int Kernel::update()
 
 	paddle.update(); // update the paddle logic
 
-	if (mygame.ball.update(paddle, game_field))
+	if (mygame.ball.update(paddle, mygame.game_field))
 	{
 		ret = GAME_UDP_LOST_LIFE; // player lost life :(
 	}
 
-	if (game_field.update())
+	if (mygame.game_field.update())
 	{
 		ret = GAME_UDP_NEXT_LEVEL; // gamefield clear, go to next level \\o o//
 	}
@@ -144,7 +142,7 @@ void Kernel::render()
 	clear_bitmap(double_buffer); // debug - here we should/could blit the background
 
 	// first, everything gets drawed to the double buffer bitmap
-	game_field.render(double_buffer); // render the game field (the bricks)
+	mygame.game_field.render(double_buffer); // render the game field (the bricks)
 	paddle.render(double_buffer); // render the paddle
 	mygame.ball.render(double_buffer); // render the ball
 
@@ -167,4 +165,10 @@ void Kernel::init_game()
 	clear_keybuf();	 // clear keyboard buffer
 
 
+}
+
+void Kernel::restart_game()
+{
+	mygame.init_game();
+	init_game();
 }

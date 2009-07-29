@@ -19,7 +19,7 @@ int rand_ex_i(int min, int max)
 // floating point version
 float rand_ex_f(float min, float max)
 {
-	return ((float)rand_ex_i( (int)(min * 1000.0),(int)(max * 1000.0))) / 1000.0;
+	return (static_cast<float> (rand_ex_i( (int)(min * 1000.0),(int)(max * 1000.0)))) / 1000.0;
 }
 
 

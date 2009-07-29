@@ -12,6 +12,10 @@ void Game::init_game()
 {
 	level = 1;
 	lives = 5;
+
+	ball.init(); // init the ball
+
+	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
 }
 
 void Game::next_level()

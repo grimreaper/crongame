@@ -2,6 +2,8 @@
 #define PADDLE_H
 
 #include "common.h"
+#include "paddle.h"
+#include "power.h"
 
 class Paddle
 {
@@ -13,6 +15,8 @@ class Paddle
 		void update();
 		void render(BITMAP * bmp);
 		void reset_color();
+
+		void doPowerUp(power::brickStatus toDo);
 
 		// Attributes
 		float x;

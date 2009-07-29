@@ -158,42 +158,13 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	{
 		std::cout << "we know that the brick is status # " << whatBrickStatus << " and that ball is " << status;
 		doPowerUp(whatBrickStatus);
+		paddle.doPowerUp(whatBrickStatus);
 		switch (whatBrickStatus)
 		{
-			case power::standard:
-				break;
-			case power::make_all_normal:
-				paddle.reset_color();
-				break;
 			case power::add_live:
 				// I really should make the field call a briuck function - but atm I want to keep everything together
 				// or even better - figure out a better method of dealing with statuses and keeping encapsulation
 				//++lives;
-				break;
-			case power::no_see_paddle:
-				paddle.c.r = 10;
-				paddle.c.g = 10;
-				paddle.c.b = 10;
-				break;
-			case power::make_paddle_small:
-				// We don't want to go to small.
-				paddle.w = std::max( paddle.w - 5, 5);
-				break;
-			case power::make_paddle_big:
-				// Don't get too big on me.
-				paddle.w = std::min( 50, paddle.w + 5);
-				break;
-			case power::make_paddle_zero:
-				// Lets get a 1 pixel paddle.
-				paddle.w = 1;
-				break;
-			case power::make_paddle_giant:
-				// Lets get a giant paddle.
-				paddle.w = 100;
-				break;
-			case power::unbreakable:
-				// This brick can't be broken. One thing that should be pointed out is that this break can prvent the game from winning.
-				// This is really only here for pre-made levels (as will be happening soon).
 				break;
 			default:
 				break;

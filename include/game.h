@@ -6,6 +6,7 @@
 #include "ball.h"
 #include "paddle.h"
 #include "dialog.h"
+#include "gamefield.h"
 
 extern int flag_cheat;
 
@@ -33,6 +34,8 @@ class Game
 
 		int lives;
 		int level;
+
+		Ball ball; //The game ball - when we allow multiple balls this method of storing balls has to change.
 
 	private:
 

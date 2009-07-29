@@ -104,7 +104,7 @@ int Kernel::update()
 
 	paddle.update(); // update the paddle logic
 
-	if (ball.update(paddle, game_field))
+	if (mygame.ball.update(paddle, game_field))
 	{
 		ret = GAME_UDP_LOST_LIFE; // player lost life :(
 	}
@@ -121,9 +121,9 @@ int Kernel::update()
 
 	/*
 	I think we have an issue with the FPS counter or some other threads.
-	pausing stops the screen - but not the game.
+	pausing stops the screen - but not the mygame.
 	*/
-	// pause the game.
+	// pause the mygame.
 	if (controls::pause_game())
 	{
 		clear_keybuf();
@@ -146,7 +146,7 @@ void Kernel::render()
 	// first, everything gets drawed to the double buffer bitmap
 	game_field.render(double_buffer); // render the game field (the bricks)
 	paddle.render(double_buffer); // render the paddle
-	ball.render(double_buffer); // render the ball
+	mygame.ball.render(double_buffer); // render the ball
 
 	// after that, we blit (draw) the double buffer to screen
 	blit(double_buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
@@ -162,9 +162,9 @@ void Kernel::init_game()
 
 	paddle.init(); // init the paddle
 
-	ball.init(); // init the ball
+	mygame.ball.init(); // init the ball
 
-	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
+	mygame.ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
 
 	position_mouse((int)paddle.x , (int)paddle.y ); // put the mouse cursor in paddle
 

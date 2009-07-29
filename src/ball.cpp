@@ -82,10 +82,10 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 	if (y > SCREEN_H - r)  // here we DIE ...
 	{
 		return true; // oops >;^)  happens
-		/*
+		
 		y = SCREEN_H - r;
 		bounce_y();
-		*/
+		
 	}
 
 	// bounce on paddle, only if going down =P

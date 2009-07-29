@@ -7,6 +7,7 @@
 #include "paddle.h"
 #include "dialog.h"
 #include "gamefield.h"
+#include "mtimer.h" //For the timer constants
 
 extern int flag_cheat;
 

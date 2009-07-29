@@ -162,10 +162,6 @@ void Kernel::init_game()
 
 	paddle.init(); // init the paddle
 
-	mygame.ball.init(); // init the ball
-
-	mygame.ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
-
 	position_mouse((int)paddle.x , (int)paddle.y ); // put the mouse cursor in paddle
 
 	clear_keybuf();	 // clear keyboard buffer

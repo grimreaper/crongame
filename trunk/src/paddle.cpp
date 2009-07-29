@@ -48,6 +48,41 @@ void Paddle::reset_color()
 	c.g = c.r =0;
 }
 
+void Paddle::doPowerUp(power::brickStatus toDo)
+{
+	switch (toDo)
+	{
+		case power::standard:
+			break;
+		case power::make_all_normal:
+			reset_color();
+			break;
+		case power::no_see_paddle:
+			c.r = 10;
+			c.g = 10;
+			c.b = 10;
+			break;
+		case power::make_paddle_small:
+			// We don't want to go to small.
+			w = std::max(w - 5, 5);
+			break;
+		case power::make_paddle_big:
+			// Don't get too big on me.
+			w = std::min(50, w + 5);
+			break;
+		case power::make_paddle_zero:
+			// Lets get a 1 pixel paddle.
+			w = 1;
+			break;
+		case power::make_paddle_giant:
+			// Lets get a giant paddle.
+			w = 100;
+			break;
+		default:
+ 			break;
+	}
+}
+
 Paddle::Paddle()
 {
 	init();
@@ -55,4 +90,3 @@ Paddle::Paddle()
 
 Paddle::~Paddle()
 {}
-

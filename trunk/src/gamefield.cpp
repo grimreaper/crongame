@@ -12,7 +12,9 @@ GameField::~GameField()
 
 void GameField::do_new_random_level(int level)
 {
-/*	for (int y = 0 ; y < GAMEFIELD_MAX_H; ++y)
+/*
+	We need some method of clearing the level - but this does not seem to be it.
+	for (int y = 0 ; y < GAMEFIELD_MAX_H; ++y)
 	{
 		for (int x = 0 ; x < GAMEFIELD_MAX_W; ++x)
 		{

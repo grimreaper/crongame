@@ -33,7 +33,7 @@ void Kernel::play()
 
 	clear_keybuf();
 
-	init_game(); // initialize a game run
+	mygame.init_game(); // initialize a game run
 
 	// This is the main loop of the game, were all the action actually happens
 	while (ret != KERNEL_UDP_EXIT && ret != KERNEL_UDP_QUIT) // DEBUG , ESC key should be enabled ??? maybe... maybe not
@@ -45,14 +45,14 @@ void Kernel::play()
 			if (ret == GAME_UDP_LOST_LIFE) // lost a life!
 			{
 				ret = mygame.lost_life();
-				init_game();
+				mygame.init_game();
 			}
 
 			if (controls::cheat_rm_level())
 			{
 				mygame.prev_level();
 				mygame.game_field.do_new_random_level(mygame.level); // new level
-				init_game();
+				mygame.init_game();
 			}
 
 			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || controls::cheat_add_level() ) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
@@ -65,7 +65,7 @@ void Kernel::play()
 				}
 
 				mygame.game_field.do_new_random_level(mygame.level); // new level
-				init_game();
+				mygame.init_game();
 			}
 
 			--speed_counter; // decrease logic frames to do
@@ -98,9 +98,9 @@ int Kernel::update()
 {
 	int ret = KERNEL_UDP_OK; // by default, everything is OK
 
-	paddle.update(); // update the paddle logic
+	mygame.paddle.update(); // update the paddle logic
 
-	if (mygame.ball.update(paddle, mygame.game_field))
+	if (mygame.ball.update(mygame.paddle, mygame.game_field))
 	{
 		ret = GAME_UDP_LOST_LIFE; // player lost life :(
 	}
@@ -141,7 +141,7 @@ void Kernel::render()
 
 	// first, everything gets drawed to the double buffer bitmap
 	mygame.game_field.render(double_buffer); // render the game field (the bricks)
-	paddle.render(double_buffer); // render the paddle
+	mygame.paddle.render(double_buffer); // render the mygame.paddle
 	mygame.ball.render(double_buffer); // render the ball
 
 	// after that, we blit (draw) the double buffer to screen
@@ -149,23 +149,8 @@ void Kernel::render()
 }
 
 
-// Kernel::init_game()
-// this inits the game without reseting the kernel or the level
-// is used for when you start a game , lose a life, etc
-void Kernel::init_game()
-{
-	mygame.restart_level();
-
-	paddle.init(); // init the paddle
-	paddle.getMouse();
-
-	clear_keybuf();	 // clear keyboard buffer
-
-
-}
-
 void Kernel::restart_game()
 {
 	mygame.init_game();
-	init_game();
+	mygame.restart_level();
 }

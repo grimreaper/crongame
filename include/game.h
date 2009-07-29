@@ -38,6 +38,7 @@ class Game
 
 		Ball ball; //The game ball - when we allow multiple balls this method of storing balls has to change.
 		GameField game_field; // the game field
+		Paddle paddle; // the player paddle
 
 	private:
 

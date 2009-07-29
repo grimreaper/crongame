@@ -30,6 +30,9 @@ void Game::continue_level()
 {
 	ball.init(); // init the ball
 
+      paddle.init(); // init the mygame.paddle
+      paddle.getMouse();
+
 	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
 }
 

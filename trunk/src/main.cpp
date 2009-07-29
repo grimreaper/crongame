@@ -134,6 +134,7 @@ int main( int argc, char *argv[])
 	}
 
 	set_window_title("Crontab!");
+	show_mouse(NULL); // hide mouse
 
 	/*
 	if (adime_init() != 0)

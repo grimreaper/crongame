@@ -13,6 +13,7 @@ void Game::init_game()
 	level = 1;
 	lives = 5;
 
+	game_field.do_new_random_level(1);
 	restart_level();
 }
 

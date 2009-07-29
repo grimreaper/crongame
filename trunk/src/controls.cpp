@@ -25,3 +25,15 @@ bool controls::cheat_rm_level()
 {
 	return key[KEY_MINUS_PAD];
 }
+
+bool controls::event()
+{
+	return (mouse_b || keypressed());
+}
+
+void controls::waitUntilEvent()
+{
+	while (!event()) {}
+	clear_keybuf();
+	mouse_b=0;
+}

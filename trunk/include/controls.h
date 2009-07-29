@@ -16,6 +16,12 @@ class controls
 		static bool quit_game();
 		static bool cheat_add_level();
 		static bool cheat_rm_level();
+		//Did anything happpen - joystick, mouse, or keyboard!?
+		static bool event();
+
+		// Loop until and event happens
+		static void waitUntilEvent();
+
 
 };
 

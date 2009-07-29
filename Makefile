@@ -42,7 +42,7 @@ BINNAME = $(TESTDIR)/$(NAME)-bricktest-$(BRICK_NUM)
 .endif
 
 #compiling options
-.PHONY:     all clean cleantests test test-all check version
+.PHONY:     all clean cleantests test test-all check version truebuild
 
 all: version $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
@@ -82,6 +82,8 @@ check:
 
 version:
 	@echo $(NAME) version $(VERSION)
+
+truebuild: version clean all
 
 #	$(CC) $(CFLAGS) -c $< -o $@
 

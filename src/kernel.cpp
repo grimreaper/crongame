@@ -158,7 +158,7 @@ void Kernel::render()
 // is used for when you start a game , lose a life, etc
 void Kernel::init_game()
 {
-	//mygame.init_game();
+	mygame.restart_level();
 
 	paddle.init(); // init the paddle
 

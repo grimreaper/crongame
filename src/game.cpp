@@ -13,9 +13,7 @@ void Game::init_game()
 	level = 1;
 	lives = 5;
 
-	ball.init(); // init the ball
-
-	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
+	restart_level();
 }
 
 void Game::next_level()
@@ -53,4 +51,11 @@ int Game::lost_life()
 		textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 	}
 	return KERNEL_UDP_OK;
+}
+
+void Game::restart_level()
+{
+	ball.init(); // init the ball
+
+	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
 }

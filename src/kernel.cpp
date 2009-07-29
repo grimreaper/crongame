@@ -35,8 +35,6 @@ void Kernel::play()
 
 	init_game(); // initialize a game run
 
-	show_mouse(NULL); // hide mouse
-
 	// This is the main loop of the game, were all the action actually happens
 	while (ret != KERNEL_UDP_EXIT && ret != KERNEL_UDP_QUIT) // DEBUG , ESC key should be enabled ??? maybe... maybe not
 	{

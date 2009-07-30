@@ -24,9 +24,13 @@ Brick::~Brick()
 
 void Brick::update()
 {
-	c.b = 0;
-	c.g = 255 - ((life <= 10) ? life * 20 : 254);
-	c.r = status * 100;
+	/*! \bug this is a severe hack until I rewrite the method of coloring bricks. I do not want it to reset on every update*/
+	if (c.b != 204)
+	{
+		c.b = 0;
+		c.g = 255 - ((life <= 10) ? life * 20 : 254);
+		c.r = status * 100;
+	}
 	if (status == Power::unbreakable)
 	{
 		//brick should be white (or really inverse of background).
@@ -93,4 +97,18 @@ Power::brickStatus Brick::getUsableStatus()
 		return status;
 	}
 	return Power::standard;
+}
+
+void Brick::doPowerUp(Power::brickStatus doWhat)
+{
+	switch (doWhat)
+	{
+		case Power::make_bricks_gray:
+			c.r=204;
+			c.g=204;
+			c.b=204;
+			break;
+		default:
+			break;
+	}
 }

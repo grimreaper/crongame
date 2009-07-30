@@ -31,6 +31,8 @@ class GameField
 		int w, h; // current width and height in bricks, must be < GAMEFIELD_MAX_*
 		int bc; // brick count, when bc==0, next level
 
+		void doPowerUp(Power::brickStatus doWhat);
+
 	private:
 		Brick* px_to_brick(int x_px , int y_px); //return a reference to a brick
 

@@ -40,6 +40,8 @@ class Brick
 		// (As of now when life <=1)
 		Power::brickStatus getUsableStatus();
 
+		void doPowerUp(Power::brickStatus doWhat);
+
 	private:
 		void make_brick(int level);
 		int life; // life, in ball hits

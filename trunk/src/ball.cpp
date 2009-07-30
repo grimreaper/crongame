@@ -159,6 +159,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		std::cout << "we know that the brick is status # " << whatBrickStatus << " and that ball is " << status;
 		doPowerUp(whatBrickStatus);
 		paddle.doPowerUp(whatBrickStatus);
+		game_field.doPowerUp(whatBrickStatus);
 		switch (whatBrickStatus)
 		{
 			case Power::add_live:

@@ -89,7 +89,7 @@ void GameField::do_new_random_level(int level)
 			{
 				++bc; // count bricks (lame)
 			}
-			if (which_brick->status == power::unbreakable)
+			if (which_brick->status == Power::unbreakable)
 			{
 				--bc;
 				std::cout << "I'm unbreakable - remove a bc!" << std::endl;
@@ -155,7 +155,7 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	return false;
 }
 
-power::brickStatus GameField::getBrickStatus (int x_px , int y_px)
+Power::brickStatus GameField::getBrickStatus (int x_px , int y_px)
 {
 	Brick *which_brick = px_to_brick(x_px, y_px);
 	return which_brick->getUsableStatus();

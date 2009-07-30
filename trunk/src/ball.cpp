@@ -122,7 +122,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 
 	bool hitX = false;
 	bool hitY = false;
-	power::brickStatus whatBrickStatus;
+	Power::brickStatus whatBrickStatus;
 
 	// bounce and hit on bricks
 	if (game_field.ball_hit_brick((int)x-r,(int)y))
@@ -161,7 +161,7 @@ bool Ball::update(Paddle &paddle, GameField &game_field)
 		paddle.doPowerUp(whatBrickStatus);
 		switch (whatBrickStatus)
 		{
-			case power::add_live:
+			case Power::add_live:
 				// I really should make the field call a briuck function - but atm I want to keep everything together
 				// or even better - figure out a better method of dealing with statuses and keeping encapsulation
 				//++lives;
@@ -230,39 +230,39 @@ double deg2rad (double rads)
 	return ((pi * rads) / 180);
 }
 
-void Ball::doPowerUp(power::brickStatus toDo)
+void Ball::doPowerUp(Power::brickStatus toDo)
 {
 	int minusAmount = (r >= 8) ? 4 : 2;
 	switch (toDo)
 	{
-		case power::standard:
+		case Power::standard:
 			break;
-		case power::make_all_normal:
+		case Power::make_all_normal:
 			status = normal;
 			r = 8;
 			c.r = c.g = 0;
 			c.b = 255;
 			break;
-		case power::make_ball_fire:
+		case Power::make_ball_fire:
 			status = on_fire;
 			break;
-		case power::make_ball_big:
+		case Power::make_ball_big:
 			if (r <= 20)
 			{
 				r += 4;
 			}
 			break;
-		case power::make_ball_small:
+		case Power::make_ball_small:
 			if (r > 2)
 			{
 				r -= minusAmount;
 			}
 			break;
 		//For speed up and slow down - don't make too much of change.
-		case power::make_ball_fast:
+		case Power::make_ball_fast:
 			ball_speed_mult += 0.02;
 			break;
-		case power::make_ball_slow:
+		case Power::make_ball_slow:
 			ball_speed_mult -= 0.02;
 			break;
 		default:

@@ -23,7 +23,7 @@ class GameField
 
 		bool ball_hit_brick(int x_px , int y_px); // this is used by the ball to hit the bricks, returns true if a brick was hit
 
-		power::brickStatus getBrickStatus(int x_px , int y_px);
+		Power::brickStatus getBrickStatus(int x_px , int y_px);
 
 		// Attributes
 

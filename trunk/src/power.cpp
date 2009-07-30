@@ -1,6 +1,6 @@
 #include "power.h"
 
-power::brickStatus power::generateStatus()
+Power::brickStatus Power::generateStatus()
 {
 	// we want the % value to be slightly higher than the number of power
 	// bricks - I want to find an automatic way to do this... TODO

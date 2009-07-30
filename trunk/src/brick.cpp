@@ -5,7 +5,7 @@ Brick::Brick(int level)
 	make_brick(level);
 }
 
-Brick::Brick(): life (0), w (32), h(32), status (power::standard)
+Brick::Brick(): life (0), w (32), h(32), status (Power::standard)
 {
 	make_brick(1);
 }
@@ -15,7 +15,7 @@ void Brick::make_brick(int lvl)
 	c.r = c.g = c.b = 128;
 	// we want the % value to be slightly higher than the number of power
 	// bricks - I want to find an automatic way to do this... TODO
-	status = power::generateStatus();
+	status = Power::generateStatus();
 }
 
 Brick::~Brick()
@@ -27,7 +27,7 @@ void Brick::update()
 	c.b = 0;
 	c.g = 255 - ((life <= 10) ? life * 20 : 254);
 	c.r = status * 100;
-	if (status == power::unbreakable)
+	if (status == Power::unbreakable)
 	{
 		//brick should be white (or really inverse of background).
 		c.b = c.g = c.r = 255;
@@ -74,7 +74,7 @@ int Brick::get_life()
 
 void Brick::rem_life()
 {
-	if (status != power::unbreakable)
+	if (status != Power::unbreakable)
 	{
 		--life;
 	}
@@ -85,12 +85,12 @@ void Brick::rem_life()
 }
 
 // See header file for what this function does
-power::brickStatus Brick::getUsableStatus()
+Power::brickStatus Brick::getUsableStatus()
 {
 	if (life <= 0)
 	{
 		//only give power when dead
 		return status;
 	}
-	return power::standard;
+	return Power::standard;
 }

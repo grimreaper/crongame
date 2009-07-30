@@ -1,5 +1,8 @@
 #include "gamefield.h"
-#include <iostream>
+
+/*!
+	\todo Make a dorEachFunction that takes a pointer to a function and runs it on every brick. It shouldn't be /that/ hard
+*/
 
 GameField::GameField() : w(0), h(0), bc(0)
 {
@@ -168,4 +171,15 @@ Brick* GameField::px_to_brick(int x_px , int y_px)
 	int which_x = x_px / w_b;
 	int which_y = y_px / h_b;
 	return &bricks[which_x][which_y];
+}
+
+void GameField::doPowerUp(Power::brickStatus doWhat)
+{
+	for (int y = 0 ; y < h; ++y)
+	{
+		for (int x = 0 ; x < w; ++x)
+		{
+			bricks[x][y].doPowerUp(doWhat);
+		}
+	}
 }

@@ -48,6 +48,8 @@ Power::brickStatus Power::generateStatus()
 			return make_ball_fast;
 		case 13:
 			return make_ball_slow;
+		case 14:
+			return make_bricks_gray;
 		default:
 			return standard;
 	}

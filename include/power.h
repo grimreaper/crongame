@@ -33,7 +33,8 @@ class Power
 			make_paddle_giant,
 			unbreakable,
 			make_ball_fast,
-			make_ball_slow
+			make_ball_slow,
+			make_bricks_gray /*!< Turns off the color display of bricks so you don't know what type of brick they are. */
 		};
 
 		static brickStatus generateStatus();

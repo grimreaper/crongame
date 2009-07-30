@@ -145,10 +145,3 @@ void Kernel::render()
 	// after that, we blit (draw) the double buffer to screen
 	blit(double_buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
 }
-
-
-void Kernel::restart_game()
-{
-	mygame.init_game();
-	mygame.restart_level();
-}

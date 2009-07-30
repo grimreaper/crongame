@@ -40,6 +40,9 @@ class Game
 		GameField game_field; // the game field
 		Paddle paddle; // the player paddle
 
+		void update(); //calls the update method on all the relevent children
+		void render(BITMAP *double_buffer); //calls the render method on all of the relevent children
+
 	private:
 
 };

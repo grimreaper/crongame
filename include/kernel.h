@@ -30,7 +30,6 @@ class Kernel
 		Game mygame;
 
 	private:
-		void restart_game(); // restart the game - not just continue.
 		int update(); // updates game logic
 		void render(); // updates graphics of the game
 

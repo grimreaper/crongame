@@ -73,3 +73,15 @@ void Game::prev_level()
 {
 	level = std::max(level - 1, 1);
 }
+
+void Game::update()
+{
+}
+
+void Game::render(BITMAP *double_buffer)
+{
+	// first, everything gets drawed to the double buffer bitmap
+	game_field.render(double_buffer); // render the game field (the bricks)
+	paddle.render(double_buffer); // render the mygame.paddle
+	ball.render(double_buffer); // render the ball
+}

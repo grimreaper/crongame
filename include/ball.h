@@ -45,7 +45,7 @@ class Ball
 		// This gets multiplied by the ball speed change just before the change happens.
 		float ball_speed_mult;
 
-		void doPowerUp(power::brickStatus toDo);
+		void doPowerUp(Power::brickStatus toDo);
 
 	private:
 		void bounce_x();

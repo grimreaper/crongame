@@ -16,7 +16,7 @@ class Paddle
 		void render(BITMAP * bmp);
 		void reset_color();
 
-		void doPowerUp(power::brickStatus toDo);
+		void doPowerUp(Power::brickStatus toDo);
 
 		void getMouse(); // moves the cursor to the center of the paddle.
 

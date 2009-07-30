@@ -25,7 +25,7 @@ class Brick
 
 		RGB c; // color, in R,G,B
 
-		power::brickStatus status;
+		Power::brickStatus status;
 
 		void add_life(); //add one life to brick
 		void rem_life(); //rem 1 life from brick
@@ -38,7 +38,7 @@ class Brick
 		// cause any change. This function should only return a status
 		// when its ready to let the user activate it.
 		// (As of now when life <=1)
-		power::brickStatus getUsableStatus();
+		Power::brickStatus getUsableStatus();
 
 	private:
 		void make_brick(int level);

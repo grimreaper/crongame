@@ -20,7 +20,7 @@ void Game::init_game()
 void Game::restart_level()
 {
 	//This should actually be creating the /same/ level - but we will deal with this later
-	game_field.do_new_random_level(1);
+	game_field.do_new_random_level(level);
 
 	//Now we continue because the level was just recreated
 	continue_level();

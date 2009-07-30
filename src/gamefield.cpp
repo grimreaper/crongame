@@ -12,16 +12,15 @@ GameField::~GameField()
 
 void GameField::do_new_random_level(int level)
 {
-/*
-	We need some method of clearing the level - but this does not seem to be it.
+
+	// I think we cleared the level like this. At the minimum  the bug with bouncing on non-existant bricks seems to go away
 	for (int y = 0 ; y < GAMEFIELD_MAX_H; ++y)
 	{
 		for (int x = 0 ; x < GAMEFIELD_MAX_W; ++x)
 		{
-			bricks[x][y] = NULL;
+			bricks[x][y].set_life(0);
 		}
 	}
-*/
 
 	int max_life = std::min(level, 5);
 	w = 3 + rand() % level + level;
@@ -57,6 +56,7 @@ void GameField::do_new_random_level(int level)
 	{
 		for (int x = 0 ; x < w; ++x)
 		{
+			bricks[x][y] = Brick(level);
 			which_brick = &bricks[x][y];
 
 			//this should be done as part of the brick class - no the game_field class */

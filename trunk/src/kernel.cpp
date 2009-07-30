@@ -64,8 +64,7 @@ void Kernel::play()
 					mygame.next_level();
 				}
 
-				mygame.game_field.do_new_random_level(mygame.level); // new level
-				mygame.init_game();
+				mygame.restart_level();
 			}
 
 			--speed_counter; // decrease logic frames to do

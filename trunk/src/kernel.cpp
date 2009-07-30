@@ -45,14 +45,13 @@ void Kernel::play()
 			if (ret == GAME_UDP_LOST_LIFE) // lost a life!
 			{
 				ret = mygame.lost_life();
-				mygame.init_game();
+				mygame.continue_level();
 			}
 
 			if (controls::cheat_rm_level())
 			{
 				mygame.prev_level();
-				mygame.game_field.do_new_random_level(mygame.level); // new level
-				mygame.init_game();
+				mygame.restart_level();
 			}
 
 			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || controls::cheat_add_level() ) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!

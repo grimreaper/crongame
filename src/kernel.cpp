@@ -1,6 +1,6 @@
 #include "kernel.h"
 
-Kernel::Kernel() : double_buffer (NULL)
+Kernel::Kernel() : double_buffer (NULL), mygame (Game())
 {
 }
 
@@ -12,7 +12,6 @@ Kernel::~Kernel()
 
 void Kernel::init()
 {
-	mygame = Game();
 	mygame.init_game();
 	double_buffer = create_bitmap(SCREEN_W,SCREEN_H);
 	if (!double_buffer)

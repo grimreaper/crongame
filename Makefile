@@ -42,7 +42,7 @@ BINNAME = $(TESTDIR)/$(NAME)-bricktest-$(BRICK_NUM)
 .endif
 
 #compiling options
-.PHONY:     all clean cleantests test test-all check version truebuild
+.PHONY:     all clean cleantests test test-all check doc version truebuild
 
 all: version $(SRCDIR)/main.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(SRCDIR)/main.cpp -o $(BINNAME)
@@ -64,6 +64,9 @@ dialog.o: $(HDRDIR)/dialog.h $(SRCDIR)/dialog.cpp
 clean: cleantests
 	rm -fv $(OBJS)
 	rm -fv ./$(NAME)
+	rm -rfvd doc/html/
+	rm -rfvd doc/latex/
+	rm -rfvd doc/man/           
 
 cleantests:
 	rm -fv $(TESTDIR)/*-test*
@@ -79,6 +82,9 @@ check:
 	rats -rw3 src/*
 	splint -strict-lib -showcolumn -showfunc -strict src/*.c
 	flawfinder src/*.cpp
+
+doc: version
+	doxygen doc/doxygen-config 
 
 version:
 	@echo $(NAME) version $(VERSION)

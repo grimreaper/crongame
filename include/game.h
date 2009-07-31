@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "common.h"
+#include "gerror.h"
 #include "game_status_constants.h"
 #include "ball.h"
 #include "paddle.h"
@@ -11,37 +12,47 @@
 
 extern int flag_cheat;
 
+/*! \class Game
+ * \brief This is where things happen. 
+*/
+
 class Game
 {
 	public:
 		Game();
 		~Game();
 
-		//start a completely new game
+		/*! \brief start a completely new game */
 		void init_game();
-		//restart level - from the top
+		/*! \brief restart level - from the top */
 		void restart_level();
-		//continue level - returns ball and such to starting
-		//position - but not the field.
+		/*! \brief continue level 
+		 * returns ball and such to starting position - but not the field.
+		*/
 		void continue_level();
 
-		//we move on to the next level
+		/*! \brief we move on to the next level */
 		void next_level();
-		// or we just move back
+		/*! \brief or we just move back */
 		void prev_level();
 
-		//we just lost a life
+		/*! \brief we just lost a life */
 		int lost_life();
 
+		/*! \var Contains the number of lives the user has left */
 		int lives;
+		/*! \var What level are we showing the user */
 		int level;
 
-		Ball ball; //The game ball - when we allow multiple balls this method of storing balls has to change.
-		GameField game_field; // the game field
-		Paddle paddle; // the player paddle
+ 		/*! \var The game ball
+		 * \todo when we allow multiple balls this method of storing balls has to change.
+		*/
+		Ball ball;
+		GameField game_field; /*! \var the game field */
+		Paddle paddle; /*! \var the player paddle */
 
-		void update(); //calls the update method on all the relevent children
-		void render(BITMAP *double_buffer); //calls the render method on all of the relevent children
+		void update(); /*! \brief calls the update method on all the relevent children */
+		void render(BITMAP *double_buffer); /*! \brief calls the render method on all of the relevent children */
 
 	private:
 

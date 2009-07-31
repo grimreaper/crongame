@@ -49,7 +49,7 @@ int Game::lost_life()
 	std::cout << " " << lives << " at level " << level <<std::endl;
 	if (lives <= 0)
 	{
-		textout_ex( screen, font, "Are you for real?", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+		show_msg_center("Are you for real!");
 		controls::waitUntilEvent();
 		init_game(); //do we really want to call this here? Should the kernel do this?
 		return GAME_UDP_LOST_GAME;
@@ -57,7 +57,8 @@ int Game::lost_life()
 	}
 	else
 	{
-		textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+		show_msg_center("You lost!!");
+		//textout_ex( screen, font, "You lost!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 		controls::waitUntilEvent();
 	}
 	return KERNEL_UDP_OK;

@@ -7,6 +7,11 @@
 #include "kernel.h"
 //#include "dialog.h"
 
+/*! \mainpage Crongame - the project
+ * Long term goal: be a decent rival to lbreakout2 using only ANSI standard c++.
+ * Short term goal: be a simple and easy to understand breakout game that encourages users to read, modify, and extend the code.
+*/
+
 int flag_windowed = FALSE;
 int flag_cheat = FALSE;
 

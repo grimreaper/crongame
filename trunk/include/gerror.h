@@ -6,8 +6,10 @@
 
 #include "common.h"
 
-/*! Goes back to text mode, shows the message and ends the program. Printf style. */
-void raise_error(AL_CONST char *msg, ...); 
+/*! \brief Goes back to text mode, shows the message and ends the program. Printf style. */
+void raise_error(AL_CONST char *msg, ...);
+/*! \brief shows a message in the center of the screen */
+void show_msg_center(const char *msg);
 
 #ifdef TEST
 	#include <iostream>

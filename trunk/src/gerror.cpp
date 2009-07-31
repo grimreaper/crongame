@@ -35,6 +35,11 @@ void raise_error(AL_CONST char *msg, ...)
 	exit(EXIT_FAILURE); /* abort the program */
 }
 
+void show_msg_center(const char *msg)
+{
+	textout_ex( screen, font, msg, SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
+}
+
 #endif
 
 #ifdef TEST

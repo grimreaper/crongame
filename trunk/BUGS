@@ -6,3 +6,4 @@
 6) unbreakable bricks can break levels (in random mode)
 7) ball goes through unbreakable bricks for some reason
 8) Pause kills the timer and doesn't restart.
+9) The ball on fire still sometimes goes through unbreakables - but less often

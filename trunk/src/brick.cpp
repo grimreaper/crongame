@@ -16,6 +16,7 @@ void Brick::make_brick(int lvl)
 	// we want the % value to be slightly higher than the number of power
 	// bricks - I want to find an automatic way to do this... TODO
 	status = Power::generateStatus();
+	Brick::doPowerUp(Power::make_all_normal);
 }
 
 Brick::~Brick()
@@ -24,18 +25,6 @@ Brick::~Brick()
 
 void Brick::update()
 {
-	/*! \bug this is a severe hack until I rewrite the method of coloring bricks. I do not want it to reset on every update*/
-	if (c.b != 204)
-	{
-		c.b = 0;
-		c.g = 255 - ((life <= 10) ? life * 20 : 254);
-		c.r = status * 100;
-	}
-	if (status == Power::unbreakable)
-	{
-		//brick should be white (or really inverse of background).
-		c.b = c.g = c.r = 255;
-	}
 
 	// not much to be done here yet... common' is a brick, what you expect ? :P
 }
@@ -107,6 +96,17 @@ void Brick::doPowerUp(Power::brickStatus doWhat)
 			c.r=204;
 			c.g=204;
 			c.b=204;
+			break;
+		case Power::make_all_normal:
+			c.b = 0;
+			c.g = 255 - ((life <= 10) ? life * 20 : 254);
+			c.r = status * 100;
+			/*! \bug sometime unbreakable bricks will still be white when all bricks go gray */
+			if (status == Power::unbreakable)
+			{
+				//brick should be white (or really inverse of background).
+				c.b = c.g = c.r = 255;
+			}
 			break;
 		default:
 			break;

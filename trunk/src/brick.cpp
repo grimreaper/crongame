@@ -51,8 +51,8 @@ void Brick::render(BITMAP *bmp)
 
 }
 
-/*
-	most of these functions are not really needed - I'm only using it until I move over all relevent functionality to the brick class itself
+/*!
+	\brief most of these functions are not really needed - I'm only using it until I move over all relevent functionality to the brick class itself
 */
 
 void Brick::set_life(int toWhat)

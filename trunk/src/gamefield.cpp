@@ -52,6 +52,7 @@ void GameField::do_new_random_level(int level)
 	// if we could do that then pre-building max_lifes should be even easier.
 
 	int blank_spots = max_life;
+	int min_life = 0;
 	Brick *which_brick = NULL;
 
 	// fill the matrix with random max_life
@@ -63,7 +64,22 @@ void GameField::do_new_random_level(int level)
 			which_brick = &bricks[x][y];
 
 			//this should be done as part of the brick class - no the game_field class */
-			which_brick->set_life (arc4rand() % max_life);
+			which_brick->set_life (arc4rand() % max_life + min_life);
+			if (which_brick->get_life() == 0)
+			{
+				--blank_spots;
+			}
+			else
+			{
+				if (which_brick->status != Power::unbreakable)
+				{
+					++bc;
+				}
+			}
+			if (blank_spots == 0)
+			{
+				min_life = 1;
+			}
 
 			which_brick->x = x * SCREEN_W / w;
 			which_brick->y = y * SCREEN_H / 3 / h;
@@ -76,27 +92,7 @@ void GameField::do_new_random_level(int level)
 			which_brick->c.g = rand_ex_i(128, 255);
 			which_brick->c.b = rand_ex_i(128, 255);
 */
-			if (which_brick->get_life() == 0)
-			{
-				if (blank_spots > 0)
-				{
-					--blank_spots;
-				}
-				else
-				{
-					which_brick->set_life ( arc4rand() % max_life + 1 );
-					++bc;
-				}
-			}
-			else
-			{
-				++bc; // count bricks (lame)
-			}
-			if (which_brick->status == Power::unbreakable)
-			{
-				--bc;
-				std::cout << "I'm unbreakable - remove a bc!" << std::endl;
-			}
+
 		}
 	}
 	std::cout << "And our final bc is " << bc << std::endl;

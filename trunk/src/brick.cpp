@@ -39,8 +39,8 @@ void Brick::render(BITMAP *bmp)
 	if (w > 12 && h > 12) // check if the brick is big enough to shadow it
 	{
 		// render with shadow
-		rectfill(bmp, x, y, x + w, y + h, makecol((int)(c.r*0.8), (int)(c.g*0.8), (int)(c.b*0.8)));
-		rectfill(bmp, x+3, y+3, x + w-3, y + h-3, makecol((int)(c.r*0.9), (int)(c.g*0.9), (int)(c.b*0.9)));
+		rectfill(bmp, x, y, x + w, y + h, makecol((int)(c.r*0.6), (int)(c.g*0.6), (int)(c.b*0.6)));
+		rectfill(bmp, x+3, y+3, x + w-3, y + h-3, makecol((int)(c.r*0.8), (int)(c.g*0.8), (int)(c.b*0.8)));
 		rectfill(bmp, x+6, y+6, x + w-6, y + h-6, makecol(c.r, c.g, c.b));
 	}
 	else

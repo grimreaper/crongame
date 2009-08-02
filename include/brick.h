@@ -44,6 +44,11 @@ class Brick
 
 	private:
 		void make_brick(int level);
+		/*! \brief Every time we lose a life or certain other events happen we have to fix the color */
+		void fixColor();
 		int life; // life, in ball hits
+
+		/*! \var If we are gray we need to know that so that when we lose a life we don't go crazy */
+		static bool isGray;
 };
 #endif

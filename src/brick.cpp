@@ -1,4 +1,5 @@
 #include "brick.h"
+bool Brick::isGray = false;
 
 Brick::Brick(int level)
 {
@@ -12,7 +13,6 @@ Brick::Brick(): life (0), w (32), h(32), status (Power::standard)
 
 void Brick::make_brick(int lvl)
 {
-	c.r = c.g = c.b = 128;
 	// we want the % value to be slightly higher than the number of power
 	// bricks - I want to find an automatic way to do this... TODO
 	status = Power::generateStatus();
@@ -70,6 +70,7 @@ void Brick::rem_life()
 	if (status != Power::unbreakable)
 	{
 		--life;
+		fixColor();
 	}
 	else
 	{
@@ -93,22 +94,37 @@ void Brick::doPowerUp(Power::brickStatus doWhat)
 	switch (doWhat)
 	{
 		case Power::make_bricks_gray:
-			c.r=204;
-			c.g=204;
-			c.b=204;
+			fixColor();
+			isGray=true;
 			break;
 		case Power::make_all_normal:
-			c.b = 0;
-			c.g = 255 - ((life <= 10) ? life * 20 : 254);
-			c.r = status * 100;
-			/*! \bug sometime unbreakable bricks will still be white when all bricks go gray */
-			if (status == Power::unbreakable)
-			{
-				//brick should be white (or really inverse of background).
-				c.b = c.g = c.r = 255;
-			}
+			fixColor();
+			isGray = false;
 			break;
 		default:
 			break;
+	}
+}
+
+void Brick::fixColor()
+{
+	if (!isGray)
+	{
+		c.b = 0;
+		c.g = 255 - ((life <= 10) ? life * 20 : 254);
+		c.r = status * 100;
+		/*! \bug sometime unbreakable bricks will still be white when all bricks go gray */
+		if (status == Power::unbreakable)
+		{
+			//brick should be white (or really inverse of background).
+			c.b = c.g = c.r = 255;
+		}
+	}
+	else
+	{
+		c.r=204;
+		c.g=204;
+		c.b=204;
+
 	}
 }

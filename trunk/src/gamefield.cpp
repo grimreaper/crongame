@@ -98,7 +98,7 @@ void GameField::do_new_random_level(int level)
 	std::cout << "And our final bc is " << bc << std::endl;
 }
 
-// returns true if we finished the max_life (0 bricks left)
+/*! \brief returns true if we finished the max_life (0 bricks left) */
 bool GameField::update()
 {
 	for (int y = 0 ; y < h; ++y)
@@ -108,7 +108,7 @@ bool GameField::update()
 			bricks[x][y].update();
 		}
 	}
-	return (bool)(bc < 1);
+	return static_cast<bool> (bc < 1);
 }
 
 void GameField::render(BITMAP *bmp)

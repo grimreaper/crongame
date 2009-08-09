@@ -16,9 +16,7 @@ class Brick
 		void update();
 		void render(BITMAP * bmp);
 
-		// Attributes
-		int x; // position, in pixels
-		int y;
+		void move(int x, int y);
 
 		int w; // size, in pixels
 		int h;
@@ -50,5 +48,10 @@ class Brick
 
 		/*! \var If we are gray we need to know that so that when we lose a life we don't go crazy */
 		static bool isGray;
+
+		/*! \var Attributes */
+		int x; // position, in pixels
+		int y;
+
 };
 #endif

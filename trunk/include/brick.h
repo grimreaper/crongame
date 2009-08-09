@@ -40,6 +40,9 @@ class Brick
 
 		void doPowerUp(Power::brickStatus doWhat);
 
+		/*! \breif reset all bricks */
+		static void resetAll();
+
 	private:
 		void make_brick(int level);
 		/*! \brief Every time we lose a life or certain other events happen we have to fix the color */

@@ -81,8 +81,7 @@ void GameField::do_new_random_level(int level)
 				min_life = 1;
 			}
 
-			which_brick->x = x * SCREEN_W / w;
-			which_brick->y = y * SCREEN_H / 3 / h;
+			which_brick->move( x * SCREEN_W / w,  y * SCREEN_H / 3 / h);
 
 			which_brick->w = SCREEN_W / w;
 			which_brick->h = SCREEN_H / 3 / h;
@@ -138,8 +137,8 @@ bool GameField::ball_hit_brick(int x_px , int y_px)
 	if (bricks[which_x][which_y].get_life() > 0)
 	{
 		bricks[which_x][which_y].rem_life();
-		std::cout << "I just hit a brick at px (x,y) (" << x_px << "," << y_px << ") starting at (x,y) with a (w,h) of (" << bricks[which_x][which_y].x \
-			<< ","<< bricks[which_x][which_y].y << ")/("<<bricks[which_x][which_y].w << "," <<bricks[which_x][which_y].h << ")";
+/*		std::cout << "I just hit a brick at px (x,y) (" << x_px << "," << y_px << ") starting at (x,y) with a (w,h) of (" << bricks[which_x][which_y].x \
+			<< ","<< bricks[which_x][which_y].y << ")/("<<bricks[which_x][which_y].w << "," <<bricks[which_x][which_y].h << ")"; */
 		if (bricks[which_x][which_y].get_life() <= 0)
 		{
 			std::cout << " and its now dead!" << std::endl;

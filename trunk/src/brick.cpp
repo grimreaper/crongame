@@ -98,8 +98,8 @@ void Brick::doPowerUp(Power::brickStatus doWhat)
 			isGray=true;
 			break;
 		case Power::make_all_normal:
-			fixColor();
 			isGray = false;
+			fixColor();
 			break;
 		default:
 			break;

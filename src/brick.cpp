@@ -25,7 +25,7 @@ Brick::~Brick()
 
 void Brick::update()
 {
-
+	fixColor();
 	// not much to be done here yet... common' is a brick, what you expect ? :P
 }
 
@@ -94,8 +94,8 @@ void Brick::doPowerUp(Power::brickStatus doWhat)
 	switch (doWhat)
 	{
 		case Power::make_bricks_gray:
-			fixColor();
 			isGray=true;
+			fixColor();
 			break;
 		case Power::make_all_normal:
 			isGray = false;

@@ -16,6 +16,10 @@ class Brick
 		void update();
 		void render(BITMAP * bmp);
 
+		/*! \brief move the brick to a particular x and y location
+		 *  \param x move it to this x
+		 *  \param y move it to this y
+		*/
 		void move(int x, int y);
 
 		int w; // size, in pixels

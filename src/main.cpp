@@ -50,7 +50,7 @@ int main( int argc, char *argv[])
 	int c = 0;
 	int option_index = 0;
 
-	while ((c = getopt_long (argc, argv, "bw", long_options, &option_index)) != -1)
+	while ((c = getopt_long (argc, argv, "bw:", long_options, &option_index)) != -1)
 	{
 		switch (c)
 		{
@@ -58,7 +58,30 @@ int main( int argc, char *argv[])
 				depth = (int)optarg;
 				break;
 			case 'w':
+				switch (static_cast<int>(*optarg))
+				{
+					case '1':
+						vid_w = 640;
+						vid_h = 480;
+						break;
+					case '2':
+						vid_w = 480;
+						vid_h = 320;
+						break;
+					case '3':
+						vid_w = 800;
+						vid_h = 600;
+						break;
+				}
 				flag_windowed = TRUE;
+				break;
+			case '?':
+				if (optopt == 'w')
+				{
+					vid_w = 800;
+					vid_h = 600;
+					flag_windowed = TRUE;
+				}
 				break;
 			default:
 				break;

@@ -47,16 +47,21 @@ void Kernel::play()
 				mygame.continue_level();
 			}
 
-			if (controls::cheat_rm_level())
+			if (controls::cheat_rm_level()) // Go DOWN? a level?
 			{
 				mygame.prev_level();
 				mygame.restart_level();
 			}
 
-			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || controls::cheat_add_level() ) // DEBUG -- REMOVE THE CHEAT, the KEY_SPACE thing!!
+			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || controls::cheat_add_level() ) // DEBUG -- REMOVE THE CHEAT!
 			{
 
 				if (ret != GAME_UDP_LOST_GAME)
+				{
+					/* Reset the level to 1; reset lives; ... */
+					mygame.init_game();
+				}
+				else
 				{
 					textout_ex( screen, font, "Next level!!", SCREEN_H / 2, SCREEN_W / 2, makecol( 255, 0, 0), makecol( 0, 0, 0));
 					mygame.next_level();

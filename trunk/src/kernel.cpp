@@ -56,7 +56,7 @@ void Kernel::play()
 			if (ret == GAME_UDP_NEXT_LEVEL || ret == GAME_UDP_LOST_GAME || controls::cheat_add_level() ) // DEBUG -- REMOVE THE CHEAT!
 			{
 
-				if (ret != GAME_UDP_LOST_GAME)
+				if (ret == GAME_UDP_LOST_GAME)
 				{
 					/* Reset the level to 1; reset lives; ... */
 					mygame.init_game();

@@ -53,7 +53,6 @@ int Game::lost_life()
 	{
 		show_msg_center("Are you for real!");
 		controls::waitUntilEvent();
-		init_game(); //do we really want to call this here? Should the kernel do this?
 		return GAME_UDP_LOST_GAME;
 		// we need to have a better method of restarting game vs continuing level
 	}

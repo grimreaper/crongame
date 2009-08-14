@@ -28,14 +28,14 @@ void Game::restart_level()
 
 void Game::continue_level()
 {
-	ball.init(); // init the ball
+	balls.at(0)->init(); // init the ball
 
       paddle.init(); // init the mygame.paddle
       paddle.getMouse();
 
 	Brick::resetAll();
 
-	ball.sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
+	balls.at(0)->sticky_time = BPS_OF_TIMER_MANAGER * 3; // 3 secs before launch of ball =)
 }
 
 int Game::lost_life()
@@ -85,5 +85,5 @@ void Game::render(BITMAP *double_buffer)
 	// first, everything gets drawed to the double buffer bitmap
 	game_field.render(double_buffer); // render the game field (the bricks)
 	paddle.render(double_buffer); // render the mygame.paddle
-	ball.render(double_buffer); // render the ball
+	balls.at(0)->render(double_buffer); // render the ball
 }

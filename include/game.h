@@ -47,7 +47,7 @@ class Game
  		/*! \var The game ball
 		 * \todo when we allow multiple balls this method of storing balls has to change.
 		*/
-		Ball ball;
+		std::vector<Ball> balls;
 		GameField game_field; /*! \var the game field */
 		Paddle paddle; /*! \var the player paddle */
 

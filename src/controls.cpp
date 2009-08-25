@@ -1,5 +1,11 @@
 #include "controls.h"
 
+extern int controls::kbspeed;
+
+controls::controls()
+{
+	kbspeed = 0;
+}
 bool controls::release_ball_from_paddle()
 {
 	/* If the left button is pressed or or if the space bar is pressed. */
@@ -36,4 +42,31 @@ void controls::waitUntilEvent()
 	while (!event()) {}
 	clear_keybuf();
 	mouse_b=0;
+}
+
+int controls::goMouse(int paddle_w)
+{
+      return mouse_x - (paddle_w / 2);
+}
+
+int controls::goRight()
+{
+	if (key[KEY_RIGHT])
+	{
+		kbspeed++;
+		return kbspeed;
+	}
+	kbspeed = 0;
+	return 0;
+}
+
+int controls::goLeft()
+{
+	if (key[KEY_LEFT])
+	{
+		kbspeed++;
+		return kbspeed;
+	}
+	kbspeed = 0;
+	return 0;
 }

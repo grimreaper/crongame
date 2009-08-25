@@ -6,7 +6,6 @@
 #include "game_status_constants.h"
 #include "ball.h"
 #include "paddle.h"
-#include "dialog.h"
 #include "gamefield.h"
 #include "mtimer.h" //For the timer constants
 

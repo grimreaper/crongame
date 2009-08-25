@@ -4,6 +4,7 @@
 #include "common.h"
 #include "paddle.h"
 #include "power.h"
+#include "controls.h"
 
 class Paddle
 {

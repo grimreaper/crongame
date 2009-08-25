@@ -17,6 +17,8 @@ int flag_cheat = FALSE;
 
 int want_sound = TRUE;
 int depth = -1;
+
+int flag_use_mouse = TRUE;
 /*
 char player_name[256] ="";
 int update_hs = 0;
@@ -31,6 +33,7 @@ static struct option long_options[] =
 	{"nosound", no_argument, &want_sound, FALSE},
 	{"ns", no_argument, &want_sound, FALSE},
 	{"cheat", no_argument, &flag_cheat, TRUE},
+	{"keyboard", no_argument, &flag_use_mouse, FALSE},
 	{NULL, 0, NULL, 0}
 };
 
@@ -50,7 +53,7 @@ int main( int argc, char *argv[])
 	int c = 0;
 	int option_index = 0;
 
-	while ((c = getopt_long (argc, argv, "bw:", long_options, &option_index)) != -1)
+	while ((c = getopt_long (argc, argv, "bkw:", long_options, &option_index)) != -1)
 	{
 		switch (c)
 		{
@@ -74,6 +77,9 @@ int main( int argc, char *argv[])
 						break;
 				}
 				flag_windowed = TRUE;
+				break;
+			case 'k':
+				flag_use_mouse = FALSE;
 				break;
 			case '?':
 				if (optopt == 'w')

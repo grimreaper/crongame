@@ -1,4 +1,5 @@
 #include "paddle.h"
+extern int flag_use_mouse;
 
 void Paddle::init()
 {
@@ -20,7 +21,15 @@ void Paddle::init()
 void Paddle::update()
 {
 	// mouse control... little lame
-	x = mouse_x - (w / 2);
+	if (flag_use_mouse)
+	{
+		x = controls::goMouse(w);
+	}
+	else
+	{
+		x += controls::goRight();
+		x -= controls::goLeft();
+	}
 	//y = mouse_y - (h / 2); // I disabled the Y movement for now -- DEBUG
 
 	y = std::max(static_cast<float> (SCREEN_H - (SCREEN_H / 3)), y);
@@ -85,7 +94,7 @@ void Paddle::doPowerUp(Power::brickStatus toDo)
 
 void Paddle::getMouse()
 {
-	position_mouse((int)x + (w/2), (int)y + (h/2)); // put the mouse cursor in paddle
+	position_mouse(static_cast<int>(x) + (w/2), static_cast<int>(y) + (h/2)); // put the mouse cursor in paddle
 }
 
 Paddle::Paddle()

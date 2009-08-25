@@ -11,6 +11,7 @@
 class controls
 {
 	public:
+		controls();
 		static bool release_ball_from_paddle();
 		static bool pause_game();
 		static bool quit_game();
@@ -19,9 +20,14 @@ class controls
 		//Did anything happpen - joystick, mouse, or keyboard!?
 		static bool event();
 
+		static int goLeft();
+		static int goRight();
+		static int goMouse(int paddle_w);
+
 		// Loop until and event happens
 		static void waitUntilEvent();
-
+	private:
+		static int kbspeed;
 
 };
 

@@ -20,7 +20,7 @@ class Brick
 		 *  \param x move it to this x
 		 *  \param y move it to this y
 		*/
-		void move(int x, int y);
+		//void move(int x, int y);
 
 		int w; // size, in pixels
 		int h;

@@ -1,0 +1,18 @@
+=== Compile ===
+To install you need to run "make <operating system>".
+This will get the pmake (BSD make version) package from your OS's package
+manager (apt, emerge, etc).
+If you used the above instructions to get pmake the following will occur
+automatically.
+Run "[p]make deps-<operating system>" to fetch and install the allegro 
+library. This will generate some warnings as the Makefile tries to run
+allegro specific config programs. You can ignore these.
+
+If you already have either of the above the Makefile will detect it.
+Finally run "[p]make install" to compile and install crongame.
+
+The installation proccess checks to make sure you are root. If you wish
+to override this behavior add a file .noroot to the build directory.
+
+For some reason pmake doesn't work on ubuntu. Instead of pmake run 
+./scripts/run-install-ubuntu.sh

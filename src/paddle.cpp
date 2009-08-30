@@ -20,16 +20,8 @@ void Paddle::init()
 // updates control of paddle
 void Paddle::update()
 {
-	// mouse control... little lame
-	if (flag_use_mouse)
-	{
-		x = controls::goMouse(w);
-	}
-	else
-	{
-		x += controls::goRight();
-		x -= controls::goLeft();
-	}
+	x = controls::getNewPaddleX(x,w);
+
 	//y = mouse_y - (h / 2); // I disabled the Y movement for now -- DEBUG
 
 	y = std::max(static_cast<float> (SCREEN_H - (SCREEN_H / 3)), y);

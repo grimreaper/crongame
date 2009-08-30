@@ -3,7 +3,7 @@
 *3) make things more encapsulated - move things from gamefield to better classes
 *4) make some method of testing specific power bricks and other game features
 *5) add some kind of build dependancy check
-6) Multiple balls
+*6) Multiple balls
 7) Precreated (non-random) levels
 8) Easy/Med/Hard
 9) User config (choose ball speed, paddle size, etc)

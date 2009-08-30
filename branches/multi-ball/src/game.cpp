@@ -2,6 +2,7 @@
 
 Game::Game()
 {
+	balls.resize(1);
 }
 
 Game::~Game()

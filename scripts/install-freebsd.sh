@@ -9,5 +9,9 @@ else
 	then
 		return $val;
 	fi;
-	make -C /usr/ports/devel/allegro install distclean
+	val=$(pkg_info -e allegro);
+	if [ $val -ne 0 ]
+	then
+		make -C /usr/ports/devel/allegro install distclean
+	fi
 fi;

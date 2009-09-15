@@ -102,9 +102,13 @@ int Kernel::update()
 
 	mygame.paddle.update(); // update the paddle logic
 
-	if (mygame.balls.at(0).update(mygame.paddle, mygame.game_field))
+	int i;
+	for (i=0; i < mygame.balls.size(); ++i)
 	{
-		ret = GAME_UDP_LOST_LIFE; // player lost life :(
+		if (mygame.balls.at(i).update(mygame.paddle, mygame.game_field))
+		{
+			ret = GAME_UDP_LOST_LIFE; // player lost life :(
+		}
 	}
 
 	if (mygame.game_field.update())

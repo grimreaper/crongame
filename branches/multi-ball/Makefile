@@ -41,6 +41,11 @@ CFLAGS += -DBRICK_NUM=$(BRICK_NUM)
 BINNAME = $(TESTDIR)/$(NAME)-bricktest-$(BRICK_NUM)
 .endif
 
+.if defined(DEBUG_BALLS_SIZE)
+	CFLAGS += -DDEBUG_BALLS_SIZE=$(DEBUG_BALLS_SIZE)
+	BINNAME = $(TESTDIR)/$(NAME)-ballsize-$(DEBUG_BALLS_SIZE);
+.endif
+
 #compiling options
 .PHONY:     all clean cleantests test test-all check doc version truebuild
 

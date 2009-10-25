@@ -8,7 +8,8 @@
 #include "game.h"
 #include "gerror.h"
 #include "controls.h"
-
+#include <vector>
+#include <iterator>
 #include "game_status_constants.h"
 
 class Kernel

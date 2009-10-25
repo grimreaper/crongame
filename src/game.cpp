@@ -2,7 +2,11 @@
 
 Game::Game()
 {
-	balls.resize(1);
+	#ifndef DEBUG_BALLS_SIZE
+		balls.resize(1);
+	#else
+		balls.resize(DEBUG_BALLS_SIZE);
+	#endif
 }
 
 Game::~Game()
